@@ -71,5 +71,33 @@ CREATE TABLE dbo.MusicianSpeciality(
   specialty_desc varchar(1000),
 )
 
+CREATE TABLE dbo.Label(
+	label_ID INT NOT NULL PRIMARY KEY,
+	label_name varchar(50) NOT NULL,
+	label_desc varchar(1000) NOT NULL
+);
+
+CREATE TABLE dbo.Product(
+	product_ID INT NOT NULL PRIMARY KEY,
+	product_price DECIMAL(10,2) NOT NULL,
+	label_ID INT NOT NULL REFERENCES Label(label_ID)
+);
+
+CREATE TABLE dbo.Album(
+	album_ID INT NOT NULL PRIMARY KEY,
+	product_ID INT NOT NULL REFERENCES Product(product_ID),
+	album_release_date DATE NOT NULL,
+	album_desc varchar(1000) NOT NULL
+);
+
+CREATE TABLE dbo.Track(
+	track_ID INT NOT NULL PRIMARY KEY,
+	product_ID NOT NULL REFERENCES Product(product_ID),
+	album_ID NOT NULL REFERENCES Album(album_ID),
+	track_name varchar(50) NOT NULL,
+	track_time TIME NOT NULL,
+	track_release_date DATE NOT NULL,
+	track_bpm INT NOT NULL
+);
 
   
