@@ -10,7 +10,7 @@ USE Music_Streaming_Service;
 -- the currect schema is dbo
 
 CREATE TABLE dbo.User(
-  user_ID INT NOT NULL PRIMARY KEY ,
+  user_ID INT NOT NULL PRIMARY KEY,
   user_name varchar(50) NOT NULL,
   register_date DATE NOT NULL,
   last_login_date DATE NOT NULL,
@@ -48,3 +48,28 @@ CREATE TABLE dbo.LikeHistory(
     like_time_stamp TIMESTAMP NOT NULL,
     PRIMARY KEY (user_ID, track_ID, like_time_stamp),
 )
+
+CREATE TABLE dbo.FollowingRelationship(
+  follow_num INT NOT NULL PRIMARY KEY,
+  user_ID_follower INT NOT NULL REFERENCES User(user_ID),
+  user_ID_followed INT NOT NULL REFERENCES User(user_ID),
+  follow_time_stamp TIMESTAMP NOT NULL,
+)
+
+CREATE TABLE dbo.PurchaseHistory(
+  invoice_num INT NOT NULL PRIMARY KEY,
+  user_ID INT NOT NULL REFERENCES User(user_ID),
+  product_ID INT NOT NULL REFERENCES Product(product_ID),
+  unit_price MONEY NOT NULL,
+  quantity INT NOT NULL,
+  invoice_price AS unit_price*quantity
+  purchase_time_stamp TIMESTAMP NOT NULL,
+)
+
+CREATE TABLE dbo.MusicianSpeciality(
+  specialty_ID INT NOT NULL PRIMARY KEY,
+  specialty_desc varchar(1000),
+)
+
+
+  
