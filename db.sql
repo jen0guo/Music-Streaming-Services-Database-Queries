@@ -100,4 +100,23 @@ CREATE TABLE dbo.Track(
 	track_bpm INT NOT NULL
 );
 
-  
+ --Adding the Playlist Inclusiveness, Playlist, Track Genre, and Genre Tables
+ CREATE TABLE dbo.Playlist
+ (
+  playlist_ID int IDENTITY NOT NULL PRIMARY KEY,
+  user_ID int NOT NULL,
+  playlist_name varchar(50) NOT NULL, 
+  playlist_desc varchar(1000),
+  CONSTRAINT FKPlaylist FOREIGN KEY (user_ID)
+    REFERENCES dbo.User(user_ID)
+ )
+
+ CREATE TABLE dbo.PlaylistInclusiveness(
+  playlist_ID int NOT NULL,
+  track_ID int NOT NULL,
+  CONSTRAINT FK1PlaylistInclusiveness FOREIGN KEY (playlist_ID)
+    REFERENCES dbo.Playlist(playlist_ID),
+  CONSTRAINT FK2PlaylistInclusiveness FOREIGN KEY (track_ID)
+    REFERENCES dbo.Track(track_ID),
+  CONSTRAINT PKPlaylistInclusiveness PRIMARY KEY CLUSTERED (playlist_ID, track_ID)
+ ) 
