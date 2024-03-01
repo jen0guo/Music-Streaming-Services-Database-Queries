@@ -108,7 +108,7 @@ CREATE TABLE dbo.Track(
   playlist_name varchar(50) NOT NULL, 
   playlist_desc varchar(1000),
   CONSTRAINT FKPlaylist FOREIGN KEY (user_ID)
-    REFERENCES dbo.User(user_ID)
+    REFERENCES dbo.[User](user_ID)
  )
 
  CREATE TABLE dbo.PlaylistInclusiveness(
@@ -120,3 +120,20 @@ CREATE TABLE dbo.Track(
     REFERENCES dbo.Track(track_ID),
   CONSTRAINT PKPlaylistInclusiveness PRIMARY KEY CLUSTERED (playlist_ID, track_ID)
  ) 
+
+CREATE TABLE dbo.Genre
+(
+  genre_ID int IDENTITY NOT NULL PRIMARY KEY,
+  genre_desc varchar(50) NOT NULL
+)
+
+CREATE TABLE dbo.TrackGenre
+(
+  genre_ID int NOT NULL,
+  track_ID int NOT NULL,
+  CONSTRAINT FK1TrackGenre FOREIGN KEY (genre_ID)
+    REFERENCES dbo.Genre(genre_ID),
+  CONSTRAINT FK2TrackGenre FOREIGN KEY (track_ID)
+    REFERENCES dbo.Track(track_ID),
+  CONSTRAINT PKTrackGenre PRIMARY KEY CLUSTERED (genre_ID, track_ID)
+)
