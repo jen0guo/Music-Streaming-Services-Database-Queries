@@ -7,7 +7,11 @@ CREATE DATABASE Music_Streaming_Service;
 USE Music_Streaming_Service;
 
 CREATE TABLE dbo.User(
+<<<<<<< HEAD
   user_ID varchar(50) NOT NULL PRIMARY KEY ,
+=======
+  user_ID INT NOT NULL PRIMARY KEY,
+>>>>>>> 4a4885d7c3e5e7cb83699ddf3bfd17a79993b4d0
   user_name varchar(50) NOT NULL,
   register_date DATETIME NOT NULL, -- 01/01/2023 - 07/31/2023
   last_login_date DATETIME NOT NULL -- 08/01/2023 - today
@@ -50,6 +54,7 @@ CREATE TABLE dbo.LikeHistory(
     track_ID varchar(50) NOT NULL REFERENCES Track(track_ID),
     like_time_stamp DATETIME NOT NULL,
     PRIMARY KEY (user_ID, track_ID, like_time_stamp),
+<<<<<<< HEAD
     CONSTRAINT check_like_timestamp_after_register
     CHECK (like_time_stamp > (SELECT register_date FROM User WHERE user_ID = LikeHistory.user_ID))
 );
@@ -129,3 +134,100 @@ insert into LikeHistory (user_ID, track_ID, like_time_stamp) values
 ('a4385066-147b-4560-9dc9-afd258c89791', '65e16a5efc13ae4f90cd36ae', '2023-08-07 19:07:11'),
 ('bf8a4973-2408-4c40-8483-39c225743570', '65e16a5efc13ae4f90cd36af', '2023-08-16 11:54:20');
 
+=======
+)
+
+CREATE TABLE dbo.FollowingRelationship(
+  follow_num INT NOT NULL PRIMARY KEY,
+  user_ID_follower INT NOT NULL REFERENCES User(user_ID),
+  user_ID_followed INT NOT NULL REFERENCES User(user_ID),
+  follow_time_stamp DATETIME NOT NULL,
+  CONSTRAINT check_valid_follow_time
+  CHECK (register_date < follow_time_stamp)
+)
+
+CREATE TABLE dbo.PurchaseHistory(
+  invoice_num INT NOT NULL PRIMARY KEY,
+  user_ID INT NOT NULL REFERENCES User(user_ID),
+  product_ID INT NOT NULL REFERENCES Product(product_ID),
+  quantity INT NOT NULL,
+  invoice_price AS quantity * (SELECT product_price FROM Product p WHERE p.product_ID = product_ID)
+  purchase_time_stamp DATETIME NOT NULL,
+  CONSTRAINT check_valid_purchase_time_album
+  CHECK (album_release_date < purchase_time_stamp)
+  CONSTRAINT check_valid_purchase_time_track
+  CHECK (track_release_date < purchase_time_stamp)
+)
+
+CREATE TABLE dbo.MusicianSpeciality(
+  specialty_ID INT NOT NULL PRIMARY KEY,
+  specialty_desc varchar(1000),
+)
+
+CREATE TABLE dbo.Label(
+	label_ID INT NOT NULL PRIMARY KEY,
+	label_name varchar(50) NOT NULL,
+	label_desc varchar(1000) NOT NULL
+);
+
+CREATE TABLE dbo.Product(
+	product_ID INT NOT NULL PRIMARY KEY,
+	product_price DECIMAL(10,2) NOT NULL,
+	label_ID INT NOT NULL REFERENCES Label(label_ID)
+);
+
+CREATE TABLE dbo.Album(
+	album_ID INT NOT NULL PRIMARY KEY,
+	product_ID INT NOT NULL REFERENCES Product(product_ID),
+	album_release_date DATE NOT NULL,
+	album_desc varchar(1000) NOT NULL
+);
+
+CREATE TABLE dbo.Track(
+	track_ID INT NOT NULL PRIMARY KEY,
+	product_ID NOT NULL REFERENCES Product(product_ID),
+	album_ID NOT NULL REFERENCES Album(album_ID),
+	track_name varchar(50) NOT NULL,
+	track_time TIME NOT NULL,
+	track_release_date DATE NOT NULL,
+	track_bpm INT NOT NULL
+);
+
+ --Adding the Playlist Inclusiveness, Playlist, Track Genre, and Genre Tables
+ CREATE TABLE dbo.Playlist
+ (
+  playlist_ID int IDENTITY NOT NULL PRIMARY KEY,
+  user_ID int NOT NULL,
+  playlist_name varchar(50) NOT NULL, 
+  playlist_desc varchar(1000),
+  CONSTRAINT FKPlaylist FOREIGN KEY (user_ID)
+    REFERENCES dbo.[User](user_ID)
+ )
+
+ CREATE TABLE dbo.PlaylistInclusiveness(
+  playlist_ID int NOT NULL,
+  track_ID int NOT NULL,
+  CONSTRAINT FK1PlaylistInclusiveness FOREIGN KEY (playlist_ID)
+    REFERENCES dbo.Playlist(playlist_ID),
+  CONSTRAINT FK2PlaylistInclusiveness FOREIGN KEY (track_ID)
+    REFERENCES dbo.Track(track_ID),
+  CONSTRAINT PKPlaylistInclusiveness PRIMARY KEY CLUSTERED (playlist_ID, track_ID)
+ ) 
+
+CREATE TABLE dbo.Genre
+(
+  genre_ID int IDENTITY NOT NULL PRIMARY KEY,
+  genre_desc varchar(50) NOT NULL
+)
+
+CREATE TABLE dbo.TrackGenre
+(
+  genre_ID int NOT NULL,
+  track_ID int NOT NULL,
+  CONSTRAINT FK1TrackGenre FOREIGN KEY (genre_ID)
+    REFERENCES dbo.Genre(genre_ID),
+  CONSTRAINT FK2TrackGenre FOREIGN KEY (track_ID)
+    REFERENCES dbo.Track(track_ID),
+  CONSTRAINT PKTrackGenre PRIMARY KEY CLUSTERED (genre_ID, track_ID)
+)
+>>>>>>> 4a4885d7c3e5e7cb83699ddf3bfd17a79993b4d0
