@@ -53,17 +53,22 @@ CREATE TABLE dbo.FollowingRelationship(
   follow_num INT NOT NULL PRIMARY KEY,
   user_ID_follower INT NOT NULL REFERENCES User(user_ID),
   user_ID_followed INT NOT NULL REFERENCES User(user_ID),
-  follow_time_stamp TIMESTAMP NOT NULL,
+  follow_time_stamp DATETIME NOT NULL,
+  CONSTRAINT check_valid_follow_time
+  CHECK (register_date < follow_time_stamp)
 )
 
 CREATE TABLE dbo.PurchaseHistory(
   invoice_num INT NOT NULL PRIMARY KEY,
   user_ID INT NOT NULL REFERENCES User(user_ID),
   product_ID INT NOT NULL REFERENCES Product(product_ID),
-  unit_price MONEY NOT NULL,
   quantity INT NOT NULL,
-  invoice_price AS unit_price*quantity
-  purchase_time_stamp TIMESTAMP NOT NULL,
+  invoice_price AS quantity * (SELECT product_price FROM Product p WHERE p.product_ID = product_ID)
+  purchase_time_stamp DATETIME NOT NULL,
+  CONSTRAINT check_valid_purchase_time_album
+  CHECK (album_release_date < purchase_time_stamp)
+  CONSTRAINT check_valid_purchase_time_track
+  CHECK (track_release_date < purchase_time_stamp)
 )
 
 CREATE TABLE dbo.MusicianSpeciality(
