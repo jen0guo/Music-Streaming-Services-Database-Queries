@@ -7,11 +7,7 @@ CREATE DATABASE Music_Streaming_Service;
 USE Music_Streaming_Service;
 
 CREATE TABLE dbo.User(
-<<<<<<< HEAD
   user_ID varchar(50) NOT NULL PRIMARY KEY ,
-=======
-  user_ID INT NOT NULL PRIMARY KEY,
->>>>>>> 4a4885d7c3e5e7cb83699ddf3bfd17a79993b4d0
   user_name varchar(50) NOT NULL,
   register_date DATETIME NOT NULL, -- 01/01/2023 - 07/31/2023
   last_login_date DATETIME NOT NULL -- 08/01/2023 - today
@@ -54,10 +50,10 @@ CREATE TABLE dbo.LikeHistory(
     track_ID varchar(50) NOT NULL REFERENCES Track(track_ID),
     like_time_stamp DATETIME NOT NULL,
     PRIMARY KEY (user_ID, track_ID, like_time_stamp),
-<<<<<<< HEAD
     CONSTRAINT check_like_timestamp_after_register
     CHECK (like_time_stamp > (SELECT register_date FROM User WHERE user_ID = LikeHistory.user_ID))
 );
+
 
 insert into User (user_ID, user_name, register_date, last_login_date, login_password, email_address, phone_number, profile_photo, profile_desc) values
 ('a4385066-147b-4560-9dc9-afd258c89791', 'drenac0', '3/4/2023', '10/28/2023', 'zG4</VI3K(4O{0=', 'vastman0@theglobeandmail.com', '809-893-0248', 'http://dummyimage.com/139x100.png/ff4444/ffffff', 'WCowtXzonxe4FW4gnMs88JqavN4j0Z8AYbwch9CLM6Er9Tt'),
@@ -108,7 +104,6 @@ insert into ListenHistory (user_ID, track_ID, listen_time_stamp) values
 ('bf8a4973-2408-4c40-8483-39c225743570', '65e16a19fc13ae51f6cd36cd', '2023-10-21 20:12:55');
 
 
-
 insert into DownloadHistory (user_ID, track_ID, download_time_stamp) values
 ('6f5b5567-cf20-433d-8287-5e32a86246b3', '65e16a47fc13ae500ecd367e', '2023-11-29 20:35:27'),
 ('4ed2412d-6084-4c35-9077-f0eb8d9dc374', '65e16a47fc13ae500ecd367f', '2024-01-12 04:19:59'),
@@ -134,8 +129,6 @@ insert into LikeHistory (user_ID, track_ID, like_time_stamp) values
 ('a4385066-147b-4560-9dc9-afd258c89791', '65e16a5efc13ae4f90cd36ae', '2023-08-07 19:07:11'),
 ('bf8a4973-2408-4c40-8483-39c225743570', '65e16a5efc13ae4f90cd36af', '2023-08-16 11:54:20');
 
-=======
-)
 
 CREATE TABLE dbo.FollowingRelationship(
   follow_num INT NOT NULL PRIMARY KEY,
@@ -230,4 +223,3 @@ CREATE TABLE dbo.TrackGenre
     REFERENCES dbo.Track(track_ID),
   CONSTRAINT PKTrackGenre PRIMARY KEY CLUSTERED (genre_ID, track_ID)
 )
->>>>>>> 4a4885d7c3e5e7cb83699ddf3bfd17a79993b4d0
