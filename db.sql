@@ -131,18 +131,31 @@ insert into LikeHistory (user_ID, track_ID, like_time_stamp) values
 
 
 CREATE TABLE dbo.FollowingRelationship(
-  follow_num INT NOT NULL PRIMARY KEY,
-  user_ID_follower INT NOT NULL REFERENCES User(user_ID),
-  user_ID_followed INT NOT NULL REFERENCES User(user_ID),
+  follow_ID varchar(50) NOT NULL PRIMARY KEY,
+  user_ID_follower varchar(50) NOT NULL REFERENCES User(user_ID),
+  user_ID_followed varchar(50) NOT NULL REFERENCES User(user_ID),
   follow_time_stamp DATETIME NOT NULL,
   CONSTRAINT check_valid_follow_time
   CHECK (register_date < follow_time_stamp)
 )
 
+insert into FollowingRelationship (follow_ID, user_ID_follower, user_ID_followed, follow_time_stamp) values
+ (65e3ba95fc13ae6456cd367e, '122d6c4c-7de8-47b1-a314-69ad99c161fe', '1a9288dd-e1b8-48fc-9d38-241d0738098f', '2023-12-28 16:18:20'),
+ (65e3ba95fc13ae6456cd367f, '1a9288dd-e1b8-48fc-9d38-241d0738098f', '122d6c4c-7de8-47b1-a314-69ad99c161fe', '2023-11-22 16:09:52'),
+ (65e3ba95fc13ae6456cd3680, 'cf7ab4b4-6779-4463-b518-2f1a104816ef', '1a9288dd-e1b8-48fc-9d38-241d0738098f', '2023-09-28 21:41:42'),
+ (65e3ba95fc13ae6456cd3681, '6cbadc1f-1932-404f-b498-2f60b46424b5', '1a9288dd-e1b8-48fc-9d38-241d0738098f', '2023-09-13 16:52:06'),
+ (65e3ba95fc13ae6456cd3682, '0e4e1497-ffb2-491b-97fe-8301154532a1', '1a9288dd-e1b8-48fc-9d38-241d0738098f', '2023-12-28 23:45:54'),
+ (65e3ba95fc13ae6456cd3683, '9c5ee840-c8b2-4d58-86c7-d87c5aac04f1', '1a9288dd-e1b8-48fc-9d38-241d0738098f', '2023-10-03 11:12:32'),
+ (65e3ba95fc13ae6456cd3684, 'bf8a4973-2408-4c40-8483-39c225743570', '1a9288dd-e1b8-48fc-9d38-241d0738098f', '2023-08-14 03:01:55'),
+ (65e3ba95fc13ae6456cd3685, 'fdb29741-d9ba-4019-af9f-5d869290af2e', '1a9288dd-e1b8-48fc-9d38-241d0738098f', '2024-01-14 20:29:21'),
+ (65e3ba95fc13ae6456cd3686, 'a4385066-147b-4560-9dc9-afd258c89791', '1a9288dd-e1b8-48fc-9d38-241d0738098f', '2023-12-20 19:42:36'),
+ (65e3ba95fc13ae6456cd3687, '9c5ee840-c8b2-4d58-86c7-d87c5aac04f1', 'cf7ab4b4-6779-4463-b518-2f1a104816ef', '2023-08-25 12:24:08');
+
+
 CREATE TABLE dbo.PurchaseHistory(
-  invoice_num INT NOT NULL PRIMARY KEY,
-  user_ID INT NOT NULL REFERENCES User(user_ID),
-  product_ID INT NOT NULL REFERENCES Product(product_ID),
+  invoice_ID varchar(50) NOT NULL PRIMARY KEY,
+  user_ID varchar(50) NOT NULL REFERENCES User(user_ID),
+  product_ID varchar(50) NOT NULL REFERENCES Product(product_ID),
   quantity INT NOT NULL,
   invoice_price AS quantity * (SELECT product_price FROM Product p WHERE p.product_ID = product_ID)
   purchase_time_stamp DATETIME NOT NULL,
@@ -151,9 +164,13 @@ CREATE TABLE dbo.PurchaseHistory(
   CONSTRAINT check_valid_purchase_time_track
   CHECK (track_release_date < purchase_time_stamp)
 )
+	
+insert into PurchaseHistory (invoice_ID, user_ID, product_ID, quantity, invoice_price, purchase_time_stamp) values
 
+
+	
 CREATE TABLE dbo.MusicianSpeciality(
-  specialty_ID INT NOT NULL PRIMARY KEY,
+  specialty_ID varchar(50) NOT NULL PRIMARY KEY,
   specialty_desc varchar(1000),
 )
 
