@@ -9,8 +9,8 @@ USE Music_Streaming_Service;
 CREATE TABLE dbo.User(
   user_ID varchar(50) NOT NULL PRIMARY KEY ,
   user_name varchar(50) NOT NULL,
-  register_date DATETIME NOT NULL, -- 01/01/2023 - 07/31/2023
-  last_login_date DATETIME NOT NULL -- 08/01/2023 - today
+  register_date DATE NOT NULL, -- 01/01/2023 - 07/31/2023
+  last_login_date DATE NOT NULL -- 08/01/2023 - today
   login_password varchar(50) NOT NULL,
   email_address varchar(50) NOT NULL,
   phone_number varchar(50) NOT NULL,
