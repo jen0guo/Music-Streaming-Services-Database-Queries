@@ -196,9 +196,32 @@ insert into MusicianSpeciality (specialty_ID, specialty_desc) values
 
 CREATE TABLE dbo.Label(
 	label_ID INT NOT NULL PRIMARY KEY,
-	label_name varchar(50) NOT NULL,
-	label_desc varchar(1000) NOT NULL
+	label_name varchar(50) NOT NULL
 );
+
+-- Insert data into dbo.Label
+INSERT INTO dbo.Label (label_ID, label_name)
+VALUES 
+('65e36c1efc13ae0ea2cd3f16', 'Acoustic Arts'),
+('65e36c1efc13ae0ea2cd3f17', 'Cadence Creations'),
+('65e36c1efc13ae0ea2cd3f18', 'Harmonic Harmony'),
+('65e36c1efc13ae0ea2cd3f19', 'Harmonize Harmony'),
+('65e36c1efc13ae0ea2cd3f1a', 'Harmonize Records'),
+('65e36c1efc13ae0ea2cd3f1b', 'Harmony Records'),
+('65e36c1efc13ae0ea2cd3f1c', 'Melodic Muse'),
+('65e36c1efc13ae0ea2cd3f1d', 'Melody Productions'),
+('65e36c1efc13ae0ea2cd3f1e', 'Muse Music'),
+('65e36c1efc13ae0ea2cd3f1f', 'NoteWorthy Records'),
+('65e36c1efc13ae0ea2cd3f20', 'Pulse Music Group'),
+('65e36c1efc13ae0ea2cd3f21', 'Rhythm Records'),
+('65e36c1efc13ae0ea2cd3f22', 'Rhythmic Records'),
+('65e36c1efc13ae0ea2cd3f23', 'Sonic Sounds'),
+('65e36c1efc13ae0ea2cd3f24', 'Sonic Symphony'),
+('65e36c1efc13ae0ea2cd3f25', 'Symphony Sounds'),
+('65e36c1efc13ae0ea2cd3f26', 'Symphony Studios'),
+('65e36c1efc13ae0ea2cd3f27', 'TuneTown Music'),
+('65e36c1efc13ae0ea2cd3f28', 'Vibe Valley'),
+('65e36c1efc13ae0ea2cd3f29', 'Vibe Vibes');
 
 CREATE TABLE dbo.Product(
 	product_ID INT NOT NULL PRIMARY KEY,
@@ -206,12 +229,120 @@ CREATE TABLE dbo.Product(
 	label_ID INT NOT NULL REFERENCES Label(label_ID)
 );
 
+-- Insert data into dbo.Product
+INSERT INTO dbo.Product (product_ID, product_price, label_ID)
+VALUES 
+('65e3654dfc13ae0e3fcd36da', 0.99, '65e36c1efc13ae0ea2cd3f16'),
+('65e3654dfc13ae0e3fcd36dc', 0.99, '65e36c1efc13ae0ea2cd3f16'),
+('65e3654dfc13ae0e3fcd36f2', 0.99, '65e36c1efc13ae0ea2cd3f16'),
+('65e3654dfc13ae0e3fcd36e6', 0.99, '65e36c1efc13ae0ea2cd3f17'),
+('65e3654dfc13ae0e3fcd36e4', 0.99, '65e36c1efc13ae0ea2cd3f17'),
+('65e3654dfc13ae0e3fcd36ce', 0.99, '65e36c1efc13ae0ea2cd3f18'),
+('65e3654dfc13ae0e3fcd36d0', 0.99, '65e36c1efc13ae0ea2cd3f18'),
+('65e3654dfc13ae0e3fcd36d2', 0.99, '65e36c1efc13ae0ea2cd3f18'),
+('65e3654dfc13ae0e3fcd36d4', 0.99, '65e36c1efc13ae0ea2cd3f18'),
+('65e3654dfc13ae0e3fcd370e', 0.99, '65e36c1efc13ae0ea2cd3f18'),
+('65e3654dfc13ae0e3fcd36ea', 0.99, '65e36c1efc13ae0ea2cd3f19'),
+('65e3654dfc13ae0e3fcd36d6', 0.99, '65e36c1efc13ae0ea2cd3f1a'),
+('65e3654dfc13ae0e3fcd36d8', 0.99, '65e36c1efc13ae0ea2cd3f1a'),
+('65e3654dfc13ae0e3fcd36ec', 0.99, '65e36c1efc13ae0ea2cd3f1a'),
+('65e3654dfc13ae0e3fcd36fe', 0.99, '65e36c1efc13ae0ea2cd3f1a'),
+('65e3654dfc13ae0e3fcd36ca', 0.99, '65e36c1efc13ae0ea2cd3f1b'),
+('65e3654dfc13ae0e3fcd36de', 0.99, '65e36c1efc13ae0ea2cd3f1b'),
+('65e3654dfc13ae0e3fcd36c4', 0.99, '65e36c1efc13ae0ea2cd3f1b'),
+('65e3654dfc13ae0e3fcd36c6', 0.99, '65e36c1efc13ae0ea2cd3f1b'),
+('65e3654dfc13ae0e3fcd36c8', 0.99, '65e36c1efc13ae0ea2cd3f1b'),
+('65e3654dfc13ae0e3fcd36cc', 0.99, '65e36c1efc13ae0ea2cd3f1c'),
+('65e3654dfc13ae0e3fcd3706', 0.99, '65e36c1efc13ae0ea2cd3f1c'),
+('65e3654dfc13ae0e3fcd36f6', 0.99, '65e36c1efc13ae0ea2cd3f1d'),
+('65e3654dfc13ae0e3fcd36fc', 0.99, '65e36c1efc13ae0ea2cd3f1e'),
+('65e3654dfc13ae0e3fcd36fa', 0.99, '65e36c1efc13ae0ea2cd3f1e'),
+('65e3654dfc13ae0e3fcd36c0', 0.99, '65e36c1efc13ae0ea2cd3f1f'),
+('65e3654dfc13ae0e3fcd36f8', 0.99, '65e36c1efc13ae0ea2cd3f1f'),
+('65e3654dfc13ae0e3fcd3700', 0.99, '65e36c1efc13ae0ea2cd3f20'),
+('65e3654dfc13ae0e3fcd36e2', 0.99, '65e36c1efc13ae0ea2cd3f20'),
+('65e3654dfc13ae0e3fcd36e0', 0.99, '65e36c1efc13ae0ea2cd3f21'),
+('65e3654dfc13ae0e3fcd36e8', 0.99, '65e36c1efc13ae0ea2cd3f22'),
+('65e3654dfc13ae0e3fcd3702', 0.99, '65e36c1efc13ae0ea2cd3f23'),
+('65e3654dfc13ae0e3fcd3704', 0.99, '65e36c1efc13ae0ea2cd3f23'),
+('65e3654dfc13ae0e3fcd36ee', 0.99, '65e36c1efc13ae0ea2cd3f24'),
+('65e3654dfc13ae0e3fcd370a', 0.99, '65e36c1efc13ae0ea2cd3f24'),
+('65e3654dfc13ae0e3fcd370c', 0.99, '65e36c1efc13ae0ea2cd3f25'),
+('65e3654dfc13ae0e3fcd36c2', 0.99, '65e36c1efc13ae0ea2cd3f26'),
+('65e3654dfc13ae0e3fcd36f0', 0.99, '65e36c1efc13ae0ea2cd3f27'),
+('65e3654dfc13ae0e3fcd3708', 0.99, '65e36c1efc13ae0ea2cd3f28'),
+('65e3654dfc13ae0e3fcd36f4', 0.99, '65e36c1efc13ae0ea2cd3f29'),
+('65e3686cfc13ae0f5ecd4252', 2.99, '65e36c1efc13ae0ea2cd3f16'),
+('65e3686cfc13ae0f5ecd4245', 2.99, '65e36c1efc13ae0ea2cd3f16'),
+('65e3686cfc13ae0f5ecd423f', 2.99, '65e36c1efc13ae0ea2cd3f17'),
+('65e3686cfc13ae0f5ecd423e', 2.99, '65e36c1efc13ae0ea2cd3f17'),
+('65e3686cfc13ae0f5ecd4239', 2.99, '65e36c1efc13ae0ea2cd3f18'),
+('65e3686cfc13ae0f5ecd4251', 2.99, '65e36c1efc13ae0ea2cd3f18'),
+('65e3686cfc13ae0f5ecd4241', 2.99, '65e36c1efc13ae0ea2cd3f19'),
+('65e3686cfc13ae0f5ecd423a', 2.99, '65e36c1efc13ae0ea2cd3f1a'),
+('65e3686cfc13ae0f5ecd4242', 2.99, '65e36c1efc13ae0ea2cd3f1a'),
+('65e3686cfc13ae0f5ecd424a', 2.99, '65e36c1efc13ae0ea2cd3f1a'),
+('65e3686cfc13ae0f5ecd4338', 2.99, '65e36c1efc13ae0ea2cd3f1b'),
+('65e3686cfc13ae0f5ecd423b', 2.99, '65e36c1efc13ae0ea2cd3f1b'),
+('65e3686cfc13ae0f5ecd4237', 2.99, '65e36c1efc13ae0ea2cd3f1b'),
+('65e3686cfc13ae0f5ecd4238', 2.99, '65e36c1efc13ae0ea2cd3f1c'),
+('65e3686cfc13ae0f5ecd424d', 2.99, '65e36c1efc13ae0ea2cd3f1c'),
+('65e3686cfc13ae0f5ecd4247', 2.99, '65e36c1efc13ae0ea2cd3f1d'),
+('65e3686cfc13ae0f5ecd4249', 2.99, '65e36c1efc13ae0ea2cd3f1e'),
+('65e3686cfc13ae0f5ecd4248', 2.99, '65e36c1efc13ae0ea2cd3f1e'),
+('65e3686cfc13ae0f5ecd4236', 2.99, '65e36c1efc13ae0ea2cd3f1f'),
+('65e3686cfc13ae0f5ecd4347', 2.99, '65e36c1efc13ae0ea2cd3f1f'),
+('65e3686cfc13ae0f5ecd424b', 2.99, '65e36c1efc13ae0ea2cd3f20'),
+('65e3686cfc13ae0f5ecd423d', 2.99, '65e36c1efc13ae0ea2cd3f20'),
+('65e3686cfc13ae0f5ecd423c', 2.99, '65e36c1efc13ae0ea2cd3f21'),
+('65e3686cfc13ae0f5ecd4240', 2.99, '65e36c1efc13ae0ea2cd3f22'),
+('65e3686cfc13ae0f5ecd424c', 2.99, '65e36c1efc13ae0ea2cd3f23'),
+('65e3686cfc13ae0f5ecd4243', 2.99, '65e36c1efc13ae0ea2cd3f24'),
+('65e3686cfc13ae0f5ecd424f', 2.99, '65e36c1efc13ae0ea2cd3f24'),
+('65e3686cfc13ae0f5ecd4250', 2.99, '65e36c1efc13ae0ea2cd3f25'),
+('65e3686cfc13ae0f5ecd4336', 2.99, '65e36c1efc13ae0ea2cd3f26'),
+('65e3686cfc13ae0f5ecd4244', 2.99, '65e36c1efc13ae0ea2cd3f27'),
+('65e3686cfc13ae0f5ecd424e', 2.99, '65e36c1efc13ae0ea2cd3f28'),
+('65e3686cfc13ae0f5ecd4246', 2.99, '65e36c1efc13ae0ea2cd3f29');
+
 CREATE TABLE dbo.Album(
 	album_ID INT NOT NULL PRIMARY KEY,
 	product_ID INT NOT NULL REFERENCES Product(product_ID),
-	album_release_date DATE NOT NULL,
-	album_desc varchar(1000) NOT NULL
+	album_release_date DATE NOT NULL
 );
+
+- Insert data into dbo.Album
+INSERT INTO dbo.Album (album_ID, product_ID, alumb_name, album_release_date)
+VALUES 
+('65e36722fc13ae0f07cd3a6b', '65e3686cfc13ae0f5ecd4252', 'Future Nostalgia', '1980-11-18'),
+('65e367a3fc13ae0dd8cd3a76', '65e3686cfc13ae0f5ecd4245', 'Astronomia', '2001-02-25'),
+('65e367a3fc13ae0dd8cd3a70', '65e3686cfc13ae0f5ecd423f', 'Beauty And A Beat', '2018-02-06'),
+('65e367a3fc13ae0dd8cd3a6f', '65e3686cfc13ae0f5ecd423e', 'Being Good Is Boring', '1986-08-23'),
+('65e36722fc13ae0f07cd3a69', '65e3686cfc13ae0f5ecd4239', 'Planet Her', '2010-06-16'),
+('65e367a3fc13ae0dd8cd3a82', '65e3686cfc13ae0f5ecd4251', '1, 2, 3 (feat. Jason Derulo & De La Ghetto)', '2011-06-02'),
+('65e367a3fc13ae0dd8cd3a72', '65e3686cfc13ae0f5ecd4241', 'Banana (feat. Shaggy) [DJ FLe - Minisiren Remix]', '2019-06-24'),
+('65e36722fc13ae0f07cd3a6a', '65e3686cfc13ae0f5ecd423a', 'On My Way', '1982-11-27'),
+('65e367a3fc13ae0dd8cd3a73', '65e3686cfc13ae0f5ecd4242', 'Bag Raiders (Deluxe)', '1998-02-27'),
+('65e367a3fc13ae0dd8cd3a7b', '65e3686cfc13ae0f5ecd424a', 'AMG', '2020-09-19'),
+('65e36722fc13ae0f07cd3a68', '65e3686cfc13ae0f5ecd4338', 'Say It Right', '2002-01-02'),
+('65e36722fc13ae0f07cd3a6c', '65e3686cfc13ae0f5ecd423b', 'Forever', '1986-09-06'),
+('65e36722fc13ae0f07cd3a67', '65e3686cfc13ae0f5ecd4237', 'Shoot For The Stars Aim For The Moon', '1988-04-28'),
+('65e367a3fc13ae0dd8cd3a7e', '65e3686cfc13ae0f5ecd424d', 'Afraid To Feel', '2013-09-29'),
+('65e367a3fc13ae0dd8cd3a78', '65e3686cfc13ae0f5ecd4247', 'As It Was', '1987-05-14'),
+('65e367a3fc13ae0dd8cd3a7a', '65e3686cfc13ae0f5ecd4249', 'Apologize', '2011-06-14'),
+('65e367a3fc13ae0dd8cd3a79', '65e3686cfc13ae0f5ecd4248', 'ARDIPITHECUS', '1980-05-09'),
+('65e36722fc13ae0f07cd3a66', '65e3686cfc13ae0f5ecd4236', 'Without You', '1999-12-06'),
+('65e367a3fc13ae0dd8cd3a7c', '65e3686cfc13ae0f5ecd424b', 'Ameno Amapiano Remix (You Wanna Bamba)', '1981-01-12'),
+('65e367a3fc13ae0dd8cd3a6e', '65e3686cfc13ae0f5ecd423d', 'Best Friend (feat. Doja Cat) [Remix EP]', '1997-02-15'),
+('65e367a3fc13ae0dd8cd3a6d', '65e3686cfc13ae0f5ecd423c', 'Forever', '1986-09-06'),
+('65e367a3fc13ae0dd8cd3a71', '65e3686cfc13ae0f5ecd4240', 'Be Kind (with Halsey)', '2000-03-21'),
+('65e367a3fc13ae0dd8cd3a7d', '65e3686cfc13ae0f5ecd424c', 'After Hours', '2000-05-27'),
+('65e367a3fc13ae0dd8cd3a74', '65e3686cfc13ae0f5ecd4243', 'Bad Habits', '2008-07-30'),
+('65e367a3fc13ae0dd8cd3a80', '65e3686cfc13ae0f5ecd424f', 'About Damn Time', '2001-05-05'),
+('65e367a3fc13ae0dd8cd3a81', '65e3686cfc13ae0f5ecd4250', 'abcdefu', '1991-08-29'),
+('65e367a3fc13ae0dd8cd3a75', '65e3686cfc13ae0f5ecd4244', 'Baby Girl', '2017-11-04'),
+('65e367a3fc13ae0dd8cd3a7f', '65e3686cfc13ae0f5ecd424e', 'Aesthetic', '2022-06-24'),
+('65e367a3fc13ae0dd8cd3a77', '65e3686cfc13ae0f5ecd4246', 'Astronaut In The Ocean', '1989-01-14');
 
 CREATE TABLE dbo.Track(
 	track_ID INT NOT NULL PRIMARY KEY,
@@ -222,6 +353,50 @@ CREATE TABLE dbo.Track(
 	track_release_date DATE NOT NULL,
 	track_bpm INT NOT NULL
 );
+
+-- Insert data into dbo.Track
+INSERT INTO dbo.Track (track_ID, product_ID, album_ID, track_name, track_time, track_release_date, track_bpm)
+VALUES 
+('65e3654dfc13ae0e3fcd36d9', '65e3654dfc13ae0e3fcd36da', '65e36722fc13ae0f07cd3a6b', 'Levitating (feat. DaBaby)', '0:02:38', '1980-11-18', 103),
+('65e3654dfc13ae0e3fcd36db', '65e3654dfc13ae0e3fcd36dc', '65e36722fc13ae0f07cd3a6b', 'Break My Heart', '0:03:41', '1980-11-18', 113),
+('65e3654dfc13ae0e3fcd36f1', '65e3654dfc13ae0e3fcd36f2', '65e367a3fc13ae0dd8cd3a76', 'Astronomia', '0:03:18', '2001-02-25', 126),
+('65e3654dfc13ae0e3fcd36e5', '65e3654dfc13ae0e3fcd36e6', '65e367a3fc13ae0dd8cd3a70', 'Beauty And A Beat', '0:02:18', '2018-02-06', 128),
+('65e3654dfc13ae0e3fcd36e3', '65e3654dfc13ae0e3fcd36e4', '65e367a3fc13ae0dd8cd3a6f', 'Being Good Is Boring', '0:02:40', '1986-08-23', 112),
+('65e3654dfc13ae0e3fcd36cd', '65e3654dfc13ae0e3fcd36ce', '65e36722fc13ae0f07cd3a69', 'Woman', '0:02:52', '2010-06-16', 108),
+('65e3654dfc13ae0e3fcd36cf', '65e3654dfc13ae0e3fcd36d0', '65e36722fc13ae0f07cd3a69', 'Need to Know', '0:03:30', '2010-06-16', 130),
+('65e3654dfc13ae0e3fcd36d1', '65e3654dfc13ae0e3fcd36d2', '65e36722fc13ae0f07cd3a69', 'Aint Shit', '0:02:54', '2010-06-16', 124),
+('65e3654dfc13ae0e3fcd36d3', '65e3654dfc13ae0e3fcd36d4', '65e36722fc13ae0f07cd3a69', 'You Right', '0:03:06', '2010-06-16', 129),
+('65e3654dfc13ae0e3fcd370d', '65e3654dfc13ae0e3fcd370e', '65e367a3fc13ae0dd8cd3a82', '1, 2, 3 (feat. Jason Derulo & De La Ghetto)', '0:03:21', '2011-06-02', 95),
+('65e3654dfc13ae0e3fcd36e9', '65e3654dfc13ae0e3fcd36ea', '65e367a3fc13ae0dd8cd3a72', 'Banana (feat. Shaggy) - DJ FLe - Minisiren Remix', '0:03:30', '2019-06-24', 95),
+('65e3654dfc13ae0e3fcd36d5', '65e3654dfc13ae0e3fcd36d6', '65e36722fc13ae0f07cd3a6a', 'When Hello Means Goodbye', '0:02:38', '1982-11-27', 166),
+('65e3654dfc13ae0e3fcd36d7', '65e3654dfc13ae0e3fcd36d8', '65e36722fc13ae0f07cd3a6a', 'On My Way', '0:03:20', '1982-11-27', 96),
+('65e3654dfc13ae0e3fcd36eb', '65e3654dfc13ae0e3fcd36ec', '65e367a3fc13ae0dd8cd3a73', 'Shooting Stars', '0:03:55', '1998-02-27', 125),
+('65e3654dfc13ae0e3fcd36fd', '65e3654dfc13ae0e3fcd36fe', '65e367a3fc13ae0dd8cd3a7b', 'AMG', '0:02:15', '2020-09-19', 88),
+('65e3654dfc13ae0e3fcd36c9', '65e3654dfc13ae0e3fcd36ca', '65e36722fc13ae0f07cd3a68', 'Say It Right', '0:02:09', '2002-01-02', 124),
+('65e3654dfc13ae0e3fcd36dd', '65e3654dfc13ae0e3fcd36de', '65e36722fc13ae0f07cd3a6c', 'Forever', '0:03:01', '1986-09-06', 124),
+('65e3654dfc13ae0e3fcd36c3', '65e3654dfc13ae0e3fcd36c4', '65e36722fc13ae0f07cd3a67', 'What You Know Bout Love', '0:02:40', '1988-04-28', 84),
+('65e3654dfc13ae0e3fcd36c5', '65e3654dfc13ae0e3fcd36c6', '65e36722fc13ae0f07cd3a67', 'Mood Swings (feat. Lil Tjay)', '0:03:33', '1988-04-28', 180),
+('65e3654dfc13ae0e3fcd36c7', '65e3654dfc13ae0e3fcd36c8', '65e36722fc13ae0f07cd3a67', 'For The Night (feat. Lil Baby & DaBaby)', '0:03:10', '1988-04-28', 126),
+('65e3654dfc13ae0e3fcd36cb', '65e3654dfc13ae0e3fcd36cc', '65e36722fc13ae0f07cd3a68', 'Say It Right', '0:02:08', '2002-01-02', 126),
+('65e3654dfc13ae0e3fcd3705', '65e3654dfc13ae0e3fcd3706', '65e367a3fc13ae0dd8cd3a7e', 'Afraid To Feel', '0:02:57', '2013-09-29', 128),
+('65e3654dfc13ae0e3fcd36f5', '65e3654dfc13ae0e3fcd36f6', '65e367a3fc13ae0dd8cd3a78', 'As It Was', '0:02:47', '1987-05-14', 174),
+('65e3654dfc13ae0e3fcd36fb', '65e3654dfc13ae0e3fcd36fc', '65e367a3fc13ae0dd8cd3a7a', 'Apologize', '0:02:09', '2011-06-14', 126),
+('65e3654dfc13ae0e3fcd36f9', '65e3654dfc13ae0e3fcd36fa', '65e367a3fc13ae0dd8cd3a79', 'Wait a Minute!', '0:03:16', '1980-05-09', 101),
+('65e3654dfc13ae0e3fcd36bf', '65e3654dfc13ae0e3fcd36c0', '65e36722fc13ae0f07cd3a66', 'Without You', '0:03:02', '1999-12-06', 125),
+('65e3654dfc13ae0e3fcd36f7', '65e3654dfc13ae0e3fcd36f8', '65e367a3fc13ae0dd8cd3a78', 'As It Was', '0:02:04', '1987-05-14', 105),
+('65e3654dfc13ae0e3fcd36ff', '65e3654dfc13ae0e3fcd3700', '65e367a3fc13ae0dd8cd3a7c', 'Ameno Amapiano Remix (You Wanna Bamba)', '0:03:47', '1981-01-12', 113),
+('65e3654dfc13ae0e3fcd36e1', '65e3654dfc13ae0e3fcd36e2', '65e367a3fc13ae0dd8cd3a6e', 'Best Friend (feat. Doja Cat)', '0:02:35', '1997-02-15', 94),
+('65e3654dfc13ae0e3fcd36df', '65e3654dfc13ae0e3fcd36e0', '65e367a3fc13ae0dd8cd3a6d', 'Forever', '0:02:47', '1986-09-06', 125),
+('65e3654dfc13ae0e3fcd36e7', '65e3654dfc13ae0e3fcd36e8', '65e367a3fc13ae0dd8cd3a71', 'Be Kind (with Halsey)', '0:02:52', '2000-03-21', 94),
+('65e3654dfc13ae0e3fcd3701', '65e3654dfc13ae0e3fcd3702', '65e367a3fc13ae0dd8cd3a7d', 'Blinding Lights', '0:03:20', '2000-05-27', 171),
+('65e3654dfc13ae0e3fcd3703', '65e3654dfc13ae0e3fcd3704', '65e367a3fc13ae0dd8cd3a7d', 'In Your Eyes', '0:03:57', '2000-05-27', 100),
+('65e3654dfc13ae0e3fcd36ed', '65e3654dfc13ae0e3fcd36ee', '65e367a3fc13ae0dd8cd3a74', 'Bad Habits', '0:03:51', '2008-07-30', 126),
+('65e3654dfc13ae0e3fcd3709', '65e3654dfc13ae0e3fcd370a', '65e367a3fc13ae0dd8cd3a80', 'About Damn Time', '0:03:11', '2001-05-05', 109),
+('65e3654dfc13ae0e3fcd370b', '65e3654dfc13ae0e3fcd370c', '65e367a3fc13ae0dd8cd3a81', 'abcdefu', '0:02:48', '1991-08-29', 122),
+('65e3654dfc13ae0e3fcd36c1', '65e3654dfc13ae0e3fcd36c2', '65e36722fc13ae0f07cd3a66', 'Without You', '0:02:12', '1999-12-06', 120),
+('65e3654dfc13ae0e3fcd36ef', '65e3654dfc13ae0e3fcd36f0', '65e367a3fc13ae0dd8cd3a75', 'Baby Girl', '0:01:51', '2017-11-04', 121),
+('65e3654dfc13ae0e3fcd3707', '65e3654dfc13ae0e3fcd3708', '65e367a3fc13ae0dd8cd3a7f', 'Aesthetic', '0:02:38', '2022-06-24', 170),
+('65e3654dfc13ae0e3fcd36f3', '65e3654dfc13ae0e3fcd36f4', '65e367a3fc13ae0dd8cd3a77', 'Astronaut In The Ocean', '0:02:12', '1989-01-14', 150);
 
  --Adding the Playlist Inclusiveness, Playlist, Track Genre, and Genre Tables
  CREATE TABLE dbo.Playlist
