@@ -396,17 +396,28 @@ INSERT INTO dbo.Track (track_ID, product_ID, album_ID, track_name, track_time, t
 
  --Adding the Playlist Inclusiveness, Playlist, Track Genre, and Genre Tables
  CREATE TABLE dbo.Playlist(
-  playlist_ID int IDENTITY NOT NULL PRIMARY KEY,
-  user_ID int NOT NULL,
+  playlist_ID varchar(50) IDENTITY NOT NULL PRIMARY KEY,
+  user_ID varchar(50) NOT NULL,
   playlist_name varchar(50) NOT NULL, 
   playlist_desc varchar(1000),
   CONSTRAINT FKPlaylist FOREIGN KEY (user_ID)
     REFERENCES dbo.[User](user_ID)
  )
+INSERT INTO dbo.Playlist (playlist_id, user_id, playlist_name, playlist_description) VALUES
+  ('20240303120000-a4385066147b45609dc9afd258c89791', 'a4385066-147b-4560-9dc9-afd258c89791', 'Music For My Friends', 'Songs that remind me of my special buds'),
+  ('20240303120001-6f5b5567cf20433d82875e32a86246b3', '6f5b5567-cf20-433d-8287-5e32a86246b3', 'Sunny Day Summer Tunes', 'Lapping waves and sun-drenched skin'),
+  ('20240303120002-e72c000650a647178993128613423d55', 'e72c0006-50a6-4717-8993-128613423d55', 'Sonic Journal- Winter of 23', NULL),
+  ('20240303120003-0e4e1497ffb2491b97fe8301154532a1', '0e4e1497-ffb2-491b-97fe-8301154532a1', 'Kaleidoscope', 'This playlist is a reflection of my ever-changing tastes and eclectic musical journey. Just like a kaleidoscope, it''s a vibrant mix of colors and patterns, with each song offering a different perspective and taking me on a new adventure.'),
+  ('20240303120004-6efa23ec3bd04b82b631962f416384a8', '6efa23ec-3bd0-4b82-b631-962f416384a8', 'Evening Unwind', 'These tracks are my sanctuary, filled with gentle melodies and soothing harmonies that help me unwind, reflect, and find peace amidst the chaos'),
+  ('20240303120005-cee7e196937b4985801607cf77c8f35b', 'cee7e196-937b-4985-8016-07cf77c8f35b', 'Groovy Vibes', 'Funky playlist filled with infectious rhythms and soulful beats - let these groovy vibes lift your spirits and move your feet.'),
+  ('20240303120006-b025f9731eb4446db4c17ce9c3fced9d', 'b025f973-1eb4-446d-b4c1-7ce9c3fced9d', 'Alone on Valentine''s Day', 'Being alone doesn''t mean being lonely, and self-love is just as important as any other kind'),
+  ('20240303120007-1a9288dde1b848fc9d38241d0738098f', '1a9288dd-e1b8-48fc-9d38-241d0738098f', 'Ultimate Roadtrip Playlist', 'This playlist is the soundtrack to my adventures, fueling every mile with excitement and anticipation. Whether I''m cruising down open highways or winding through scenic backroads, these songs are my faithful companions, making every journey unforgettable.'),
+  ('20240303120008-bf8a497324084c40848339c225743570', 'bf8a4973-2408-4c40-8483-39c225743570', 'Baby, this is Keke Palmer', 'Harness the power of Keke''s confidence and power with these booty popping anthems'),
+  ('20240303120009-cf7ab4b467794463b5182f1a104816ef', 'cf7ab4b4-6779-4463-b518-2f1a104816ef', 'Plantasia Reloaded', 'Close your eyes and imagine yourself surrounded by lush greenery, birds chirping, and the scent of flowers in the air. Escape the hustle and bustle of everyday life and reconnect with nature''s beauty.');
 
  CREATE TABLE dbo.PlaylistInclusiveness(
-  playlist_ID int NOT NULL,
-  track_ID int NOT NULL,
+  playlist_ID varchar(50) NOT NULL,
+  track_ID varchar(50) NOT NULL,
   CONSTRAINT FK1PlaylistInclusiveness FOREIGN KEY (playlist_ID)
     REFERENCES dbo.Playlist(playlist_ID),
   CONSTRAINT FK2PlaylistInclusiveness FOREIGN KEY (track_ID)
@@ -414,14 +425,73 @@ INSERT INTO dbo.Track (track_ID, product_ID, album_ID, track_name, track_time, t
   CONSTRAINT PKPlaylistInclusiveness PRIMARY KEY CLUSTERED (playlist_ID, track_ID)
  ) 
 
+INSERT INTO dbo.PlaylistInclusiveness (playlist_id, track_id) VALUES 
+  ('20230304120000-e72c000650a647178993128613423d55', '65e3654dfc13ae0e3fcd36d9'),
+  ('20230304120000-e72c000650a647178993128613423d55', '65e3654dfc13ae0e3fcd36db'),
+  ('20230304120000-e72c000650a647178993128613423d55', '65e3654dfc13ae0e3fcd36f1'),
+  ('20230304120000-e72c000650a647178993128613423d55', '65e3654dfc13ae0e3fcd36e5'),
+  ('20230304120000-e72c000650a647178993128613423d55', '65e3654dfc13ae0e3fcd36e3'),
+
+  ('20230220120001-00a05fed3b5441a18dad0322727a78da', '65e3654dfc13ae0e3fcd36cd'),
+  ('20230220120001-00a05fed3b5441a18dad0322727a78da', '65e3654dfc13ae0e3fcd36cf'),
+  ('20230220120001-00a05fed3b5441a18dad0322727a78da', '65e3654dfc13ae0e3fcd36d1'),
+  ('20230220120001-00a05fed3b5441a18dad0322727a78da', '65e3654dfc13ae0e3fcd36d3'),
+  ('20230220120001-00a05fed3b5441a18dad0322727a78da', '65e3654dfc13ae0e3fcd36d5'),
+
+  ('20230125120002-6efa23ec3bd04b82b631962f416384a8', '65e3654dfc13ae0e3fcd36d7'),
+  ('20230125120002-6efa23ec3bd04b82b631962f416384a8', '65e3654dfc13ae0e3fcd36eb'),
+  ('20230125120002-6efa23ec3bd04b82b631962f416384a8', '65e3654dfc13ae0e3fcd36d9'),
+  ('20230125120002-6efa23ec3bd04b82b631962f416384a8', '65e3654dfc13ae0e3fcd36db'),
+  ('20230125120002-6efa23ec3bd04b82b631962f416384a8', '65e3654dfc13ae0e3fcd36f1'),
+
+  ('20230717120003-15c36c9a6d344cb88799a7089b36fa09', '65e3654dfc13ae0e3fcd3701'),
+  ('20230717120003-15c36c9a6d344cb88799a7089b36fa09', '65e3654dfc13ae0e3fcd3703'),
+  ('20230717120003-15c36c9a6d344cb88799a7089b36fa09', '65e3654dfc13ae0e3fcd3705'),
+  ('20230717120003-15c36c9a6d344cb88799a7089b36fa09', '65e3654dfc13ae0e3fcd3707'),
+  ('20230717120003-15c36c9a6d344cb88799a7089b36fa09', '65e3654dfc13ae0e3fcd3709'),
+
+  ('20230601120009-1a9288dde1b848fc9d38241d0738098f', '65e3654dfc13ae0e3fcd370b'),
+  ('20230601120009-1a9288dde1b848fc9d38241d0738098f', '65e3654dfc13ae0e3fcd370d'),
+  ('20230601120009-1a9288dde1b848fc9d38241d0738098f', '65e3654dfc13ae0e3fcd36c1'),
+  ('20230601120009-1a9288dde1b848fc9d38241d0738098f', '65e3654dfc13ae0e3fcd36c3'),
+  ('20230601120009-1a9288dde1b848fc9d38241d0738098f', '65e3654dfc13ae0e3fcd36c5'),
+
+  ('20230118120005-4ed2412d60844c359077f0eb8d9dc374', '65e3654dfc13ae0e3fcd36c7'),
+  ('20230118120005-4ed2412d60844c359077f0eb8d9dc374', '65e3654dfc13ae0e3fcd36cb'),
+  ('20230118120005-4ed2412d60844c359077f0eb8d9dc374', '65e3654dfc13ae0e3fcd36cf'),
+  ('20230118120005-4ed2412d60844c359077f0eb8d9dc374', '65e3654dfc13ae0e3fcd36d1'),
+  ('20230118120005-4ed2412d60844c359077f0eb8d9dc374', '65e3654dfc13ae0e3fcd36d3');
+ 
 CREATE TABLE dbo.Genre(
-  genre_ID int IDENTITY NOT NULL PRIMARY KEY,
+  genre_ID varchar(50) IDENTITY NOT NULL PRIMARY KEY,
   genre_desc varchar(50) NOT NULL
 )
 
+INSERT INTO dbo.Genre (genre_ID, genre_desc) VALUES
+  ('GEN001', 'Pop'),
+  ('GEN002', 'Rock'),
+  ('GEN003', 'Hip Hop'),
+  ('GEN004', 'Euro Pop'),
+  ('GEN005', 'Blues'),
+  ('GEN006', 'Electronic'),
+  ('GEN007', 'R&B (Rhythm and Blues)'),
+  ('GEN008', 'Rap'),
+  ('GEN009', 'Trap'),
+  ('GEN010', 'Dance Pop'),
+  ('GEN011', 'House'),
+  ('GEN012', 'Indie'),
+  ('GEN013', 'Down Tempo'),
+  ('GEN014', 'Disco'),
+  ('GEN015', 'Funk'),
+  ('GEN016', 'Soul'),
+  ('GEN017', 'Afrobeats'),
+  ('GEN018', 'Garage'),
+  ('GEN019', 'Alternative'),
+  ('GEN020', 'Latin');
+
 CREATE TABLE dbo.TrackGenre(
-  genre_ID int NOT NULL,
-  track_ID int NOT NULL,
+  genre_ID varchar(50) NOT NULL,
+  track_ID varchar(50) NOT NULL,
   CONSTRAINT FK1TrackGenre FOREIGN KEY (genre_ID)
     REFERENCES dbo.Genre(genre_ID),
   CONSTRAINT FK2TrackGenre FOREIGN KEY (track_ID)
@@ -429,7 +499,58 @@ CREATE TABLE dbo.TrackGenre(
   CONSTRAINT PKTrackGenre PRIMARY KEY CLUSTERED (genre_ID, track_ID)
 )
 
--- View
+INSERT INTO dbo.TrackGenre (genre_id, track_id) VALUES
+  ('GEN001', '65e3654dfc13ae0e3fcd36d9'),
+  ('GEN006', '65e3654dfc13ae0e3fcd36db'),
+  ('GEN008', '65e3654dfc13ae0e3fcd36f1'),
+  ('GEN019', '65e3654dfc13ae0e3fcd36e5'),
+  ('GEN012', '65e3654dfc13ae0e3fcd36e3'),
+  ('GEN005', '65e3654dfc13ae0e3fcd36cd'),
+  ('GEN018', '65e3654dfc13ae0e3fcd36cf'),
+  ('GEN004', '65e3654dfc13ae0e3fcd36d1'),
+  ('GEN002', '65e3654dfc13ae0e3fcd36d3'),
+  ('GEN014', '65e3654dfc13ae0e3fcd370d'),
+  ('GEN017', '65e3654dfc13ae0e3fcd36e9'),
+  ('GEN009', '65e3654dfc13ae0e3fcd36d5'),
+  ('GEN013', '65e3654dfc13ae0e3fcd36d7'),
+  ('GEN020', '65e3654dfc13ae0e3fcd36eb'),
+  ('GEN010', '65e3654dfc13ae0e3fcd36fd'),
+  ('GEN016', '65e3654dfc13ae0e3fcd36c9'),
+  ('GEN015', '65e3654dfc13ae0e3fcd36dd'),
+  ('GEN003', '65e3654dfc13ae0e3fcd36c3'),
+  ('GEN001', '65e3654dfc13ae0e3fcd36c5'),
+  ('GEN007', '65e3654dfc13ae0e3fcd36c7'),
+  ('GEN003', '65e3654dfc13ae0e3fcd36cb'),
+  ('GEN013', '65e3654dfc13ae0e3fcd3705'),
+  ('GEN019', '65e3654dfc13ae0e3fcd36f5'),
+  ('GEN018', '65e3654dfc13ae0e3fcd36fb'),
+  ('GEN006', '65e3654dfc13ae0e3fcd36f9'),
+  ('GEN008', '65e3654dfc13ae0e3fcd36bf'),
+  ('GEN004', '65e3654dfc13ae0e3fcd36f7'),
+  ('GEN019', '65e3654dfc13ae0e3fcd36ff'),
+  ('GEN020', '65e3654dfc13ae0e3fcd36e1'),
+  ('GEN015', '65e3654dfc13ae0e3fcd36df'),
+  ('GEN016', '65e3654dfc13ae0e3fcd36e7'),
+  ('GEN005', '65e3654dfc13ae0e3fcd3701'),
+  ('GEN002', '65e3654dfc13ae0e3fcd3703'),
+  ('GEN017', '65e3654dfc13ae0e3fcd36ed'),
+  ('GEN010', '65e3654dfc13ae0e3fcd3709'),
+  ('GEN011', '65e3654dfc13ae0e3fcd370b'),
+  ('GEN014', '65e3654dfc13ae0e3fcd36c1'),
+  ('GEN007', '65e3654dfc13ae0e3fcd36ef'),
+  ('GEN012', '65e3654dfc13ae0e3fcd3707'),
+  ('GEN001', '65e3654dfc13ae0e3fcd36f3');
+
+-- Views
+-- join Product and PurchaseHistory, find out how many purchases are made with each label
+CREATE VIEW Purchase_Made_with_Each_Labels AS
+SELECT l.label_id, l.label_name, SUM(ph.invoice_price) AS 'total'
+FROM dbo.Label l INNER JOIN dbo.PurchaseHistory ph
+ON l.product_ID = ph.product_ID
+GROUP BY l.label_ID
+ORDER BY SUM(ph.invoice_price)
+
+CREATE VIEW Num_of_Track_in_Each_Genre AS
 SELECT g.genre_desc AS Genre, count(t.track_ID) AS Num_of_Track
 FROM TrackGenre t
 GROUP BY genre_ID

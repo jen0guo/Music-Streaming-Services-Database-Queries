@@ -1,0 +1,21 @@
+genre_ID, genre_desc
+GEN001,Pop
+GEN002,Rock
+GEN003,Hip Hop
+GEN004,Euro Pop
+GEN005,Blues
+GEN006,Electronic
+GEN007,R&B (Rhythm and Blues)
+GEN008,Rap
+GEN009,Trap
+GEN010,Dance Pop
+GEN011,House
+GEN012,Indie
+GEN013,Down Tempo
+GEN014,Disco
+GEN015,Funk
+GEN016,Soul
+GEN017,Afrobeats
+GEN018,Garage
+GEN019,Alternative
+GEN020,Latin
