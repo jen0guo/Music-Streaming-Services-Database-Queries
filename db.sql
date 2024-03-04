@@ -406,17 +406,17 @@ INSERT INTO dbo.Track (track_ID, product_ID, album_ID, track_name, track_time, t
   CONSTRAINT FKPlaylist FOREIGN KEY (user_ID)
     REFERENCES dbo.[User](user_ID)
  )
-INSERT INTO dbo.Playlist (playlist_id, user_id, playlist_name, playlist_description) VALUES
-  ('20240303120000-a4385066147b45609dc9afd258c89791', 'a4385066-147b-4560-9dc9-afd258c89791', 'Music For My Friends', 'Songs that remind me of my special buds'),
-  ('20240303120001-6f5b5567cf20433d82875e32a86246b3', '6f5b5567-cf20-433d-8287-5e32a86246b3', 'Sunny Day Summer Tunes', 'Lapping waves and sun-drenched skin'),
-  ('20240303120002-e72c000650a647178993128613423d55', 'e72c0006-50a6-4717-8993-128613423d55', 'Sonic Journal- Winter of 23', NULL),
-  ('20240303120003-0e4e1497ffb2491b97fe8301154532a1', '0e4e1497-ffb2-491b-97fe-8301154532a1', 'Kaleidoscope', 'This playlist is a reflection of my ever-changing tastes and eclectic musical journey. Just like a kaleidoscope, it''s a vibrant mix of colors and patterns, with each song offering a different perspective and taking me on a new adventure.'),
-  ('20240303120004-6efa23ec3bd04b82b631962f416384a8', '6efa23ec-3bd0-4b82-b631-962f416384a8', 'Evening Unwind', 'These tracks are my sanctuary, filled with gentle melodies and soothing harmonies that help me unwind, reflect, and find peace amidst the chaos'),
-  ('20240303120005-cee7e196937b4985801607cf77c8f35b', 'cee7e196-937b-4985-8016-07cf77c8f35b', 'Groovy Vibes', 'Funky playlist filled with infectious rhythms and soulful beats - let these groovy vibes lift your spirits and move your feet.'),
-  ('20240303120006-b025f9731eb4446db4c17ce9c3fced9d', 'b025f973-1eb4-446d-b4c1-7ce9c3fced9d', 'Alone on Valentine''s Day', 'Being alone doesn''t mean being lonely, and self-love is just as important as any other kind'),
-  ('20240303120007-1a9288dde1b848fc9d38241d0738098f', '1a9288dd-e1b8-48fc-9d38-241d0738098f', 'Ultimate Roadtrip Playlist', 'This playlist is the soundtrack to my adventures, fueling every mile with excitement and anticipation. Whether I''m cruising down open highways or winding through scenic backroads, these songs are my faithful companions, making every journey unforgettable.'),
-  ('20240303120008-bf8a497324084c40848339c225743570', 'bf8a4973-2408-4c40-8483-39c225743570', 'Baby, this is Keke Palmer', 'Harness the power of Keke''s confidence and power with these booty popping anthems'),
-  ('20240303120009-cf7ab4b467794463b5182f1a104816ef', 'cf7ab4b4-6779-4463-b518-2f1a104816ef', 'Plantasia Reloaded', 'Close your eyes and imagine yourself surrounded by lush greenery, birds chirping, and the scent of flowers in the air. Escape the hustle and bustle of everyday life and reconnect with nature''s beauty.');
+INSERT INTO dbo.Playlist (playlist_id, user_id, playlist_name, playlist_desc) VALUES
+  ('20230304120000-e72c000650a647178993128613423d55', 'e72c0006-50a6-4717-8993-128613423d55', 'Music For My Friends', 'Songs that remind me of my special buds'),
+  ('20230220120001-00a05fed3b5441a18dad0322727a78da', '00a05fed-3b54-41a1-8dad-0322727a78da', 'Sunny Day Summer Tunes', 'Lapping waves and sun drenched skin'),
+  ('20230125120002-6efa23ec3bd04b82b631962f416384a8', '6efa23ec-3bd0-4b82-b631-962f416384a8', 'Sonic Journal- Winter of 23', NULL),
+  ('20230717120003-15c36c9a6d344cb88799a7089b36fa09', '15c36c9a-6d34-4cb8-8799-a7089b36fa09', 'Kaleidoscope', 'This playlist is a reflection of my ever-changing tastes and eclectic musical journey. Just like a kaleidoscope, it\'s a vibrant mix of colors and patterns, with each song offering a different perspective and taking me on a new adventure.'),
+  ('20230211120004-b025f9731eb4446db4c17ce9c3fced9d', 'b025f973-1eb4-446d-b4c1-7ce9c3fced9d', 'Evening Unwind', 'These tracks are my sanctuary, filled with gentle melodies and soothing harmonies that help me unwind, reflect, and find peace amidst the chaos'),
+  ('20230118120005-4ed2412d60844c359077f0eb8d9dc374', '4ed2412d-6084-4c35-9077-f0eb8d9dc374', 'Groovy Vibes', 'Funky playlist filled with infectious rhythms and soulful beats- let these groovy vibes lift your spirits and move your feet.'),
+  ('20230212120006-cee7e196937b4985801607cf77c8f35b', 'cee7e196-937b-4985-8016-07cf77c8f35b', 'Alone on Valentine''s Day', 'Being alone doesn''t mean being lonely, and self-love is just as important as any other kind'),
+  ('20230426120007-9c5ee840c8b24d5886c7d87c5aac04f1', '9c5ee840-c8b2-4d58-86c7-d87c5aac04f1', 'Ultimate Roadtrip Playlist', 'This playlist is the soundtrack to my adventures, fueling every mile with excitement and anticipation. Whether I''m cruising down open highways or winding through scenic backroads, these songs are my faithful companions, making every journey unforgettable'),
+  ('20230312120008-fdb29741d9ba4019af9f5d869290af2e', 'fdb29741-d9ba-4019-af9f-5d869290af2e', 'Baby, this is Keke Palmer', 'Harness the power of Keke''s confidence and power with these booty popping anthems'),
+  ('20230601120009-1a9288dde1b848fc9d38241d0738098f', '1a9288dd-e1b8-48fc-9d38-241d0738098f', 'Plantasia Reloaded', 'Close your eyes and imagine yourself surrounded by lush greenery, birds chirping, and the scent of flowers in the air. Escape the hustle and bustle of everyday life and reconnect with nature''s beauty.');
 
  CREATE TABLE dbo.PlaylistInclusiveness(
   playlist_ID varchar(50) NOT NULL,
