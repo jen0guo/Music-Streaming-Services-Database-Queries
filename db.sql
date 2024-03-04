@@ -196,7 +196,7 @@ insert into MusicianSpeciality (specialty_ID, specialty_desc) values
   ('65e42642fc13ae3278cd3ad3', 'violin');
 
 CREATE TABLE dbo.Label(
-	label_ID INT NOT NULL PRIMARY KEY,
+	label_ID varchar(50) NOT NULL PRIMARY KEY,
 	label_name varchar(50) NOT NULL
 );
 
@@ -224,9 +224,9 @@ INSERT INTO dbo.Label (label_ID, label_name) VALUES
   ('65e36c1efc13ae0ea2cd3f29', 'Vibe Vibes');
 
 CREATE TABLE dbo.Product(
-	product_ID INT NOT NULL PRIMARY KEY,
+	product_ID varchar(50) NOT NULL PRIMARY KEY,
 	product_price DECIMAL(10,2) NOT NULL,
-	label_ID INT NOT NULL REFERENCES Label(label_ID)
+	label_ID varchar(50) NOT NULL REFERENCES Label(label_ID)
 );
 
 -- Insert data into dbo.Product
@@ -305,8 +305,8 @@ INSERT INTO dbo.Product (product_ID, product_price, label_ID) VALUES
   ('65e3686cfc13ae0f5ecd4246', 2.99, '65e36c1efc13ae0ea2cd3f29');
 
 CREATE TABLE dbo.Album(
-	album_ID INT NOT NULL PRIMARY KEY,
-	product_ID INT NOT NULL REFERENCES Product(product_ID),
+	album_ID varchar(50) NOT NULL PRIMARY KEY,
+	product_ID varcher(50) NOT NULL REFERENCES Product(product_ID),
 	album_release_date DATE NOT NULL
 );
 
@@ -343,9 +343,9 @@ INSERT INTO dbo.Album (album_ID, product_ID, alumb_name, album_release_date) VAL
   ('65e367a3fc13ae0dd8cd3a77', '65e3686cfc13ae0f5ecd4246', 'Astronaut In The Ocean', '1989-01-14');
 
 CREATE TABLE dbo.Track(
-	track_ID INT NOT NULL PRIMARY KEY,
-	product_ID NOT NULL REFERENCES Product(product_ID),
-	album_ID NOT NULL REFERENCES Album(album_ID),
+	track_ID varchar(50) NOT NULL PRIMARY KEY,
+	product_ID varchar(50) NOT NULL REFERENCES Product(product_ID),
+	album_ID varchar(50) NOT NULL REFERENCES Album(album_ID),
 	track_name varchar(50) NOT NULL,
 	track_time TIME NOT NULL,
 	track_release_date DATE NOT NULL,
@@ -397,7 +397,7 @@ INSERT INTO dbo.Track (track_ID, product_ID, album_ID, track_name, track_time, t
 
  --Adding the Playlist Inclusiveness, Playlist, Track Genre, and Genre Tables
  CREATE TABLE dbo.Playlist(
-  playlist_ID varchar(50) IDENTITY NOT NULL PRIMARY KEY,
+  playlist_ID varchar(50) NOT NULL PRIMARY KEY,
   user_ID varchar(50) NOT NULL,
   playlist_name varchar(50) NOT NULL, 
   playlist_desc varchar(1000),
@@ -464,7 +464,7 @@ INSERT INTO dbo.PlaylistInclusiveness (playlist_id, track_id) VALUES
   ('20230118120005-4ed2412d60844c359077f0eb8d9dc374', '65e3654dfc13ae0e3fcd36d3');
  
 CREATE TABLE dbo.Genre(
-  genre_ID varchar(50) IDENTITY NOT NULL PRIMARY KEY,
+  genre_ID varchar(50) NOT NULL PRIMARY KEY,
   genre_desc varchar(50) NOT NULL
 )
 
