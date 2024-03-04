@@ -1149,3 +1149,45 @@ insert into PurchaseHistory (invoice_ID, user_ID, product_ID, quantity, purchase
   ('65e3c00ffc13ae6456cd3694', 'bf8a4973-2408-4c40-8483-39c225743570', '65e3654dfc13ae0e3fcd36d2', 26, '2023-08-25 02:49:00'),
   ('65e3c00ffc13ae6456cd3695', 'cf7ab4b4-6779-4463-b518-2f1a104816ef', '65e3654dfc13ae0e3fcd36d4', 22, '2023-08-08 21:36:13'),
   ('65e3c00ffc13ae6456cd3696', 'c81d3a27-6e3e-4ebf-89fb-f3fc9c3ab63d', '65e3654dfc13ae0e3fcd370e', 92, '2023-08-26 15:16:39');
+
+-- Views
+-- Find out how many purchases are made with each label
+ CREATE VIEW Purchase_Made_with_Each_Labels AS
+SELECT l.label_ID, l.label_name, SUM(ph.invoice_price) AS Total
+FROM dbo.Label l
+LEFT JOIN dbo.Product pd
+ON l.label_ID = pd.label_ID
+LEFT JOIN dbo.PurchaseHistory ph
+ON pd.product_ID = ph.product_ID
+GROUP BY l.label_ID, l.label_name
+
+
+-- Find out how many tracks belong to each genre
+CREATE VIEW Num_of_Track_in_Each_Genre AS
+SELECT g.genre_desc AS Genre, count(t.track_ID) AS Num_of_Track
+FROM TrackGenre t
+RIGHT JOIN Genre g ON t.genre_ID = g.genre_ID
+GROUP BY g.genre_desc
+
+
+-- Find out the Top 10 tracks liked by users
+CREATE VIEW Top_10_Liked_Tracks AS
+SELECT TOP 10 track_ID, COUNT(user_ID) AS total_likes
+FROM dbo.[LikeHistory]
+GROUP BY track_ID
+ORDER BY total_likes DESC;
+
+
+-- Find out the Top 10 tracks listened to by users
+CREATE VIEW Top_10_Listened_Tracks AS
+SELECT TOP 10 track_ID, COUNT(user_ID) AS total_listen
+FROM dbo.[ListenHistory]
+GROUP BY track_ID
+ORDER BY total_listen DESC;
+
+SELECT * FROM Purchase_Made_with_Each_Labels;
+SELECT * FROM Num_of_Track_in_Each_Genre;
+SELECT * FROM Top_10_Liked_Tracks;
+SELECT * FROM Top_10_Listened_Tracks;
+
+
