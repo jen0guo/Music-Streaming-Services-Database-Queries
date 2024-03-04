@@ -476,3 +476,11 @@ CREATE TABLE dbo.TrackGenre(
     REFERENCES dbo.Track(track_ID),
   CONSTRAINT PKTrackGenre PRIMARY KEY CLUSTERED (genre_ID, track_ID)
 )
+
+-- join Product and PurchaseHistory, find out how many purchases are made with each label
+
+SELECT l.label_id, l.label_name, SUM(ph.invoice_price) AS 'total'
+FROM dbo.Label l INNER JOIN dbo.PurchaseHistory ph
+ON l.product_ID = ph.product_ID
+GROUP BY l.label_ID
+ORDER BY SUM(ph.invoice_price)
