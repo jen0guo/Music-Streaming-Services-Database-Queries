@@ -196,8 +196,9 @@ insert into MusicianSpeciality (specialty_ID, specialty_desc) values
   ('65e42642fc13ae3278cd3ad3', 'violin');
 
 CREATE TABLE dbo.Label(
-	label_ID varchar(50) NOT NULL PRIMARY KEY,
-	label_name varchar(50) NOT NULL
+	label_ID INT NOT NULL PRIMARY KEY,
+	label_name varchar(50) NOT NULL,
+	label_desc varchar(1000)
 );
 
 -- Insert data into dbo.Label
@@ -305,9 +306,10 @@ INSERT INTO dbo.Product (product_ID, product_price, label_ID) VALUES
   ('65e3686cfc13ae0f5ecd4246', 2.99, '65e36c1efc13ae0ea2cd3f29');
 
 CREATE TABLE dbo.Album(
-	album_ID varchar(50) NOT NULL PRIMARY KEY,
-	product_ID varcher(50) NOT NULL REFERENCES Product(product_ID),
-	album_release_date DATE NOT NULL
+	album_ID INT NOT NULL PRIMARY KEY,
+	product_ID INT NOT NULL REFERENCES Product(product_ID),
+	album_release_date DATE NOT NULL,
+	album_desc varchar(1000)
 );
 
 -- Insert data into dbo.Album
