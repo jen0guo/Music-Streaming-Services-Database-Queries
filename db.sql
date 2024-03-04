@@ -415,7 +415,7 @@ INSERT INTO dbo.Playlist (playlist_id, user_id, playlist_name, playlist_desc) VA
   ('20230118120005-4ed2412d60844c359077f0eb8d9dc374', '4ed2412d-6084-4c35-9077-f0eb8d9dc374', 'Groovy Vibes', 'Funky playlist filled with infectious rhythms and soulful beats- let these groovy vibes lift your spirits and move your feet.'),
   ('20230212120006-cee7e196937b4985801607cf77c8f35b', 'cee7e196-937b-4985-8016-07cf77c8f35b', 'Alone on Valentine''s Day', 'Being alone doesn''t mean being lonely, and self-love is just as important as any other kind'),
   ('20230426120007-9c5ee840c8b24d5886c7d87c5aac04f1', '9c5ee840-c8b2-4d58-86c7-d87c5aac04f1', 'Ultimate Roadtrip Playlist', 'This playlist is the soundtrack to my adventures, fueling every mile with excitement and anticipation. Whether I''m cruising down open highways or winding through scenic backroads, these songs are my faithful companions, making every journey unforgettable'),
-  ('20230312120008-fdb29741d9ba4019af9f5d869290af2e', 'fdb29741-d9ba-4019-af9f-5d869290af2e', 'Baby, this is Keke Palmer', 'Harness the power of Keke''s confidence and power with these booty popping anthems'),
+  ('20230312120008-fdb29741d9ba4019af9f5d869290af2e', 'fdb29741-d9ba-4019-af9f-5d869290af2e', 'Baby, this is Keke Palmer', 'Harness the power of Keke''s confidence and glow with these booty popping anthems'),
   ('20230601120009-1a9288dde1b848fc9d38241d0738098f', '1a9288dd-e1b8-48fc-9d38-241d0738098f', 'Plantasia Reloaded', 'Close your eyes and imagine yourself surrounded by lush greenery, birds chirping, and the scent of flowers in the air. Escape the hustle and bustle of everyday life and reconnect with nature''s beauty.');
 
  CREATE TABLE dbo.PlaylistInclusiveness(
