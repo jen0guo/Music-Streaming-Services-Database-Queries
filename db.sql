@@ -542,7 +542,7 @@ INSERT INTO dbo.TrackGenre (genre_id, track_id) VALUES
   ('GEN001', '65e3654dfc13ae0e3fcd36f3');
 
 -- Views
--- join Product and PurchaseHistory, find out how many purchases are made with each label
+-- Find out how many purchases are made with each label
 CREATE VIEW Purchase_Made_with_Each_Labels AS
 SELECT l.label_id, l.label_name, SUM(ph.invoice_price) AS 'total'
 FROM dbo.Label l INNER JOIN dbo.PurchaseHistory ph
@@ -550,6 +550,7 @@ ON l.product_ID = ph.product_ID
 GROUP BY l.label_ID
 ORDER BY SUM(ph.invoice_price)
 
+-- Find out how many tracks belong to each genre
 CREATE VIEW Num_of_Track_in_Each_Genre AS
 SELECT g.genre_desc AS Genre, count(t.track_ID) AS Num_of_Track
 FROM TrackGenre t
