@@ -78,56 +78,56 @@ insert into User (user_ID, user_name, register_date, last_login_date, login_pass
   ('0461fbf9-ce83-43d6-ab81-1ed014b16c3a', 'gfeehanj', '2/27/2023', '10/1/2023', 'pG9$eiH@iGz', 'lsmolanj@squarespace.com', '611-504-0233', 'http://dummyimage.com/151x100.png/cc0000/ffffff', 'fkxxgnQKZ2OVeCR0O7aK5chEc0BkTu1yDldSKsYXQufo1aD');
 
 
-insert into MusicianActivity (user_ID, track_ID, specialty_ID) values
-  ('a4385066-147b-4560-9dc9-afd258c89791', '65e16925fc13ae4f90cd367e', '65e16925fc13ae4f90cd367f'),
-  ('6f5b5567-cf20-433d-8287-5e32a86246b3', '65e16925fc13ae4f90cd3680', '65e16925fc13ae4f90cd3681'),
-  ('e72c0006-50a6-4717-8993-128613423d55', '65e16925fc13ae4f90cd3682', '65e16925fc13ae4f90cd3683'),
-  ('0e4e1497-ffb2-491b-97fe-8301154532a1', '65e16925fc13ae4f90cd3684', '65e16925fc13ae4f90cd3685'),
-  ('6efa23ec-3bd0-4b82-b631-962f416384a8', '65e16925fc13ae4f90cd3686', '65e16925fc13ae4f90cd3687'),
-  ('cee7e196-937b-4985-8016-07cf77c8f35b', '65e16925fc13ae4f90cd3688', '65e16925fc13ae4f90cd3689'),
-  ('b025f973-1eb4-446d-b4c1-7ce9c3fced9d', '65e16925fc13ae4f90cd368a', '65e16925fc13ae4f90cd368b'),
-  ('1a9288dd-e1b8-48fc-9d38-241d0738098f', '65e16925fc13ae4f90cd36a0', '65e16925fc13ae4f90cd36a1'),
-  ('bf8a4973-2408-4c40-8483-39c225743570', '65e16925fc13ae4f90cd36a2', '65e16925fc13ae4f90cd36a3'),
-  ('cf7ab4b4-6779-4463-b518-2f1a104816ef', '65e16925fc13ae4f90cd36a4', '65e16925fc13ae4f90cd36a5');
+INSERT INTO MusicianActivity (user_ID, track_ID, specialty_ID) VALUES
+  ('a4385066-147b-4560-9dc9-afd258c89791', '65e3654dfc13ae0e3fcd36e5', '65e42642fc13ae3278cd3aca'),
+  ('6efa23ec-3bd0-4b82-b631-962f416384a8', '65e3654dfc13ae0e3fcd36fb', '65e42642fc13ae3278cd3acd'),
+  ('6f5b5567-cf20-433d-8287-5e32a86246b3', '65e3654dfc13ae0e3fcd3705', '65e42642fc13ae3278cd3acb'),
+  ('e72c0006-50a6-4717-8993-128613423d55', '65e3654dfc13ae0e3fcd36ff', '65e42642fc13ae3278cd3acc'),
+  ('0e4e1497-ffb2-491b-97fe-8301154532a1', '65e3654dfc13ae0e3fcd36ef', '65e42642fc13ae3278cd3acd'),
+  ('cee7e196-937b-4985-8016-07cf77c8f35b', '65e3654dfc13ae0e3fcd36cb', '65e42642fc13ae3278cd3ad0'),
+  ('b025f973-1eb4-446d-b4c1-7ce9c3fced9d', '65e3654dfc13ae0e3fcd36cd', '65e42642fc13ae3278cd3ace'),
+  ('1a9288dd-e1b8-48fc-9d38-241d0738098f', '65e3654dfc13ae0e3fcd36f1', '65e42642fc13ae3278cd3ad2'),
+  ('bf8a4973-2408-4c40-8483-39c225743570', '65e3654dfc13ae0e3fcd36db', '65e42642fc13ae3278cd3ad3'),
+  ('cf7ab4b4-6779-4463-b518-2f1a104816ef', '65e3654dfc13ae0e3fcd3707', '65e42642fc13ae3278cd3ad2');
 
 
-insert into ListenHistory (user_ID, track_ID, listen_time_stamp) values
-  ('1a9288dd-e1b8-48fc-9d38-241d0738098f', '65e16a19fc13ae51f6cd36ba', '2024-02-27 09:53:56'),
-  ('bf8a4973-2408-4c40-8483-39c225743570', '65e16a19fc13ae51f6cd36bb', '2023-11-18 18:41:36'),
-  ('e72c0006-50a6-4717-8993-128613423d55', '65e16a19fc13ae51f6cd36bc', '2024-02-18 13:02:50'),
-  ('00a05fed-3b54-41a1-8dad-0322727a78da', '65e16a19fc13ae51f6cd36bd', '2023-10-04 19:42:58'),
-  ('cee7e196-937b-4985-8016-07cf77c8f35b', '65e16a19fc13ae51f6cd36be', '2024-01-05 05:37:24'),
-  ('6efa23ec-3bd0-4b82-b631-962f416384a8', '65e16a19fc13ae51f6cd36bf', '2023-08-24 18:16:12'),
-  ('00a05fed-3b54-41a1-8dad-0322727a78da', '65e16a19fc13ae51f6cd36c0', '2023-11-16 06:19:03'),
-  ('cf7ab4b4-6779-4463-b518-2f1a104816ef', '65e16a19fc13ae51f6cd36c1', '2023-08-13 01:04:51'),
-  ('1a9288dd-e1b8-48fc-9d38-241d0738098f', '65e16a19fc13ae51f6cd36cc', '2023-08-14 06:55:02'),
-  ('bf8a4973-2408-4c40-8483-39c225743570', '65e16a19fc13ae51f6cd36cd', '2023-10-21 20:12:55');
+INSERT INTO ListenHistory (user_ID, track_ID, listen_time_stamp) VALUES
+  ('1a9288dd-e1b8-48fc-9d38-241d0738098f', '65e3654dfc13ae0e3fcd3707', '2024-02-27 09:53:56'),
+  ('bf8a4973-2408-4c40-8483-39c225743570', '65e3654dfc13ae0e3fcd370b', '2023-11-18 18:41:36'),
+  ('e72c0006-50a6-4717-8993-128613423d55', '65e3654dfc13ae0e3fcd36c1', '2024-02-18 13:02:50'),
+  ('00a05fed-3b54-41a1-8dad-0322727a78da', '65e3654dfc13ae0e3fcd36ff', '2023-10-04 19:42:58'),
+  ('cee7e196-937b-4985-8016-07cf77c8f35b', '65e3654dfc13ae0e3fcd36fb', '2024-01-05 05:37:24'),
+  ('6efa23ec-3bd0-4b82-b631-962f416384a8', '65e3654dfc13ae0e3fcd36c7', '2023-08-24 18:16:12'),
+  ('00a05fed-3b54-41a1-8dad-0322727a78da', '65e3654dfc13ae0e3fcd36eb', '2023-11-16 06:19:03'),
+  ('cf7ab4b4-6779-4463-b518-2f1a104816ef', '65e3654dfc13ae0e3fcd36d3', '2023-08-13 01:04:51'),
+  ('1a9288dd-e1b8-48fc-9d38-241d0738098f', '65e3654dfc13ae0e3fcd36dd', '2023-08-14 06:55:02'),
+  ('bf8a4973-2408-4c40-8483-39c225743570', '65e3654dfc13ae0e3fcd36f1', '2023-10-21 20:12:55');
 
 
-insert into DownloadHistory (user_ID, track_ID, download_time_stamp) values
-  ('6f5b5567-cf20-433d-8287-5e32a86246b3', '65e16a47fc13ae500ecd367e', '2023-11-29 20:35:27'),
-  ('4ed2412d-6084-4c35-9077-f0eb8d9dc374', '65e16a47fc13ae500ecd367f', '2024-01-12 04:19:59'),
-  ('6efa23ec-3bd0-4b82-b631-962f416384a8', '65e16a47fc13ae500ecd3680', '2023-11-05 18:11:37'),
-  ('1a9288dd-e1b8-48fc-9d38-241d0738098f', '65e16a47fc13ae500ecd3681', '2023-09-20 10:14:22'),
-  ('6cbadc1f-1932-404f-b498-2f60b46424b5', '65e16a47fc13ae500ecd3682', '2024-02-02 11:52:31'),
-  ('9c5ee840-c8b2-4d58-86c7-d87c5aac04f1', '65e16a47fc13ae500ecd3683', '2024-01-20 03:39:16'),
-  ('fdb29741-d9ba-4019-af9f-5d869290af2e', '65e16a47fc13ae500ecd368e', '2023-09-24 02:41:06'),
-  ('0e4e1497-ffb2-491b-97fe-8301154532a1', '65e16a47fc13ae500ecd368f', '2023-10-25 02:20:08'),
-  ('bf8a4973-2408-4c40-8483-39c225743570', '65e16a47fc13ae500ecd3690', '2023-11-22 03:21:49'),
-  ('00a05fed-3b54-41a1-8dad-0322727a78da', '65e16a47fc13ae500ecd3691', '2023-12-27 21:30:35');
+INSERT INTO DownloadHistory (user_ID, track_ID, download_time_stamp) VALUES
+  ('6f5b5567-cf20-433d-8287-5e32a86246b3', '65e3654dfc13ae0e3fcd36cf', '2023-11-29 20:35:27'),
+  ('4ed2412d-6084-4c35-9077-f0eb8d9dc374', '65e3654dfc13ae0e3fcd36e7', '2024-01-12 04:19:59'),
+  ('6efa23ec-3bd0-4b82-b631-962f416384a8', '65e3654dfc13ae0e3fcd3707', '2023-11-05 18:11:37'),
+  ('1a9288dd-e1b8-48fc-9d38-241d0738098f', '65e3654dfc13ae0e3fcd36d5', '2023-09-20 10:14:22'),
+  ('6cbadc1f-1932-404f-b498-2f60b46424b5', '65e3654dfc13ae0e3fcd36e5', '2024-02-02 11:52:31'),
+  ('9c5ee840-c8b2-4d58-86c7-d87c5aac04f1', '65e3654dfc13ae0e3fcd36f1', '2024-01-20 03:39:16'),
+  ('fdb29741-d9ba-4019-af9f-5d869290af2e', '65e3654dfc13ae0e3fcd36f7', '2023-09-24 02:41:06'),
+  ('0e4e1497-ffb2-491b-97fe-8301154532a1', '65e3654dfc13ae0e3fcd36c7', '2023-10-25 02:20:08'),
+  ('bf8a4973-2408-4c40-8483-39c225743570', '65e3654dfc13ae0e3fcd36d7', '2023-11-22 03:21:49'),
+  ('00a05fed-3b54-41a1-8dad-0322727a78da', '65e3654dfc13ae0e3fcd36f3', '2023-12-27 21:30:35');
 
 
-insert into LikeHistory (user_ID, track_ID, like_time_stamp) values
-  ('122d6c4c-7de8-47b1-a314-69ad99c161fe', '65e16a5efc13ae4f90cd36a6', '2023-10-03 02:49:20'),
-  ('1a9288dd-e1b8-48fc-9d38-241d0738098f', '65e16a5efc13ae4f90cd36a7', '2023-12-27 06:53:47'),
-  ('cf7ab4b4-6779-4463-b518-2f1a104816ef', '65e16a5efc13ae4f90cd36a8', '2023-10-21 13:00:56'),
-  ('6cbadc1f-1932-404f-b498-2f60b46424b5', '65e16a5efc13ae4f90cd36a9', '2023-09-30 16:37:38'),
-  ('0e4e1497-ffb2-491b-97fe-8301154532a1', '65e16a5efc13ae4f90cd36aa', '2023-12-01 16:50:13'),
-  ('9c5ee840-c8b2-4d58-86c7-d87c5aac04f1', '65e16a5efc13ae4f90cd36ab', '2023-10-21 10:10:12'),
-  ('bf8a4973-2408-4c40-8483-39c225743570', '65e16a5efc13ae4f90cd36ac', '2023-09-09 14:03:17'),
-  ('fdb29741-d9ba-4019-af9f-5d869290af2e', '65e16a5efc13ae4f90cd36ad', '2023-10-01 03:14:39'),
-  ('a4385066-147b-4560-9dc9-afd258c89791', '65e16a5efc13ae4f90cd36ae', '2023-08-07 19:07:11'),
-  ('bf8a4973-2408-4c40-8483-39c225743570', '65e16a5efc13ae4f90cd36af', '2023-08-16 11:54:20');
+INSERT INTO LikeHistory (user_ID, track_ID, like_time_stamp) VALUES
+  ('122d6c4c-7de8-47b1-a314-69ad99c161fe', '65e3654dfc13ae0e3fcd36dd', '2023-10-03 02:49:20'),
+  ('1a9288dd-e1b8-48fc-9d38-241d0738098f', '65e3654dfc13ae0e3fcd36f9', '2023-12-27 06:53:47'),
+  ('cf7ab4b4-6779-4463-b518-2f1a104816ef', '65e3654dfc13ae0e3fcd36ef', '2023-10-21 13:00:56'),
+  ('6cbadc1f-1932-404f-b498-2f60b46424b5', '65e3654dfc13ae0e3fcd3707', '2023-09-30 16:37:38'),
+  ('0e4e1497-ffb2-491b-97fe-8301154532a1', '65e3654dfc13ae0e3fcd36c7', '2023-12-01 16:50:13'),
+  ('9c5ee840-c8b2-4d58-86c7-d87c5aac04f1', '65e3654dfc13ae0e3fcd36d1', '2023-10-21 10:10:12'),
+  ('bf8a4973-2408-4c40-8483-39c225743570', '65e3654dfc13ae0e3fcd36cf', '2023-09-09 14:03:17'),
+  ('fdb29741-d9ba-4019-af9f-5d869290af2e', '65e3654dfc13ae0e3fcd36d9', '2023-10-01 03:14:39'),
+  ('a4385066-147b-4560-9dc9-afd258c89791', '65e3654dfc13ae0e3fcd36e5', '2023-08-07 19:07:11'),
+  ('bf8a4973-2408-4c40-8483-39c225743570', '65e3654dfc13ae0e3fcd36db', '2023-08-16 11:54:20');
 
 
 CREATE TABLE dbo.FollowingRelationship(
@@ -385,10 +385,10 @@ INSERT INTO dbo.Track (track_ID, product_ID, album_ID, track_name, track_time, t
   ('65e3654dfc13ae0e3fcd36df', '65e3654dfc13ae0e3fcd36e0', '65e367a3fc13ae0dd8cd3a6d', 'Forever', '0:02:47', '1986-09-06', 125),
   ('65e3654dfc13ae0e3fcd36e7', '65e3654dfc13ae0e3fcd36e8', '65e367a3fc13ae0dd8cd3a71', 'Be Kind (with Halsey)', '0:02:52', '2000-03-21', 94),
   ('65e3654dfc13ae0e3fcd3701', '65e3654dfc13ae0e3fcd3702', '65e367a3fc13ae0dd8cd3a7d', 'Blinding Lights', '0:03:20', '2000-05-27', 171),
-  ('65e3654dfc13ae0e3fcd3703', '65e3654dfc13ae0e3fcd3704', '65e367a3fc13ae0dd8cd3a7d', 'In Your Eyes', '0:03:57', '2000-05-27', 100),
+  ('65e3654dfc13ae0e3fcd370b', '65e3654dfc13ae0e3fcd3704', '65e367a3fc13ae0dd8cd3a7d', 'In Your Eyes', '0:03:57', '2000-05-27', 100), -- track_ID is duplicate
   ('65e3654dfc13ae0e3fcd36ed', '65e3654dfc13ae0e3fcd36ee', '65e367a3fc13ae0dd8cd3a74', 'Bad Habits', '0:03:51', '2008-07-30', 126),
   ('65e3654dfc13ae0e3fcd3709', '65e3654dfc13ae0e3fcd370a', '65e367a3fc13ae0dd8cd3a80', 'About Damn Time', '0:03:11', '2001-05-05', 109),
-  ('65e3654dfc13ae0e3fcd370b', '65e3654dfc13ae0e3fcd370c', '65e367a3fc13ae0dd8cd3a81', 'abcdefu', '0:02:48', '1991-08-29', 122),
+  ('65e3654dfc13ae0e3fcd370b', '65e3654dfc13ae0e3fcd370c', '65e367a3fc13ae0dd8cd3a81', 'abcdefu', '0:02:48', '1991-08-29', 122), -- with this one.
   ('65e3654dfc13ae0e3fcd36c1', '65e3654dfc13ae0e3fcd36c2', '65e36722fc13ae0f07cd3a66', 'Without You', '0:02:12', '1999-12-06', 120),
   ('65e3654dfc13ae0e3fcd36ef', '65e3654dfc13ae0e3fcd36f0', '65e367a3fc13ae0dd8cd3a75', 'Baby Girl', '0:01:51', '2017-11-04', 121),
   ('65e3654dfc13ae0e3fcd3707', '65e3654dfc13ae0e3fcd3708', '65e367a3fc13ae0dd8cd3a7f', 'Aesthetic', '0:02:38', '2022-06-24', 170),
@@ -428,3 +428,9 @@ CREATE TABLE dbo.TrackGenre(
     REFERENCES dbo.Track(track_ID),
   CONSTRAINT PKTrackGenre PRIMARY KEY CLUSTERED (genre_ID, track_ID)
 )
+
+-- View
+SELECT g.genre_desc AS Genre, count(t.track_ID) AS Num_of_Track
+FROM TrackGenre t
+GROUP BY genre_ID
+RIGHT JOIN Genre g ON t.genre_ID = g.genre_ID
