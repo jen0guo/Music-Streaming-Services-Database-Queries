@@ -197,7 +197,8 @@ insert into MusicianSpeciality (specialty_ID, specialty_desc) values
 
 CREATE TABLE dbo.Label(
 	label_ID INT NOT NULL PRIMARY KEY,
-	label_name varchar(50) NOT NULL
+	label_name varchar(50) NOT NULL,
+	label_desc varchar(1000)
 );
 
 -- Insert data into dbo.Label
@@ -307,7 +308,8 @@ INSERT INTO dbo.Product (product_ID, product_price, label_ID) VALUES
 CREATE TABLE dbo.Album(
 	album_ID INT NOT NULL PRIMARY KEY,
 	product_ID INT NOT NULL REFERENCES Product(product_ID),
-	album_release_date DATE NOT NULL
+	album_release_date DATE NOT NULL,
+	album_desc varchar(1000)
 );
 
 -- Insert data into dbo.Album
