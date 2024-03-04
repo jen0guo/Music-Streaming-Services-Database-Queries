@@ -137,7 +137,7 @@ CREATE TABLE dbo.FollowingRelationship(
   follow_time_stamp DATETIME NOT NULL,
   CONSTRAINT check_valid_follow_time
   CHECK (register_date < follow_time_stamp)
-)
+);
 
 insert into FollowingRelationship (follow_ID, user_ID_follower, user_ID_followed, follow_time_stamp) values
  ('65e3ba95fc13ae6456cd367e', '122d6c4c-7de8-47b1-a314-69ad99c161fe', '1a9288dd-e1b8-48fc-9d38-241d0738098f', '2023-12-28 16:18:20'),
@@ -181,7 +181,8 @@ insert into PurchaseHistory (invoice_ID, user_ID, product_ID, quantity, invoice_
 CREATE TABLE dbo.MusicianSpeciality(
   specialty_ID varchar(50) NOT NULL PRIMARY KEY,
   specialty_desc varchar(1000),
-)
+);
+	
 insert into MusicianSpeciality (specialty_ID, specialty_desc) values
   ('65e42642fc13ae3278cd3aca', 'lead vocal'),
   ('65e42642fc13ae3278cd3acb', 'chorus vocal'),
@@ -556,3 +557,19 @@ SELECT g.genre_desc AS Genre, count(t.track_ID) AS Num_of_Track
 FROM TrackGenre t
 GROUP BY genre_ID
 RIGHT JOIN Genre g ON t.genre_ID = g.genre_ID
+
+-- Find out the Top 10 tracks liked by users
+CREATE VIEW Top_10_Liked_Tracks AS
+SELECT track_ID, COUNT(user_ID) AS total_likes
+FROM LikeHistory
+GROUP BY track_ID
+ORDER BY total_likes DESC
+LIMIT 10;
+
+-- Find out the Top 10 tracks listened to by users
+CREATE VIEW Top_10_Listened_Tracks AS
+SELECT track_ID, COUNT(user_ID) AS total_listen
+FROM ListenHistory
+GROUP BY track_ID
+ORDER BY total_listen DESC
+LIMIT 10;
