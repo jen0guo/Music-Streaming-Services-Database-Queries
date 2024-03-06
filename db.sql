@@ -397,6 +397,8 @@ INSERT INTO dbo.Track (track_ID, product_ID, album_ID, track_name, track_time, t
   ('65e3654dfc13ae0e3fcd3707', '65e3654dfc13ae0e3fcd3708', '65e367a3fc13ae0dd8cd3a7f', 'Aesthetic', '0:02:38', '2022-06-24', 170),
   ('65e3654dfc13ae0e3fcd36f3', '65e3654dfc13ae0e3fcd36f4', '65e367a3fc13ae0dd8cd3a77', 'Astronaut In The Ocean', '0:02:12', '1989-01-14', 150);
 
+-- abcdefu track_ID should be 65e3654dfc13ae0e3fcd36bf
+
  --Adding the Playlist Inclusiveness, Playlist, Track Genre, and Genre Tables
  CREATE TABLE dbo.Playlist(
   playlist_ID varchar(50) NOT NULL PRIMARY KEY,
@@ -843,7 +845,8 @@ INSERT INTO dbo.[Track] (track_ID, product_ID, album_ID, track_name, track_time,
   ('65e3654dfc13ae0e3fcd36ef', '65e3654dfc13ae0e3fcd36f0', '65e367a3fc13ae0dd8cd3a75', 'Baby Girl', '0:01:51', '2017-11-04', 121),
   ('65e3654dfc13ae0e3fcd3707', '65e3654dfc13ae0e3fcd3708', '65e367a3fc13ae0dd8cd3a7f', 'Aesthetic', '0:02:38', '2022-06-24', 170),
   ('65e3654dfc13ae0e3fcd36f3', '65e3654dfc13ae0e3fcd36f4', '65e367a3fc13ae0dd8cd3a77', 'Astronaut In The Ocean', '0:02:12', '1989-01-14', 150);
-
+--4 sets of tracks with the same name: Without You,Forever, Say it Right and As it Was
+--will update at bottom of code
 
  --Adding the Playlist Inclusiveness, Playlist, Track Genre, and Genre Tables
 CREATE TABLE dbo.[Playlist](
