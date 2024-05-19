@@ -1,0 +1,1095 @@
+-- Title: LIS 543 WI24 Team 3 Final Project
+--March 6, 2024
+-- P5 Final Code
+-- Author: Aaliyah Davis, Giselle Shannon, Yawen Guo, and Xinya Tang
+-- Schema: dbo
+--CREATE DATABASE Music_Streaming_Service;
+
+USE Music_Streaming_Service;
+
+
+CREATE TABLE dbo.[User](
+  user_ID varchar(50) NOT NULL PRIMARY KEY,
+  user_name varchar(50) NOT NULL,
+  register_date DATE NOT NULL, -- 01/01/2023 - 07/31/2023
+  last_login_date DATE NOT NULL, -- 08/01/2023 - today
+  login_password varchar(50) NOT NULL,
+  email_address varchar(50) NOT NULL,
+  phone_number varchar(50) NOT NULL,
+  profile_photo varchar(1000),
+  profile_desc varchar(1000),
+);
+
+insert into dbo.[User] (user_ID, user_name, register_date, last_login_date, login_password, email_address, phone_number, profile_photo, profile_desc) values
+  ('a4385066-147b-4560-9dc9-afd258c89791', 'drenac0', '3/4/2023', '10/28/2023', 'zG4</VI3K(4O{0=', 'vastman0@theglobeandmail.com', '809-893-0248', 'http://dummyimage.com/139x100.png/ff4444/ffffff', 'WCowtXzonxe4FW4gnMs88JqavN4j0Z8AYbwch9CLM6Er9Tt'),
+  ('6f5b5567-cf20-433d-8287-5e32a86246b3', 'hmccusker1', '1/31/2023', '11/8/2023', 'vM2+=V@`0m', 'yearland1@java.com', '570-898-3953', 'http://dummyimage.com/154x100.png/5fa2dd/ffffff', 'mlo51aLbf8FFAs6WSCZak9whIcbumrGWLgh0SMZPACSfVcX'),
+  ('e72c0006-50a6-4717-8993-128613423d55', 'dtwidle2', '1/29/2023', '12/17/2023', 'qI7_\lYHJSqL"i', 'lgergolet2@rediff.com', '893-684-0512', 'http://dummyimage.com/180x100.png/dddddd/000000', null),
+  ('0e4e1497-ffb2-491b-97fe-8301154532a1', 'ldemeza3', '6/20/2023', '12/6/2023', 'xX4`K*Nwt', 'ppettitt3@youtube.com', '634-576-2899', null, null),
+  ('6efa23ec-3bd0-4b82-b631-962f416384a8', 'bhaller4', '1/25/2023', '2/11/2024', 'iW0`7V''~4A\(/E', 'tduffet4@networksolutions.com', '108-561-3660', 'http://dummyimage.com/244x100.png/ff4444/ffffff', null),
+  ('cee7e196-937b-4985-8016-07cf77c8f35b', 'dewin5', '2/12/2023', '10/6/2023', 'mA2|@k1vk_LNDc', 'pormshaw5@sourceforge.net', '292-788-5533', 'http://dummyimage.com/219x100.png/ff4444/ffffff', null),
+  ('b025f973-1eb4-446d-b4c1-7ce9c3fced9d', 'rmcfeat6', '2/11/2023', '12/22/2023', 'dL2(dojT_?+V', 'npaull6@dion.ne.jp', '570-219-4494', 'http://dummyimage.com/245x100.png/5fa2dd/ffffff', 'rOVmeMfJoFtnMWXINdodxz2MLET35UPcQUfp6m6ATQPvkEJ'),
+  ('1a9288dd-e1b8-48fc-9d38-241d0738098f', 'iherreran7', '6/1/2023', '10/20/2023', 'sU0<kd@$0JQ(Vg5h', 'ntoe7@example.com', '364-192-3730', null, null),
+  ('bf8a4973-2408-4c40-8483-39c225743570', 'lgaskall8', '7/1/2023', '8/6/2023', 'kR2?GN<LzlV|CY/P', 'jjendrassik8@w3.org', '779-304-2773', 'http://dummyimage.com/169x100.png/dddddd/000000', null),
+  ('cf7ab4b4-6779-4463-b518-2f1a104816ef', 'jhowtopreserve9', '1/4/2023', '1/15/2024', 'qL8}tpJ={f|moR>a', 'xmosby9@creativecommons.org', '599-620-8768', 'http://dummyimage.com/200x100.png/5fa2dd/ffffff', 'uTehSWYXQahOu46rh4sbJagOmSAITg7oRTB0pPjymOfDKv0'),
+  ('9c5ee840-c8b2-4d58-86c7-d87c5aac04f1', 'fharwooda', '4/26/2023', '2/28/2024', 'gZ7$lCIxYU,r', 'svarfalameeva@mapquest.com', '713-152-8844', 'http://dummyimage.com/173x100.png/ff4444/ffffff', 'aCN75hGFZPnTwi4JaBzVNyWoEHldWgDelE1Hgf5sRFK6beI'),
+  ('15c36c9a-6d34-4cb8-8799-a7089b36fa09', 'dricciardib', '7/17/2023', '11/16/2023', 'yN9@&)*GV', 'eleebeterb@youtube.com', '622-508-9780', null, null),
+  ('796017c2-66ed-4865-8aef-9ef915a14307', 'jcockhillc', '4/9/2023', '9/7/2023', 'tE8.?qG%PI{P', 'oleytonc@reuters.com', '882-611-1320', null, null),
+  ('c81d3a27-6e3e-4ebf-89fb-f3fc9c3ab63d', 'ddenned', '6/27/2023', '11/13/2023', 'iJ8?.rTEY+aI', 'mmargerisond@boston.com', '626-941-4393', 'http://dummyimage.com/107x100.png/dddddd/000000', null),
+  ('6cbadc1f-1932-404f-b498-2f60b46424b5', 'bparmentere', '4/4/2023', '10/19/2023', 'nC8#J<G4\=', 'mjacobsene@ucsd.edu', '661-967-4128', null, null),
+  ('122d6c4c-7de8-47b1-a314-69ad99c161fe', 'eoakinfoldf', '5/30/2023', '9/12/2023', 'dL4$A6QFsg`!|0', 'cbreinleinf@istockphoto.com', '769-988-4439', 'http://dummyimage.com/139x100.png/ff4444/ffffff', null),
+  ('4ed2412d-6084-4c35-9077-f0eb8d9dc374', 'tlegroveg', '1/18/2023', '2/27/2024', 'hE8.jDPQZ', 'mthistletong@google.com', '683-190-2386', 'http://dummyimage.com/162x100.png/cc0000/ffffff', 'eE8jPeKnGztr3nEOU7MmIhE2teCEL0BwLEOstkkzpObnA4y'),
+  ('fdb29741-d9ba-4019-af9f-5d869290af2e', 'ejonkh', '3/12/2023', '12/24/2023', 'gF8<B}`n9g_|1?Fw', 'minderh@auda.org.au', '910-671-9932', null, null),
+  ('00a05fed-3b54-41a1-8dad-0322727a78da', 'fwilseyi', '2/20/2023', '11/15/2023', 'rC0>''k+FD`uJ', 'sprinni@theatlantic.com', '371-771-0838', 'http://dummyimage.com/228x100.png/cc0000/ffffff', null),
+  ('0461fbf9-ce83-43d6-ab81-1ed014b16c3a', 'gfeehanj', '2/27/2023', '10/1/2023', 'pG9$eiH@iGz', 'lsmolanj@squarespace.com', '611-504-0233', 'http://dummyimage.com/151x100.png/cc0000/ffffff', 'fkxxgnQKZ2OVeCR0O7aK5chEc0BkTu1yDldSKsYXQufo1aD');
+
+
+CREATE TABLE dbo.[MusicianSpeciality](
+  specialty_ID varchar(50) NOT NULL PRIMARY KEY,
+  specialty_desc varchar(1000),
+);
+	
+insert into dbo.[MusicianSpeciality] (specialty_ID, specialty_desc) values
+  ('65e42642fc13ae3278cd3aca', 'lead vocal'),
+  ('65e42642fc13ae3278cd3acb', 'chorus vocal'),
+  ('65e42642fc13ae3278cd3acc', 'song composer'),
+  ('65e42642fc13ae3278cd3acd', 'lyrics writer'),
+  ('65e42642fc13ae3278cd3ace', 'arrangement'),
+  ('65e42642fc13ae3278cd3acf', 'guitar'),
+  ('65e42642fc13ae3278cd3ad0', 'bass'),
+  ('65e42642fc13ae3278cd3ad1', 'drum'),
+  ('65e42642fc13ae3278cd3ad2', 'piano'),
+  ('65e42642fc13ae3278cd3ad3', 'violin');
+
+	
+
+CREATE TABLE dbo.[Label](
+  label_ID varchar(50) NOT NULL PRIMARY KEY,
+  label_name varchar(50) NOT NULL
+);
+
+-- Insert data into dbo.Label
+INSERT INTO dbo.[Label] (label_ID, label_name) VALUES 
+  ('65e36c1efc13ae0ea2cd3f16', 'Acoustic Arts'),
+  ('65e36c1efc13ae0ea2cd3f17', 'Cadence Creations'),
+  ('65e36c1efc13ae0ea2cd3f18', 'Harmonic Harmony'),
+  ('65e36c1efc13ae0ea2cd3f19', 'Harmonize Harmony'),
+  ('65e36c1efc13ae0ea2cd3f1a', 'Harmonize Records'),
+  ('65e36c1efc13ae0ea2cd3f1b', 'Harmony Records'),
+  ('65e36c1efc13ae0ea2cd3f1c', 'Melodic Muse'),
+  ('65e36c1efc13ae0ea2cd3f1d', 'Melody Productions'),
+  ('65e36c1efc13ae0ea2cd3f1e', 'Muse Music'),
+  ('65e36c1efc13ae0ea2cd3f1f', 'NoteWorthy Records'),
+  ('65e36c1efc13ae0ea2cd3f20', 'Pulse Music Group'),
+  ('65e36c1efc13ae0ea2cd3f21', 'Rhythm Records'),
+  ('65e36c1efc13ae0ea2cd3f22', 'Rhythmic Records'),
+  ('65e36c1efc13ae0ea2cd3f23', 'Sonic Sounds'),
+  ('65e36c1efc13ae0ea2cd3f24', 'Sonic Symphony'),
+  ('65e36c1efc13ae0ea2cd3f25', 'Symphony Sounds'),
+  ('65e36c1efc13ae0ea2cd3f26', 'Symphony Studios'),
+  ('65e36c1efc13ae0ea2cd3f27', 'TuneTown Music'),
+  ('65e36c1efc13ae0ea2cd3f28', 'Vibe Valley'),
+  ('65e36c1efc13ae0ea2cd3f29', 'Vibe Vibes');
+
+CREATE TABLE dbo.[Product](
+	product_ID varchar(50) NOT NULL PRIMARY KEY,
+	product_price DECIMAL(10,2) NOT NULL,
+	label_ID varchar(50) NOT NULL REFERENCES Label(label_ID)
+);
+
+-- Insert data into dbo.Product
+INSERT INTO dbo.[Product] (product_ID, product_price, label_ID) VALUES 
+  ('65e3654dfc13ae0e3fcd36da', 0.99, '65e36c1efc13ae0ea2cd3f16'),
+  ('65e3654dfc13ae0e3fcd36dc', 0.99, '65e36c1efc13ae0ea2cd3f16'),
+  ('65e3654dfc13ae0e3fcd36f2', 0.99, '65e36c1efc13ae0ea2cd3f16'),
+  ('65e3654dfc13ae0e3fcd36e6', 0.99, '65e36c1efc13ae0ea2cd3f17'),
+  ('65e3654dfc13ae0e3fcd36e4', 0.99, '65e36c1efc13ae0ea2cd3f17'),
+  ('65e3654dfc13ae0e3fcd36ce', 0.99, '65e36c1efc13ae0ea2cd3f18'),
+  ('65e3654dfc13ae0e3fcd36d0', 0.99, '65e36c1efc13ae0ea2cd3f18'),
+  ('65e3654dfc13ae0e3fcd36d2', 0.99, '65e36c1efc13ae0ea2cd3f18'),
+  ('65e3654dfc13ae0e3fcd36d4', 0.99, '65e36c1efc13ae0ea2cd3f18'),
+  ('65e3654dfc13ae0e3fcd370e', 0.99, '65e36c1efc13ae0ea2cd3f18'),
+  ('65e3654dfc13ae0e3fcd36ea', 0.99, '65e36c1efc13ae0ea2cd3f19'),
+  ('65e3654dfc13ae0e3fcd36d6', 0.99, '65e36c1efc13ae0ea2cd3f1a'),
+  ('65e3654dfc13ae0e3fcd36d8', 0.99, '65e36c1efc13ae0ea2cd3f1a'),
+  ('65e3654dfc13ae0e3fcd36ec', 0.99, '65e36c1efc13ae0ea2cd3f1a'),
+  ('65e3654dfc13ae0e3fcd36fe', 0.99, '65e36c1efc13ae0ea2cd3f1a'),
+  ('65e3654dfc13ae0e3fcd36ca', 0.99, '65e36c1efc13ae0ea2cd3f1b'),
+  ('65e3654dfc13ae0e3fcd36de', 0.99, '65e36c1efc13ae0ea2cd3f1b'),
+  ('65e3654dfc13ae0e3fcd36c4', 0.99, '65e36c1efc13ae0ea2cd3f1b'),
+  ('65e3654dfc13ae0e3fcd36c6', 0.99, '65e36c1efc13ae0ea2cd3f1b'),
+  ('65e3654dfc13ae0e3fcd36c8', 0.99, '65e36c1efc13ae0ea2cd3f1b'),
+  ('65e3654dfc13ae0e3fcd36cc', 0.99, '65e36c1efc13ae0ea2cd3f1c'),
+  ('65e3654dfc13ae0e3fcd3706', 0.99, '65e36c1efc13ae0ea2cd3f1c'),
+  ('65e3654dfc13ae0e3fcd36f6', 0.99, '65e36c1efc13ae0ea2cd3f1d'),
+  ('65e3654dfc13ae0e3fcd36fc', 0.99, '65e36c1efc13ae0ea2cd3f1e'),
+  ('65e3654dfc13ae0e3fcd36fa', 0.99, '65e36c1efc13ae0ea2cd3f1e'),
+  ('65e3654dfc13ae0e3fcd36c0', 0.99, '65e36c1efc13ae0ea2cd3f1f'),
+  ('65e3654dfc13ae0e3fcd36f8', 0.99, '65e36c1efc13ae0ea2cd3f1f'),
+  ('65e3654dfc13ae0e3fcd3700', 0.99, '65e36c1efc13ae0ea2cd3f20'),
+  ('65e3654dfc13ae0e3fcd36e2', 0.99, '65e36c1efc13ae0ea2cd3f20'),
+  ('65e3654dfc13ae0e3fcd36e0', 0.99, '65e36c1efc13ae0ea2cd3f21'),
+  ('65e3654dfc13ae0e3fcd36e8', 0.99, '65e36c1efc13ae0ea2cd3f22'),
+  ('65e3654dfc13ae0e3fcd3702', 0.99, '65e36c1efc13ae0ea2cd3f23'),
+  ('65e3654dfc13ae0e3fcd3704', 0.99, '65e36c1efc13ae0ea2cd3f23'),
+  ('65e3654dfc13ae0e3fcd36ee', 0.99, '65e36c1efc13ae0ea2cd3f24'),
+  ('65e3654dfc13ae0e3fcd370a', 0.99, '65e36c1efc13ae0ea2cd3f24'),
+  ('65e3654dfc13ae0e3fcd370c', 0.99, '65e36c1efc13ae0ea2cd3f25'),
+  ('65e3654dfc13ae0e3fcd36c2', 0.99, '65e36c1efc13ae0ea2cd3f26'),
+  ('65e3654dfc13ae0e3fcd36f0', 0.99, '65e36c1efc13ae0ea2cd3f27'),
+  ('65e3654dfc13ae0e3fcd3708', 0.99, '65e36c1efc13ae0ea2cd3f28'),
+  ('65e3654dfc13ae0e3fcd36f4', 0.99, '65e36c1efc13ae0ea2cd3f29'),
+  ('65e3686cfc13ae0f5ecd4252', 2.99, '65e36c1efc13ae0ea2cd3f16'),
+  ('65e3686cfc13ae0f5ecd4245', 2.99, '65e36c1efc13ae0ea2cd3f16'),
+  ('65e3686cfc13ae0f5ecd423f', 2.99, '65e36c1efc13ae0ea2cd3f17'),
+  ('65e3686cfc13ae0f5ecd423e', 2.99, '65e36c1efc13ae0ea2cd3f17'),
+  ('65e3686cfc13ae0f5ecd4239', 2.99, '65e36c1efc13ae0ea2cd3f18'),
+  ('65e3686cfc13ae0f5ecd4251', 2.99, '65e36c1efc13ae0ea2cd3f18'),
+  ('65e3686cfc13ae0f5ecd4241', 2.99, '65e36c1efc13ae0ea2cd3f19'),
+  ('65e3686cfc13ae0f5ecd423a', 2.99, '65e36c1efc13ae0ea2cd3f1a'),
+  ('65e3686cfc13ae0f5ecd4242', 2.99, '65e36c1efc13ae0ea2cd3f1a'),
+  ('65e3686cfc13ae0f5ecd424a', 2.99, '65e36c1efc13ae0ea2cd3f1a'),
+  ('65e3686cfc13ae0f5ecd4338', 2.99, '65e36c1efc13ae0ea2cd3f1b'),
+  ('65e3686cfc13ae0f5ecd423b', 2.99, '65e36c1efc13ae0ea2cd3f1b'),
+  ('65e3686cfc13ae0f5ecd4237', 2.99, '65e36c1efc13ae0ea2cd3f1b'),
+  ('65e3686cfc13ae0f5ecd4238', 2.99, '65e36c1efc13ae0ea2cd3f1c'),
+  ('65e3686cfc13ae0f5ecd424d', 2.99, '65e36c1efc13ae0ea2cd3f1c'),
+  ('65e3686cfc13ae0f5ecd4247', 2.99, '65e36c1efc13ae0ea2cd3f1d'),
+  ('65e3686cfc13ae0f5ecd4249', 2.99, '65e36c1efc13ae0ea2cd3f1e'),
+  ('65e3686cfc13ae0f5ecd4248', 2.99, '65e36c1efc13ae0ea2cd3f1e'),
+  ('65e3686cfc13ae0f5ecd4236', 2.99, '65e36c1efc13ae0ea2cd3f1f'),
+  ('65e3686cfc13ae0f5ecd4347', 2.99, '65e36c1efc13ae0ea2cd3f1f'),
+  ('65e3686cfc13ae0f5ecd424b', 2.99, '65e36c1efc13ae0ea2cd3f20'),
+  ('65e3686cfc13ae0f5ecd423d', 2.99, '65e36c1efc13ae0ea2cd3f20'),
+  ('65e3686cfc13ae0f5ecd423c', 2.99, '65e36c1efc13ae0ea2cd3f21'),
+  ('65e3686cfc13ae0f5ecd4240', 2.99, '65e36c1efc13ae0ea2cd3f22'),
+  ('65e3686cfc13ae0f5ecd424c', 2.99, '65e36c1efc13ae0ea2cd3f23'),
+  ('65e3686cfc13ae0f5ecd4243', 2.99, '65e36c1efc13ae0ea2cd3f24'),
+  ('65e3686cfc13ae0f5ecd424f', 2.99, '65e36c1efc13ae0ea2cd3f24'),
+  ('65e3686cfc13ae0f5ecd4250', 2.99, '65e36c1efc13ae0ea2cd3f25'),
+  ('65e3686cfc13ae0f5ecd4336', 2.99, '65e36c1efc13ae0ea2cd3f26'),
+  ('65e3686cfc13ae0f5ecd4244', 2.99, '65e36c1efc13ae0ea2cd3f27'),
+  ('65e3686cfc13ae0f5ecd424e', 2.99, '65e36c1efc13ae0ea2cd3f28'),
+  ('65e3686cfc13ae0f5ecd4246', 2.99, '65e36c1efc13ae0ea2cd3f29');
+
+
+CREATE TABLE dbo.[Album](
+	album_ID varchar(50) NOT NULL PRIMARY KEY,
+	product_ID varchar(50) NOT NULL REFERENCES Product(product_ID),
+	album_release_date DATE NOT NULL
+);
+
+ALTER TABLE dbo.[Album]
+ADD album_name varchar(50);
+
+-- Insert data into dbo.Album
+INSERT INTO dbo.[Album] (album_ID, product_ID, album_name, album_release_date) VALUES 
+  ('65e36722fc13ae0f07cd3a6b', '65e3686cfc13ae0f5ecd4252', 'Future Nostalgia', '1980-11-18'),
+  ('65e367a3fc13ae0dd8cd3a76', '65e3686cfc13ae0f5ecd4245', 'Astronomia', '2001-02-25'),
+  ('65e367a3fc13ae0dd8cd3a70', '65e3686cfc13ae0f5ecd423f', 'Beauty And A Beat', '2018-02-06'),
+  ('65e367a3fc13ae0dd8cd3a6f', '65e3686cfc13ae0f5ecd423e', 'Being Good Is Boring', '1986-08-23'),
+  ('65e36722fc13ae0f07cd3a69', '65e3686cfc13ae0f5ecd4239', 'Planet Her', '2010-06-16'),
+  ('65e367a3fc13ae0dd8cd3a82', '65e3686cfc13ae0f5ecd4251', '1, 2, 3 (feat. Jason Derulo & De La Ghetto)', '2011-06-02'),
+  ('65e367a3fc13ae0dd8cd3a72', '65e3686cfc13ae0f5ecd4241', 'Banana (feat. Shaggy) [DJ FLe - Minisiren Remix]', '2019-06-24'),
+  ('65e36722fc13ae0f07cd3a6a', '65e3686cfc13ae0f5ecd423a', 'On My Way', '1982-11-27'),
+  ('65e367a3fc13ae0dd8cd3a73', '65e3686cfc13ae0f5ecd4242', 'Bag Raiders (Deluxe)', '1998-02-27'),
+  ('65e367a3fc13ae0dd8cd3a7b', '65e3686cfc13ae0f5ecd424a', 'AMG', '2020-09-19'),
+  ('65e36722fc13ae0f07cd3a68', '65e3686cfc13ae0f5ecd4338', 'Say It Right', '2002-01-02'),
+  ('65e36722fc13ae0f07cd3a6c', '65e3686cfc13ae0f5ecd423b', 'Forever', '1986-09-06'),
+  ('65e36722fc13ae0f07cd3a67', '65e3686cfc13ae0f5ecd4237', 'Shoot For The Stars Aim For The Moon', '1988-04-28'),
+  ('65e367a3fc13ae0dd8cd3a7e', '65e3686cfc13ae0f5ecd424d', 'Afraid To Feel', '2013-09-29'),
+  ('65e367a3fc13ae0dd8cd3a78', '65e3686cfc13ae0f5ecd4247', 'As It Was', '1987-05-14'),
+  ('65e367a3fc13ae0dd8cd3a7a', '65e3686cfc13ae0f5ecd4249', 'Apologize', '2011-06-14'),
+  ('65e367a3fc13ae0dd8cd3a79', '65e3686cfc13ae0f5ecd4248', 'ARDIPITHECUS', '1980-05-09'),
+  ('65e36722fc13ae0f07cd3a66', '65e3686cfc13ae0f5ecd4236', 'Without You', '1999-12-06'),
+  ('65e367a3fc13ae0dd8cd3a7c', '65e3686cfc13ae0f5ecd424b', 'Ameno Amapiano Remix (You Wanna Bamba)', '1981-01-12'),
+  ('65e367a3fc13ae0dd8cd3a6e', '65e3686cfc13ae0f5ecd423d', 'Best Friend (feat. Doja Cat) [Remix EP]', '1997-02-15'),
+  ('65e367a3fc13ae0dd8cd3a6d', '65e3686cfc13ae0f5ecd423c', 'Forever', '1986-09-06'),
+  ('65e367a3fc13ae0dd8cd3a71', '65e3686cfc13ae0f5ecd4240', 'Be Kind (with Halsey)', '2000-03-21'),
+  ('65e367a3fc13ae0dd8cd3a7d', '65e3686cfc13ae0f5ecd424c', 'After Hours', '2000-05-27'),
+  ('65e367a3fc13ae0dd8cd3a74', '65e3686cfc13ae0f5ecd4243', 'Bad Habits', '2008-07-30'),
+  ('65e367a3fc13ae0dd8cd3a80', '65e3686cfc13ae0f5ecd424f', 'About Damn Time', '2001-05-05'),
+  ('65e367a3fc13ae0dd8cd3a81', '65e3686cfc13ae0f5ecd4250', 'abcdefu', '1991-08-29'),
+  ('65e367a3fc13ae0dd8cd3a75', '65e3686cfc13ae0f5ecd4244', 'Baby Girl', '2017-11-04'),
+  ('65e367a3fc13ae0dd8cd3a7f', '65e3686cfc13ae0f5ecd424e', 'Aesthetic', '2022-06-24'),
+  ('65e367a3fc13ae0dd8cd3a77', '65e3686cfc13ae0f5ecd4246', 'Astronaut In The Ocean', '1989-01-14');
+
+CREATE TABLE dbo.[Track](
+	track_ID varchar(50) NOT NULL PRIMARY KEY,
+	product_ID varchar(50) NOT NULL REFERENCES Product(product_ID),
+	album_ID varchar(50) NOT NULL REFERENCES Album(album_ID),
+	track_name varchar(50) NOT NULL,
+	track_time TIME NOT NULL,
+	track_release_date DATE NOT NULL,
+	track_bpm INT NOT NULL
+);
+
+-- Insert data into dbo.Track
+INSERT INTO dbo.[Track] (track_ID, product_ID, album_ID, track_name, track_time, track_release_date, track_bpm) VALUES 
+  ('65e3654dfc13ae0e3fcd36d9', '65e3654dfc13ae0e3fcd36da', '65e36722fc13ae0f07cd3a6b', 'Levitating (feat. DaBaby)', '0:02:38', '1980-11-18', 103),
+  ('65e3654dfc13ae0e3fcd36db', '65e3654dfc13ae0e3fcd36dc', '65e36722fc13ae0f07cd3a6b', 'Break My Heart', '0:03:41', '1980-11-18', 113),
+  ('65e3654dfc13ae0e3fcd36f1', '65e3654dfc13ae0e3fcd36f2', '65e367a3fc13ae0dd8cd3a76', 'Astronomia', '0:03:18', '2001-02-25', 126),
+  ('65e3654dfc13ae0e3fcd36e5', '65e3654dfc13ae0e3fcd36e6', '65e367a3fc13ae0dd8cd3a70', 'Beauty And A Beat', '0:02:18', '2018-02-06', 128),
+  ('65e3654dfc13ae0e3fcd36e3', '65e3654dfc13ae0e3fcd36e4', '65e367a3fc13ae0dd8cd3a6f', 'Being Good Is Boring', '0:02:40', '1986-08-23', 112),
+  ('65e3654dfc13ae0e3fcd36cd', '65e3654dfc13ae0e3fcd36ce', '65e36722fc13ae0f07cd3a69', 'Woman', '0:02:52', '2010-06-16', 108),
+  ('65e3654dfc13ae0e3fcd36cf', '65e3654dfc13ae0e3fcd36d0', '65e36722fc13ae0f07cd3a69', 'Need to Know', '0:03:30', '2010-06-16', 130),
+  ('65e3654dfc13ae0e3fcd36d1', '65e3654dfc13ae0e3fcd36d2', '65e36722fc13ae0f07cd3a69', 'Aint Shit', '0:02:54', '2010-06-16', 124),
+  ('65e3654dfc13ae0e3fcd36d3', '65e3654dfc13ae0e3fcd36d4', '65e36722fc13ae0f07cd3a69', 'You Right', '0:03:06', '2010-06-16', 129),
+  ('65e3654dfc13ae0e3fcd370d', '65e3654dfc13ae0e3fcd370e', '65e367a3fc13ae0dd8cd3a82', '1, 2, 3 (feat. Jason Derulo & De La Ghetto)', '0:03:21', '2011-06-02', 95),
+  ('65e3654dfc13ae0e3fcd36e9', '65e3654dfc13ae0e3fcd36ea', '65e367a3fc13ae0dd8cd3a72', 'Banana (feat. Shaggy) - DJ FLe - Minisiren Remix', '0:03:30', '2019-06-24', 95),
+  ('65e3654dfc13ae0e3fcd36d5', '65e3654dfc13ae0e3fcd36d6', '65e36722fc13ae0f07cd3a6a', 'When Hello Means Goodbye', '0:02:38', '1982-11-27', 166),
+  ('65e3654dfc13ae0e3fcd36d7', '65e3654dfc13ae0e3fcd36d8', '65e36722fc13ae0f07cd3a6a', 'On My Way', '0:03:20', '1982-11-27', 96),
+  ('65e3654dfc13ae0e3fcd36eb', '65e3654dfc13ae0e3fcd36ec', '65e367a3fc13ae0dd8cd3a73', 'Shooting Stars', '0:03:55', '1998-02-27', 125),
+  ('65e3654dfc13ae0e3fcd36fd', '65e3654dfc13ae0e3fcd36fe', '65e367a3fc13ae0dd8cd3a7b', 'AMG', '0:02:15', '2020-09-19', 88),
+  ('65e3654dfc13ae0e3fcd36c9', '65e3654dfc13ae0e3fcd36ca', '65e36722fc13ae0f07cd3a68', 'Say It Right', '0:02:09', '2002-01-02', 124),
+  ('65e3654dfc13ae0e3fcd36dd', '65e3654dfc13ae0e3fcd36de', '65e36722fc13ae0f07cd3a6c', 'Forever', '0:03:01', '1986-09-06', 124),
+  ('65e3654dfc13ae0e3fcd36c3', '65e3654dfc13ae0e3fcd36c4', '65e36722fc13ae0f07cd3a67', 'What You Know Bout Love', '0:02:40', '1988-04-28', 84),
+  ('65e3654dfc13ae0e3fcd36c5', '65e3654dfc13ae0e3fcd36c6', '65e36722fc13ae0f07cd3a67', 'Mood Swings (feat. Lil Tjay)', '0:03:33', '1988-04-28', 180),
+  ('65e3654dfc13ae0e3fcd36c7', '65e3654dfc13ae0e3fcd36c8', '65e36722fc13ae0f07cd3a67', 'For The Night (feat. Lil Baby & DaBaby)', '0:03:10', '1988-04-28', 126),
+  ('65e3654dfc13ae0e3fcd36cb', '65e3654dfc13ae0e3fcd36cc', '65e36722fc13ae0f07cd3a68', 'Say It Right', '0:02:08', '2002-01-02', 126),
+  ('65e3654dfc13ae0e3fcd3705', '65e3654dfc13ae0e3fcd3706', '65e367a3fc13ae0dd8cd3a7e', 'Afraid To Feel', '0:02:57', '2013-09-29', 128),
+  ('65e3654dfc13ae0e3fcd36f5', '65e3654dfc13ae0e3fcd36f6', '65e367a3fc13ae0dd8cd3a78', 'As It Was', '0:02:47', '1987-05-14', 174),
+  ('65e3654dfc13ae0e3fcd36fb', '65e3654dfc13ae0e3fcd36fc', '65e367a3fc13ae0dd8cd3a7a', 'Apologize', '0:02:09', '2011-06-14', 126),
+  ('65e3654dfc13ae0e3fcd36f9', '65e3654dfc13ae0e3fcd36fa', '65e367a3fc13ae0dd8cd3a79', 'Wait a Minute!', '0:03:16', '1980-05-09', 101),
+  ('65e3654dfc13ae0e3fcd36bf', '65e3654dfc13ae0e3fcd36c0', '65e36722fc13ae0f07cd3a66', 'Without You', '0:03:02', '1999-12-06', 125),
+  ('65e3654dfc13ae0e3fcd36f7', '65e3654dfc13ae0e3fcd36f8', '65e367a3fc13ae0dd8cd3a78', 'As It Was', '0:02:04', '1987-05-14', 105),
+  ('65e3654dfc13ae0e3fcd36ff', '65e3654dfc13ae0e3fcd3700', '65e367a3fc13ae0dd8cd3a7c', 'Ameno Amapiano Remix (You Wanna Bamba)', '0:03:47', '1981-01-12', 113),
+  ('65e3654dfc13ae0e3fcd36e1', '65e3654dfc13ae0e3fcd36e2', '65e367a3fc13ae0dd8cd3a6e', 'Best Friend (feat. Doja Cat)', '0:02:35', '1997-02-15', 94),
+  ('65e3654dfc13ae0e3fcd36df', '65e3654dfc13ae0e3fcd36e0', '65e367a3fc13ae0dd8cd3a6d', 'Forever', '0:02:47', '1986-09-06', 125),
+  ('65e3654dfc13ae0e3fcd36e7', '65e3654dfc13ae0e3fcd36e8', '65e367a3fc13ae0dd8cd3a71', 'Be Kind (with Halsey)', '0:02:52', '2000-03-21', 94),
+  ('65e3654dfc13ae0e3fcd3701', '65e3654dfc13ae0e3fcd3702', '65e367a3fc13ae0dd8cd3a7d', 'Blinding Lights', '0:03:20', '2000-05-27', 171),
+  ('65e3654dfc13ae0e3fcd370b', '65e3654dfc13ae0e3fcd3704', '65e367a3fc13ae0dd8cd3a7d', 'In Your Eyes', '0:03:57', '2000-05-27', 100), -- track_ID is duplicate
+  ('65e3654dfc13ae0e3fcd36ed', '65e3654dfc13ae0e3fcd36ee', '65e367a3fc13ae0dd8cd3a74', 'Bad Habits', '0:03:51', '2008-07-30', 126),
+  ('65e3654dfc13ae0e3fcd3709', '65e3654dfc13ae0e3fcd370a', '65e367a3fc13ae0dd8cd3a80', 'About Damn Time', '0:03:11', '2001-05-05', 109),
+  ('65e3654dfc13ae0e3fcd36c1', '65e3654dfc13ae0e3fcd36c2', '65e36722fc13ae0f07cd3a66', 'Without You', '0:02:12', '1999-12-06', 120),
+  ('65e3654dfc13ae0e3fcd36ef', '65e3654dfc13ae0e3fcd36f0', '65e367a3fc13ae0dd8cd3a75', 'Baby Girl', '0:01:51', '2017-11-04', 121),
+  ('65e3654dfc13ae0e3fcd3707', '65e3654dfc13ae0e3fcd3708', '65e367a3fc13ae0dd8cd3a7f', 'Aesthetic', '0:02:38', '2022-06-24', 170),
+  ('65e3654dfc13ae0e3fcd36f3', '65e3654dfc13ae0e3fcd36f4', '65e367a3fc13ae0dd8cd3a77', 'Astronaut In The Ocean', '0:02:12', '1989-01-14', 150);
+--4 sets of tracks with the same name: Without You,Forever, Say it Right and As it Was
+--will update at bottom of code
+
+ --Adding the Playlist Inclusiveness, Playlist, Track Genre, and Genre Tables
+CREATE TABLE dbo.[Playlist](
+  playlist_ID varchar(50) NOT NULL PRIMARY KEY,
+  user_ID varchar(50) NOT NULL,
+  playlist_name varchar(50) NOT NULL, 
+  playlist_desc varchar(1000),
+  CONSTRAINT FKPlaylist FOREIGN KEY (user_ID)
+    REFERENCES dbo.[User](user_ID)
+ );
+
+INSERT INTO dbo.[Playlist] (playlist_id, user_id, playlist_name, playlist_desc) VALUES
+  ('20230304120000-e72c000650a647178993128613423d55', 'e72c0006-50a6-4717-8993-128613423d55', 'Music For My Friends', 'Songs that remind me of my special buds'),
+  ('20230220120001-00a05fed3b5441a18dad0322727a78da', '00a05fed-3b54-41a1-8dad-0322727a78da', 'Sunny Day Summer Tunes', 'Lapping waves and sun drenched skin'),
+  ('20230125120002-6efa23ec3bd04b82b631962f416384a8', '6efa23ec-3bd0-4b82-b631-962f416384a8', 'Sonic Journal- Winter of 23', NULL),
+  ('20230717120003-15c36c9a6d344cb88799a7089b36fa09', '15c36c9a-6d34-4cb8-8799-a7089b36fa09', 'Kaleidoscope', 'This playlist is a reflection of my ever-changing tastes and eclectic musical journey. Just like a kaleidoscope, its a vibrant mix of colors and patterns, with each song offering a different perspective and taking me on a new adventure.'),
+  ('20230211120004-b025f9731eb4446db4c17ce9c3fced9d', 'b025f973-1eb4-446d-b4c1-7ce9c3fced9d', 'Evening Unwind', 'These tracks are my sanctuary, filled with gentle melodies and soothing harmonies that help me unwind, reflect, and find peace amidst the chaos'),
+  ('20230118120005-4ed2412d60844c359077f0eb8d9dc374', '4ed2412d-6084-4c35-9077-f0eb8d9dc374', 'Groovy Vibes', 'Funky playlist filled with infectious rhythms and soulful beats- let these groovy vibes lift your spirits and move your feet.'),
+  ('20230212120006-cee7e196937b4985801607cf77c8f35b', 'cee7e196-937b-4985-8016-07cf77c8f35b', 'Alone on Valentine''s Day', 'Being alone doesn''t mean being lonely, and self-love is just as important as any other kind'),
+  ('20230426120007-9c5ee840c8b24d5886c7d87c5aac04f1', '9c5ee840-c8b2-4d58-86c7-d87c5aac04f1', 'Ultimate Roadtrip Playlist', 'This playlist is the soundtrack to my adventures, fueling every mile with excitement and anticipation. Whether I''m cruising down open highways or winding through scenic backroads, these songs are my faithful companions, making every journey unforgettable'),
+  ('20230312120008-fdb29741d9ba4019af9f5d869290af2e', 'fdb29741-d9ba-4019-af9f-5d869290af2e', 'Baby, this is Keke Palmer', 'Harness the power of Keke''s confidence and glow with these booty popping anthems'),
+  ('20230601120009-1a9288dde1b848fc9d38241d0738098f', '1a9288dd-e1b8-48fc-9d38-241d0738098f', 'Plantasia Reloaded', 'Close your eyes and imagine yourself surrounded by lush greenery, birds chirping, and the scent of flowers in the air. Escape the hustle and bustle of everyday life and reconnect with nature''s beauty.');
+
+CREATE TABLE dbo.[PlaylistInclusiveness](
+  playlist_ID varchar(50) NOT NULL,
+  track_ID varchar(50) NOT NULL,
+  CONSTRAINT FK1PlaylistInclusiveness FOREIGN KEY (playlist_ID)
+    REFERENCES dbo.Playlist(playlist_ID),
+  CONSTRAINT FK2PlaylistInclusiveness FOREIGN KEY (track_ID)
+    REFERENCES dbo.Track(track_ID),
+  CONSTRAINT PKPlaylistInclusiveness PRIMARY KEY CLUSTERED (playlist_ID, track_ID)
+ ); 
+
+INSERT INTO dbo.PlaylistInclusiveness (playlist_id, track_id) VALUES 
+-- Playlist: 20230304120000-e72c000650a647178993128613423d55
+  ('20230304120000-e72c000650a647178993128613423d55', '65e3654dfc13ae0e3fcd36d9'),
+  ('20230304120000-e72c000650a647178993128613423d55', '65e3654dfc13ae0e3fcd36db'),
+  ('20230304120000-e72c000650a647178993128613423d55', '65e3654dfc13ae0e3fcd36f1'),
+('20230304120000-e72c000650a647178993128613423d55', '65e3654dfc13ae0e3fcd36e5'),
+('20230304120000-e72c000650a647178993128613423d55', '65e3654dfc13ae0e3fcd36e3'),
+
+-- Playlist: 20230220120001-00a05fed3b5441a18dad0322727a78da
+  ('20230220120001-00a05fed3b5441a18dad0322727a78da', '65e3654dfc13ae0e3fcd36cd'),
+  ('20230220120001-00a05fed3b5441a18dad0322727a78da', '65e3654dfc13ae0e3fcd36cf'),
+  ('20230220120001-00a05fed3b5441a18dad0322727a78da', '65e3654dfc13ae0e3fcd36d1'),
+  ('20230220120001-00a05fed3b5441a18dad0322727a78da', '65e3654dfc13ae0e3fcd36d3'),
+  ('20230220120001-00a05fed3b5441a18dad0322727a78da', '65e3654dfc13ae0e3fcd36d5'),
+
+-- Playlist: 20230125120002-6efa23ec3bd04b82b631962f416384a8
+  ('20230125120002-6efa23ec3bd04b82b631962f416384a8', '65e3654dfc13ae0e3fcd36d7'),
+  ('20230125120002-6efa23ec3bd04b82b631962f416384a8', '65e3654dfc13ae0e3fcd36eb'),
+  ('20230125120002-6efa23ec3bd04b82b631962f416384a8', '65e3654dfc13ae0e3fcd36d9'),
+  ('20230125120002-6efa23ec3bd04b82b631962f416384a8', '65e3654dfc13ae0e3fcd36db'),
+  ('20230125120002-6efa23ec3bd04b82b631962f416384a8', '65e3654dfc13ae0e3fcd36f1'),
+
+-- Playlist: 20230717120003-15c36c9a6d344cb88799a7089b36fa09
+  ('20230717120003-15c36c9a6d344cb88799a7089b36fa09', '65e3654dfc13ae0e3fcd3701'),
+  ('20230717120003-15c36c9a6d344cb88799a7089b36fa09', '65e3654dfc13ae0e3fcd3705'),
+  ('20230717120003-15c36c9a6d344cb88799a7089b36fa09', '65e3654dfc13ae0e3fcd3707'),
+  ('20230717120003-15c36c9a6d344cb88799a7089b36fa09', '65e3654dfc13ae0e3fcd3709'),
+
+-- Playlist: 20230211120004-b025f9731eb4446db4c17ce9c3fced9d
+  ('20230211120004-b025f9731eb4446db4c17ce9c3fced9d', '65e3654dfc13ae0e3fcd36df'),
+  ('20230211120004-b025f9731eb4446db4c17ce9c3fced9d', '65e3654dfc13ae0e3fcd36e1'),
+  ('20230211120004-b025f9731eb4446db4c17ce9c3fced9d', '65e3654dfc13ae0e3fcd36e3'),
+  ('20230211120004-b025f9731eb4446db4c17ce9c3fced9d', '65e3654dfc13ae0e3fcd36e5'),
+  ('20230211120004-b025f9731eb4446db4c17ce9c3fced9d', '65e3654dfc13ae0e3fcd36e7'),
+
+-- Playlist: 20230118120005-4ed2412d60844c359077f0eb8d9dc374
+  ('20230118120005-4ed2412d60844c359077f0eb8d9dc374', '65e3654dfc13ae0e3fcd36c7'),
+  ('20230118120005-4ed2412d60844c359077f0eb8d9dc374', '65e3654dfc13ae0e3fcd36cb'),
+  ('20230118120005-4ed2412d60844c359077f0eb8d9dc374', '65e3654dfc13ae0e3fcd36cf'),
+  ('20230118120005-4ed2412d60844c359077f0eb8d9dc374', '65e3654dfc13ae0e3fcd36d1'),
+  ('20230118120005-4ed2412d60844c359077f0eb8d9dc374', '65e3654dfc13ae0e3fcd36d3'),
+
+-- Playlist: 20230212120006-cee7e196937b4985801607cf77c8f35b
+  ('20230212120006-cee7e196937b4985801607cf77c8f35b', '65e3654dfc13ae0e3fcd36d5'),
+  ('20230212120006-cee7e196937b4985801607cf77c8f35b', '65e3654dfc13ae0e3fcd36d7'),
+  ('20230212120006-cee7e196937b4985801607cf77c8f35b', '65e3654dfc13ae0e3fcd36d9'),
+  ('20230212120006-cee7e196937b4985801607cf77c8f35b', '65e3654dfc13ae0e3fcd36db'),
+  ('20230212120006-cee7e196937b4985801607cf77c8f35b', '65e3654dfc13ae0e3fcd36dd'),
+
+-- Playlist: 20230426120007-9c5ee840c8b24d5886c7d87c5aac04f1
+  ('20230426120007-9c5ee840c8b24d5886c7d87c5aac04f1', '65e3654dfc13ae0e3fcd36e9'),
+  ('20230426120007-9c5ee840c8b24d5886c7d87c5aac04f1', '65e3654dfc13ae0e3fcd36eb'),
+  ('20230426120007-9c5ee840c8b24d5886c7d87c5aac04f1', '65e3654dfc13ae0e3fcd36ed'),
+  ('20230426120007-9c5ee840c8b24d5886c7d87c5aac04f1', '65e3654dfc13ae0e3fcd36ef'),
+  ('20230426120007-9c5ee840c8b24d5886c7d87c5aac04f1', '65e3654dfc13ae0e3fcd36f1'),
+
+-- Playlist: 20230312120008-fdb29741d9ba4019af9f5d869290af2e
+  ('20230312120008-fdb29741d9ba4019af9f5d869290af2e', '65e3654dfc13ae0e3fcd36f3'),
+  ('20230312120008-fdb29741d9ba4019af9f5d869290af2e', '65e3654dfc13ae0e3fcd36f5'),
+  ('20230312120008-fdb29741d9ba4019af9f5d869290af2e', '65e3654dfc13ae0e3fcd36f7'),
+  ('20230312120008-fdb29741d9ba4019af9f5d869290af2e', '65e3654dfc13ae0e3fcd36f9'),
+  ('20230312120008-fdb29741d9ba4019af9f5d869290af2e', '65e3654dfc13ae0e3fcd36fb'),
+
+-- Playlist: 20230601120009-1a9288dde1b848fc9d38241d0738098f
+  ('20230601120009-1a9288dde1b848fc9d38241d0738098f', '65e3654dfc13ae0e3fcd370b'),
+  ('20230601120009-1a9288dde1b848fc9d38241d0738098f', '65e3654dfc13ae0e3fcd370d'),
+  ('20230601120009-1a9288dde1b848fc9d38241d0738098f', '65e3654dfc13ae0e3fcd36c1'),
+  ('20230601120009-1a9288dde1b848fc9d38241d0738098f', '65e3654dfc13ae0e3fcd36c3'),
+  ('20230601120009-1a9288dde1b848fc9d38241d0738098f', '65e3654dfc13ae0e3fcd36c5');
+
+CREATE TABLE dbo.[Genre](
+  genre_ID varchar(50) NOT NULL PRIMARY KEY,
+  genre_desc varchar(50) NOT NULL
+);
+
+INSERT INTO dbo.Genre (genre_ID, genre_desc) VALUES
+  ('GEN001', 'Pop'),
+  ('GEN002', 'Rock'),
+  ('GEN003', 'Hip Hop'),
+  ('GEN004', 'Euro Pop'),
+  ('GEN005', 'Blues'),
+  ('GEN006', 'Electronic'),
+  ('GEN007', 'R&B (Rhythm and Blues)'),
+  ('GEN008', 'Rap'),
+  ('GEN009', 'Trap'),
+  ('GEN010', 'Dance Pop'),
+  ('GEN011', 'House'),
+  ('GEN012', 'Indie'),
+  ('GEN013', 'Down Tempo'),
+  ('GEN014', 'Disco'),
+  ('GEN015', 'Funk'),
+  ('GEN016', 'Soul'),
+  ('GEN017', 'Afrobeats'),
+  ('GEN018', 'Garage'),
+  ('GEN019', 'Alternative'),
+  ('GEN020', 'Latin');
+
+CREATE TABLE dbo.[TrackGenre](
+  genre_ID varchar(50) NOT NULL,
+  track_ID varchar(50) NOT NULL,
+  CONSTRAINT FK1TrackGenre FOREIGN KEY (genre_ID)
+    REFERENCES dbo.Genre(genre_ID),
+  CONSTRAINT FK2TrackGenre FOREIGN KEY (track_ID)
+    REFERENCES dbo.Track(track_ID),
+  CONSTRAINT PKTrackGenre PRIMARY KEY CLUSTERED (genre_ID, track_ID)
+);
+
+INSERT INTO dbo.TrackGenre (genre_id, track_id) VALUES
+  ('GEN001', '65e3654dfc13ae0e3fcd36d9'),
+  ('GEN006', '65e3654dfc13ae0e3fcd36db'),
+  ('GEN008', '65e3654dfc13ae0e3fcd36f1'),
+  ('GEN019', '65e3654dfc13ae0e3fcd36e5'),
+  ('GEN012', '65e3654dfc13ae0e3fcd36e3'),
+  ('GEN005', '65e3654dfc13ae0e3fcd36cd'),
+  ('GEN018', '65e3654dfc13ae0e3fcd36cf'),
+  ('GEN004', '65e3654dfc13ae0e3fcd36d1'),
+  ('GEN002', '65e3654dfc13ae0e3fcd36d3'),
+  ('GEN014', '65e3654dfc13ae0e3fcd370d'),
+  ('GEN017', '65e3654dfc13ae0e3fcd36e9'),
+  ('GEN009', '65e3654dfc13ae0e3fcd36d5'),
+  ('GEN013', '65e3654dfc13ae0e3fcd36d7'),
+  ('GEN020', '65e3654dfc13ae0e3fcd36eb'),
+  ('GEN010', '65e3654dfc13ae0e3fcd36fd'),
+  ('GEN016', '65e3654dfc13ae0e3fcd36c9'),
+  ('GEN015', '65e3654dfc13ae0e3fcd36dd'),
+  ('GEN003', '65e3654dfc13ae0e3fcd36c3'),
+  ('GEN001', '65e3654dfc13ae0e3fcd36c5'),
+  ('GEN007', '65e3654dfc13ae0e3fcd36c7'),
+  ('GEN003', '65e3654dfc13ae0e3fcd36cb'),
+  ('GEN013', '65e3654dfc13ae0e3fcd3705'),
+  ('GEN019', '65e3654dfc13ae0e3fcd36f5'),
+  ('GEN018', '65e3654dfc13ae0e3fcd36fb'),
+  ('GEN006', '65e3654dfc13ae0e3fcd36f9'),
+  ('GEN008', '65e3654dfc13ae0e3fcd36bf'),
+  ('GEN004', '65e3654dfc13ae0e3fcd36f7'),
+  ('GEN019', '65e3654dfc13ae0e3fcd36ff'),
+  ('GEN020', '65e3654dfc13ae0e3fcd36e1'),
+  ('GEN015', '65e3654dfc13ae0e3fcd36df'),
+  ('GEN016', '65e3654dfc13ae0e3fcd36e7'),
+  ('GEN005', '65e3654dfc13ae0e3fcd3701');
+
+ 
+CREATE TABLE dbo.[MusicianActivity](
+  user_ID varchar(50) NOT NULL REFERENCES dbo.[User](user_ID),
+  track_ID varchar(50) NOT NULL REFERENCES Track(track_ID),
+  specialty_ID varchar(50) NOT NULL REFERENCES MusicianSpeciality(specialty_ID),
+  PRIMARY KEY (user_ID, track_ID, specialty_ID)
+);
+
+CREATE TABLE dbo.ListenHistory(
+  user_ID varchar(50) NOT NULL REFERENCES dbo.[User](user_ID),
+  track_ID varchar(50) NOT NULL REFERENCES dbo.[Track](track_ID),
+  listen_time_stamp DATETIME NOT NULL,
+  PRIMARY KEY (user_ID, track_ID, listen_time_stamp)
+);
+
+CREATE TABLE dbo.DownloadHistory(
+  user_ID varchar(50) NOT NULL REFERENCES dbo.[User](user_ID),
+  track_ID varchar(50) NOT NULL REFERENCES dbo.[Track](track_ID),
+  download_time_stamp DATETIME NOT NULL,
+  PRIMARY KEY (user_ID, track_ID, download_time_stamp)
+);
+
+CREATE TABLE dbo.LikeHistory(
+  user_ID varchar(50) NOT NULL REFERENCES dbo.[User](user_ID),
+  track_ID varchar(50) NOT NULL REFERENCES dbo.[Track](track_ID),
+  like_time_stamp DATETIME NOT NULL,
+  PRIMARY KEY (user_ID, track_ID, like_time_stamp),
+);
+
+
+INSERT INTO dbo.[MusicianActivity] (user_ID, track_ID, specialty_ID) VALUES
+  ('a4385066-147b-4560-9dc9-afd258c89791', '65e3654dfc13ae0e3fcd36e5', '65e42642fc13ae3278cd3aca'),
+  ('6efa23ec-3bd0-4b82-b631-962f416384a8', '65e3654dfc13ae0e3fcd36fb', '65e42642fc13ae3278cd3acd'),
+  ('6f5b5567-cf20-433d-8287-5e32a86246b3', '65e3654dfc13ae0e3fcd3705', '65e42642fc13ae3278cd3acb'),
+  ('e72c0006-50a6-4717-8993-128613423d55', '65e3654dfc13ae0e3fcd36ff', '65e42642fc13ae3278cd3acc'),
+  ('0e4e1497-ffb2-491b-97fe-8301154532a1', '65e3654dfc13ae0e3fcd36ef', '65e42642fc13ae3278cd3acd'),
+  ('cee7e196-937b-4985-8016-07cf77c8f35b', '65e3654dfc13ae0e3fcd36cb', '65e42642fc13ae3278cd3ad0'),
+  ('b025f973-1eb4-446d-b4c1-7ce9c3fced9d', '65e3654dfc13ae0e3fcd36cd', '65e42642fc13ae3278cd3ace'),
+  ('1a9288dd-e1b8-48fc-9d38-241d0738098f', '65e3654dfc13ae0e3fcd36f1', '65e42642fc13ae3278cd3ad2'),
+  ('bf8a4973-2408-4c40-8483-39c225743570', '65e3654dfc13ae0e3fcd36db', '65e42642fc13ae3278cd3ad3'),
+  ('cf7ab4b4-6779-4463-b518-2f1a104816ef', '65e3654dfc13ae0e3fcd3707', '65e42642fc13ae3278cd3ad2');
+
+
+INSERT INTO ListenHistory (user_ID, track_ID, listen_time_stamp) VALUES
+  ('1a9288dd-e1b8-48fc-9d38-241d0738098f', '65e3654dfc13ae0e3fcd3707', '2024-02-27 09:53:56'),
+  ('bf8a4973-2408-4c40-8483-39c225743570', '65e3654dfc13ae0e3fcd370b', '2023-11-18 18:41:36'),
+  ('e72c0006-50a6-4717-8993-128613423d55', '65e3654dfc13ae0e3fcd36c1', '2024-02-18 13:02:50'),
+  ('00a05fed-3b54-41a1-8dad-0322727a78da', '65e3654dfc13ae0e3fcd36ff', '2023-10-04 19:42:58'),
+  ('cee7e196-937b-4985-8016-07cf77c8f35b', '65e3654dfc13ae0e3fcd36fb', '2024-01-05 05:37:24'),
+  ('6efa23ec-3bd0-4b82-b631-962f416384a8', '65e3654dfc13ae0e3fcd36c7', '2023-08-24 18:16:12'),
+  ('00a05fed-3b54-41a1-8dad-0322727a78da', '65e3654dfc13ae0e3fcd36eb', '2023-11-16 06:19:03'),
+  ('cf7ab4b4-6779-4463-b518-2f1a104816ef', '65e3654dfc13ae0e3fcd36d3', '2023-08-13 01:04:51'),
+  ('1a9288dd-e1b8-48fc-9d38-241d0738098f', '65e3654dfc13ae0e3fcd36dd', '2023-08-14 06:55:02'),
+  ('bf8a4973-2408-4c40-8483-39c225743570', '65e3654dfc13ae0e3fcd36f1', '2023-10-21 20:12:55');
+
+
+INSERT INTO DownloadHistory (user_ID, track_ID, download_time_stamp) VALUES
+  ('6f5b5567-cf20-433d-8287-5e32a86246b3', '65e3654dfc13ae0e3fcd36cf', '2023-11-29 20:35:27'),
+  ('4ed2412d-6084-4c35-9077-f0eb8d9dc374', '65e3654dfc13ae0e3fcd36e7', '2024-01-12 04:19:59'),
+  ('6efa23ec-3bd0-4b82-b631-962f416384a8', '65e3654dfc13ae0e3fcd3707', '2023-11-05 18:11:37'),
+  ('1a9288dd-e1b8-48fc-9d38-241d0738098f', '65e3654dfc13ae0e3fcd36d5', '2023-09-20 10:14:22'),
+  ('6cbadc1f-1932-404f-b498-2f60b46424b5', '65e3654dfc13ae0e3fcd36e5', '2024-02-02 11:52:31'),
+  ('9c5ee840-c8b2-4d58-86c7-d87c5aac04f1', '65e3654dfc13ae0e3fcd36f1', '2024-01-20 03:39:16'),
+  ('fdb29741-d9ba-4019-af9f-5d869290af2e', '65e3654dfc13ae0e3fcd36f7', '2023-09-24 02:41:06'),
+  ('0e4e1497-ffb2-491b-97fe-8301154532a1', '65e3654dfc13ae0e3fcd36c7', '2023-10-25 02:20:08'),
+  ('bf8a4973-2408-4c40-8483-39c225743570', '65e3654dfc13ae0e3fcd36d7', '2023-11-22 03:21:49'),
+  ('00a05fed-3b54-41a1-8dad-0322727a78da', '65e3654dfc13ae0e3fcd36f3', '2023-12-27 21:30:35');
+
+
+INSERT INTO LikeHistory (user_ID, track_ID, like_time_stamp) VALUES
+  ('122d6c4c-7de8-47b1-a314-69ad99c161fe', '65e3654dfc13ae0e3fcd36dd', '2023-10-03 02:49:20'),
+  ('1a9288dd-e1b8-48fc-9d38-241d0738098f', '65e3654dfc13ae0e3fcd36f9', '2023-12-27 06:53:47'),
+  ('cf7ab4b4-6779-4463-b518-2f1a104816ef', '65e3654dfc13ae0e3fcd36ef', '2023-10-21 13:00:56'),
+  ('6cbadc1f-1932-404f-b498-2f60b46424b5', '65e3654dfc13ae0e3fcd3707', '2023-09-30 16:37:38'),
+  ('0e4e1497-ffb2-491b-97fe-8301154532a1', '65e3654dfc13ae0e3fcd36c7', '2023-12-01 16:50:13'),
+  ('9c5ee840-c8b2-4d58-86c7-d87c5aac04f1', '65e3654dfc13ae0e3fcd36d1', '2023-10-21 10:10:12'),
+  ('bf8a4973-2408-4c40-8483-39c225743570', '65e3654dfc13ae0e3fcd36cf', '2023-09-09 14:03:17'),
+  ('fdb29741-d9ba-4019-af9f-5d869290af2e', '65e3654dfc13ae0e3fcd36d9', '2023-10-01 03:14:39'),
+  ('a4385066-147b-4560-9dc9-afd258c89791', '65e3654dfc13ae0e3fcd36e5', '2023-08-07 19:07:11'),
+  ('bf8a4973-2408-4c40-8483-39c225743570', '65e3654dfc13ae0e3fcd36db', '2023-08-16 11:54:20');
+
+
+CREATE TABLE dbo.[FollowingRelationship](
+  follow_ID varchar(50) NOT NULL PRIMARY KEY,
+  user_ID_follower varchar(50) NOT NULL REFERENCES dbo.[User](user_ID),
+  user_ID_followed varchar(50) NOT NULL REFERENCES dbo.[User](user_ID),
+  follow_time_stamp DATETIME NOT NULL
+);
+
+insert into FollowingRelationship (follow_ID, user_ID_follower, user_ID_followed, follow_time_stamp) values
+ ('65e3ba95fc13ae6456cd367e', '122d6c4c-7de8-47b1-a314-69ad99c161fe', '1a9288dd-e1b8-48fc-9d38-241d0738098f', '2023-12-28 16:18:20'),
+ ('65e3ba95fc13ae6456cd367f', '1a9288dd-e1b8-48fc-9d38-241d0738098f', '122d6c4c-7de8-47b1-a314-69ad99c161fe', '2023-11-22 16:09:52'),
+ ('65e3ba95fc13ae6456cd3680', 'cf7ab4b4-6779-4463-b518-2f1a104816ef', '1a9288dd-e1b8-48fc-9d38-241d0738098f', '2023-09-28 21:41:42'),
+ ('65e3ba95fc13ae6456cd3681', '6cbadc1f-1932-404f-b498-2f60b46424b5', '1a9288dd-e1b8-48fc-9d38-241d0738098f', '2023-09-13 16:52:06'),
+ ('65e3ba95fc13ae6456cd3682', '0e4e1497-ffb2-491b-97fe-8301154532a1', '1a9288dd-e1b8-48fc-9d38-241d0738098f', '2023-12-28 23:45:54'),
+ ('65e3ba95fc13ae6456cd3683', '9c5ee840-c8b2-4d58-86c7-d87c5aac04f1', '1a9288dd-e1b8-48fc-9d38-241d0738098f', '2023-10-03 11:12:32'),
+ ('65e3ba95fc13ae6456cd3684', 'bf8a4973-2408-4c40-8483-39c225743570', '1a9288dd-e1b8-48fc-9d38-241d0738098f', '2023-08-14 03:01:55'),
+ ('65e3ba95fc13ae6456cd3685', 'fdb29741-d9ba-4019-af9f-5d869290af2e', '1a9288dd-e1b8-48fc-9d38-241d0738098f', '2024-01-14 20:29:21'),
+ ('65e3ba95fc13ae6456cd3686', 'a4385066-147b-4560-9dc9-afd258c89791', '1a9288dd-e1b8-48fc-9d38-241d0738098f', '2023-12-20 19:42:36'),
+ ('65e3ba95fc13ae6456cd3687', '9c5ee840-c8b2-4d58-86c7-d87c5aac04f1', 'cf7ab4b4-6779-4463-b518-2f1a104816ef', '2023-08-25 12:24:08');
+
+
+CREATE FUNCTION dbo.CalculateInvoicePrice(@product_ID varchar(50), @quantity INT)
+RETURNS DECIMAL(18, 2)
+AS
+BEGIN
+    DECLARE @price DECIMAL(18, 2)
+    SELECT @price = product_price FROM dbo.[Product] WHERE product_ID = @product_ID
+    RETURN @price * @quantity
+END;
+
+CREATE TABLE dbo.PurchaseHistory(
+  invoice_ID varchar(50) NOT NULL PRIMARY KEY,
+  user_ID varchar(50) NOT NULL REFERENCES dbo.[User](user_ID),
+  product_ID varchar(50) NOT NULL REFERENCES dbo.[Product](product_ID),
+  quantity INT NOT NULL,
+  invoice_price AS (dbo.CalculateInvoicePrice(product_ID, quantity)),
+  purchase_time_stamp DATETIME NOT NULL
+);
+	
+insert into PurchaseHistory (invoice_ID, user_ID, product_ID, quantity, purchase_time_stamp) values
+  ('65e3c00ffc13ae6456cd368d', '6f5b5567-cf20-433d-8287-5e32a86246b3', '65e3654dfc13ae0e3fcd36da', 35, '2023-11-24 11:55:31'),
+  ('65e3c00ffc13ae6456cd368e', 'e72c0006-50a6-4717-8993-128613423d55', '65e3654dfc13ae0e3fcd36dc', 44, '2023-10-01 05:04:18'),
+  ('65e3c00ffc13ae6456cd368f', '0e4e1497-ffb2-491b-97fe-8301154532a1', '65e3654dfc13ae0e3fcd36f2', 6, '2023-08-06 00:51:51'),
+  ('65e3c00ffc13ae6456cd3690', '6efa23ec-3bd0-4b82-b631-962f416384a8', '65e3654dfc13ae0e3fcd36e6', 50, '2023-11-06 08:29:21'),
+  ('65e3c00ffc13ae6456cd3691', 'cee7e196-937b-4985-8016-07cf77c8f35b', '65e3654dfc13ae0e3fcd36e4', 28, '2023-12-12 21:20:42'),
+  ('65e3c00ffc13ae6456cd3692', 'b025f973-1eb4-446d-b4c1-7ce9c3fced9d', '65e3654dfc13ae0e3fcd36ce', 49, '2024-01-23 20:35:07'),
+  ('65e3c00ffc13ae6456cd3693', '1a9288dd-e1b8-48fc-9d38-241d0738098f', '65e3654dfc13ae0e3fcd36d0', 76, '2024-02-17 19:50:21'),
+  ('65e3c00ffc13ae6456cd3694', 'bf8a4973-2408-4c40-8483-39c225743570', '65e3654dfc13ae0e3fcd36d2', 26, '2023-08-25 02:49:00'),
+  ('65e3c00ffc13ae6456cd3695', 'cf7ab4b4-6779-4463-b518-2f1a104816ef', '65e3654dfc13ae0e3fcd36d4', 22, '2023-08-08 21:36:13'),
+  ('65e3c00ffc13ae6456cd3696', 'c81d3a27-6e3e-4ebf-89fb-f3fc9c3ab63d', '65e3654dfc13ae0e3fcd370e', 92, '2023-08-26 15:16:39');
+
+-- Views
+-- Find out how many purchases are made with each label
+ CREATE VIEW Purchase_Made_with_Each_Labels AS
+SELECT l.label_ID, l.label_name, SUM(ph.invoice_price) AS Total
+FROM dbo.Label l
+LEFT JOIN dbo.Product pd
+ON l.label_ID = pd.label_ID
+LEFT JOIN dbo.PurchaseHistory ph
+ON pd.product_ID = ph.product_ID
+GROUP BY l.label_ID, l.label_name
+
+
+-- Find out how many tracks belong to each genre
+CREATE VIEW Num_of_Track_in_Each_Genre AS
+SELECT g.genre_desc AS Genre, count(t.track_ID) AS Num_of_Track
+FROM TrackGenre t
+RIGHT JOIN Genre g ON t.genre_ID = g.genre_ID
+GROUP BY g.genre_desc
+
+
+-- Find out the Top 10 tracks liked by users
+CREATE VIEW Top_10_Liked_Tracks AS
+SELECT TOP 10 track_ID, COUNT(user_ID) AS total_likes
+FROM dbo.[LikeHistory]
+GROUP BY track_ID
+ORDER BY total_likes DESC;
+
+
+-- Find out the Top 10 tracks listened to by users
+CREATE VIEW Top_10_Listened_Tracks AS
+SELECT TOP 10 track_ID, COUNT(user_ID) AS total_listen
+FROM dbo.[ListenHistory]
+GROUP BY track_ID
+ORDER BY total_listen DESC;
+
+SELECT * FROM Purchase_Made_with_Each_Labels;
+SELECT * FROM Num_of_Track_in_Each_Genre;
+SELECT * FROM Top_10_Liked_Tracks;
+SELECT * FROM Top_10_Listened_Tracks;
+
+ -- The view for genre and track does not look right not enough tracks
+ SELECT COUNT(track_ID) AS [TotalTracks] FROM Track t
+  SELECT COUNT(track_ID) AS [Total] FROM TrackGenre tg 
+ -- discrepancy btwn total tracks in Track and Track genre dbs. seven tracks missing
+  -- adding missing values
+   INSERT INTO dbo.TrackGenre (genre_id, track_id) VALUES
+('GEN017', '65e3654dfc13ae0e3fcd36ed'),
+('GEN010', '65e3654dfc13ae0e3fcd3709'),
+('GEN011', '65e3654dfc13ae0e3fcd370b'),
+('GEN014', '65e3654dfc13ae0e3fcd36c1'),
+('GEN007', '65e3654dfc13ae0e3fcd36ef'),
+('GEN012', '65e3654dfc13ae0e3fcd3707'),
+('GEN001', '65e3654dfc13ae0e3fcd36f3');
+
+ --duplicate track_names in Track table, updating with correct names
+
+UPDATE Track 
+SET track_name = 'acdefu'
+WHERE track_ID = '65e3654dfc13ae0e3fcd36bf';
+
+UPDATE Track 
+SET track_name = 'Talking to Myself'
+WHERE track_ID = '65e3654dfc13ae0e3fcd36cb'
+
+UPDATE Track 
+SET track_name = 'Enough'
+WHERE track_ID = '65e3654dfc13ae0e3fcd36dd'
+
+UPDATE Track 
+SET track_name = 'No Tears Left to Cry'
+WHERE track_ID = '65e3654dfc13ae0e3fcd36f7'
+
+--fixed the four sets of tracks with duplicate names
+--adding more values in order to create views and visualization
+
+--adding product values first as designated by db rules
+INSERT INTO Product (product_ID, product_price, label_ID) VALUES
+('65e3654dfc13ae0e3fcd370f',0.99,'65e36c1efc13ae0ea2cd3f16'),
+('65e3654dfc13ae0e3fcd3711',0.99,'65e36c1efc13ae0ea2cd3f16'),
+('65e3654dfc13ae0e3fcd3713',0.99,'65e36c1efc13ae0ea2cd3f18'),
+('65e3654dfc13ae0e3fcd3715',0.99,'65e36c1efc13ae0ea2cd3f19'),
+('65e3654dfc13ae0e3fcd3717',0.99,'65e36c1efc13ae0ea2cd3f1a'),
+('65e3654dfc13ae0e3fcd3719',0.99,'65e36c1efc13ae0ea2cd3f1b'),
+('65e3654dfc13ae0e3fcd371b',0.99,'65e36c1efc13ae0ea2cd3f1c'),
+('65e3654dfc13ae0e3fcd371d',0.99,'65e36c1efc13ae0ea2cd3f1c'),
+('65e3654dfc13ae0e3fcd371f',0.99,'65e36c1efc13ae0ea2cd3f1c'),
+('65e3654dfc13ae0e3fcd3747',0.99,'65e36c1efc13ae0ea2cd3f1f'),
+('65e3654dfc13ae0e3fcd3749',0.99,'65e36c1efc13ae0ea2cd3f20'),
+('65e3654dfc13ae0e3fcd374b',0.99,'65e36c1efc13ae0ea2cd3f20'),
+('65e3654dfc13ae0e3fcd374d',0.99,'65e36c1efc13ae0ea2cd3f20'),
+('65e3654dfc13ae0e3fcd374f',0.99,'65e36c1efc13ae0ea2cd3f20'),
+('65e3654dfc13ae0e3fcd3751',0.99,'65e36c1efc13ae0ea2cd3f24'),
+('65e3654dfc13ae0e3fcd3753',0.99,'65e36c1efc13ae0ea2cd3f25'),
+('65e3654dfc13ae0e3fcd3755',0.99,'65e36c1efc13ae0ea2cd3f26'),
+('65e3654dfc13ae0e3fcd3757',0.99,'65e36c1efc13ae0ea2cd3f26'),
+('65e3654dfc13ae0e3fcd3759',0.99,'65e36c1efc13ae0ea2cd3f26'),
+('65e3654dfc13ae0e3fcd375b',0.99,'65e36c1efc13ae0ea2cd3f26'),
+('65e3654dfc13ae0e3fcd375d',0.99,'65e36c1efc13ae0ea2cd3f26'),
+('65e3654dfc13ae0e3fcd375f',0.99,'65e36c1efc13ae0ea2cd3f26'),
+('65e3654dfc13ae0e3fcd3761',0.99,'65e36c1efc13ae0ea2cd3f1b'),
+('65e3654dfc13ae0e3fcd3763',0.99,'65e36c1efc13ae0ea2cd3f28'),
+('65e3654dfc13ae0e3fcd3765',0.99,'65e36c1efc13ae0ea2cd3f1a'),
+('65e3654dfc13ae0e3fcd3767',0.99,'65e36c1efc13ae0ea2cd3f16'),
+('65e3654dfc13ae0e3fcd3769',0.99,'65e36c1efc13ae0ea2cd3f29'),
+('65e3654dfc13ae0e3fcd376b',0.99,'65e36c1efc13ae0ea2cd3f29'),
+('65e3654dfc13ae0e3fcd376d',0.99,'65e36c1efc13ae0ea2cd3f29'),
+('65e3654dfc13ae0e3fcd376f',0.99,'65e36c1efc13ae0ea2cd3f29'),
+('65e3654dfc13ae0e3fcd3771',0.99,'65e36c1efc13ae0ea2cd3f29'),
+('65e3686cfc13ae0f5ecd4349',2.99,'65e36c1efc13ae0ea2cd3f16'),
+('65e3686cfc13ae0f5ecd4350',2.99,'65e36c1efc13ae0ea2cd3f18'),
+('65e3686cfc13ae0f5ecd4351',2.99,'65e36c1efc13ae0ea2cd3f19'),
+('65e3686cfc13ae0f5ecd4352',2.99,'65e36c1efc13ae0ea2cd3f1a'),
+('65e3686cfc13ae0f5ecd4353',2.99,'65e36c1efc13ae0ea2cd3f1b'),
+('65e3686cfc13ae0f5ecd4354',2.99,'65e36c1efc13ae0ea2cd3f1c'),
+('65e3686cfc13ae0f5ecd4355',2.99,'65e36c1efc13ae0ea2cd3f1f'),
+('65e3686cfc13ae0f5ecd4356',2.99,'65e36c1efc13ae0ea2cd3f20'),
+('65e3686cfc13ae0f5ecd4357',2.99,'65e36c1efc13ae0ea2cd3f24'),
+('65e3686cfc13ae0f5ecd4358',2.99,'65e36c1efc13ae0ea2cd3f25'),
+('65e3686cfc13ae0f5ecd4359',2.99,'65e36c1efc13ae0ea2cd3f26'),
+('65e3686cfc13ae0f5ecd4360',2.99,'65e36c1efc13ae0ea2cd3f1b'),
+('65e3686cfc13ae0f5ecd4361',2.99,'65e36c1efc13ae0ea2cd3f28'),
+('65e3686cfc13ae0f5ecd4362',2.99,'65e36c1efc13ae0ea2cd3f1a'),
+('65e3686cfc13ae0f5ecd4363',2.99,'65e36c1efc13ae0ea2cd3f29');
+
+--adding additional album values
+INSERT INTO Album (album_ID, product_ID, album_release_date, album_name) VALUES
+('65e367a3fc13ae0dd8cd3a89','65e3686cfc13ae0f5ecd4349','1998-09-24','Katrina and the Waves'),
+('65e367a3fc13ae0dd8cd3a83','65e3686cfc13ae0f5ecd4350','1992-11-17','Jolene'),
+('65e367a3fc13ae0dd8cd3a84','65e3686cfc13ae0f5ecd4351','1984-07-15','Diamond Life'),
+('65e367a3fc13ae0dd8cd3a85','65e3686cfc13ae0f5ecd4352','1987-08-31','Bad'),
+('65e367a3fc13ae0dd8cd3a86','65e3686cfc13ae0f5ecd4353','1987-10-14','Smooth Criminal'),
+('65e367a3fc13ae0dd8cd3a87','65e3686cfc13ae0f5ecd4354','1983-05-20','Synchronicity'),
+('65e367a3fc13ae0dd8cd3a9d','65e3686cfc13ae0f5ecd4355','1980-02-01','American Gigolo'),
+('65e367a3fc13ae0dd8cd3a9e','65e3686cfc13ae0f5ecd4356','1979-11-17','Off the Wall'),
+('65e367a3fc13ae0dd8cd3aa2','65e3686cfc13ae0f5ecd4357','1979-04-12','Parallel Lines'),
+('65e367a3fc13ae0dd8cd3aa3','65e3686cfc13ae0f5ecd4358','1978-12-01','Freak Out'),
+('65e367a3fc13ae0dd8cd3aa4','65e3686cfc13ae0f5ecd4359','1977-12-13','Love Tracks'),
+('65e367a3fc13ae0dd8cd3aaa','65e3686cfc13ae0f5ecd4360','2020-11-29','After Hours'),
+('65e367a3fc13ae0dd8cd3aab','65e3686cfc13ae0f5ecd4361','2019-05-10','The Kids Are Coming'),
+('65e367a3fc13ae0dd8cd3aac','65e3686cfc13ae0f5ecd4362','2019-06-21','Justified'),
+('65e367a3fc13ae0dd8cd3aae','65e3686cfc13ae0f5ecd4363','2020-05-29','bad guy');
+
+
+--adding values into the track table
+INSERT INTO Track (track_ID, product_ID, album_ID, track_name, track_time, track_release_date, track_bpm) VALUES 
+('65e3654dfc13ae0e3fcd370e','65e3654dfc13ae0e3fcd370f','65e367a3fc13ae0dd8cd3a89','Another Day in Paradise','0:04:22','1998-09-24',78),
+('65e3654dfc13ae0e3fcd3710','65e3654dfc13ae0e3fcd3711','65e367a3fc13ae0dd8cd3a89','Walking on Sunshine','0:03:52','1998-09-24',104),
+('65e3654dfc13ae0e3fcd3712','65e3654dfc13ae0e3fcd3713','65e367a3fc13ae0dd8cd3a83','I Will Always Love You','0:04:31','1992-11-17',66),
+('65e3654dfc13ae0e3fcd3714','65e3654dfc13ae0e3fcd3715','65e367a3fc13ae0dd8cd3a84','Smooth Operator','0:04:15','1984-07-15',92),
+('65e3654dfc13ae0e3fcd3716','65e3654dfc13ae0e3fcd3717','65e367a3fc13ae0dd8cd3a85','Man in the Mirror','0:05:19','1987-08-31',100),
+('65e3654dfc13ae0e3fcd3718','65e3654dfc13ae0e3fcd3719','65e367a3fc13ae0dd8cd3a86','Smooth Criminal','0:04:17','1987-10-14',120),
+('65e3654dfc13ae0e3fcd371a','65e3654dfc13ae0e3fcd371b','65e367a3fc13ae0dd8cd3a87','Every Breath You Take','0:04:13','1983-05-20',116),
+('65e3654dfc13ae0e3fcd371c','65e3654dfc13ae0e3fcd371d','65e367a3fc13ae0dd8cd3a87','Total Eclipse of the Heart','0:06:59','1983-05-20',68),
+('65e3654dfc13ae0e3fcd371e','65e3654dfc13ae0e3fcd371f','65e367a3fc13ae0dd8cd3a87','I Wanna Dance with Somebody (Who Loves Me)','0:04:50','1983-05-20',118),
+('65e3654dfc13ae0e3fcd3746','65e3654dfc13ae0e3fcd3747','65e367a3fc13ae0dd8cd3a9d','Call Me','0:03:31','1980-02-01',128),
+('65e3654dfc13ae0e3fcd3748','65e3654dfc13ae0e3fcd3749','65e367a3fc13ae0dd8cd3a9e','Rock With You','0:03:40','1979-11-17',114),
+('65e3654dfc13ae0e3fcd374a','65e3654dfc13ae0e3fcd374b','65e367a3fc13ae0dd8cd3a9e','Escape (The Piña Colada Song)','0:04:36','1979-11-17',98),
+('65e3654dfc13ae0e3fcd374c','65e3654dfc13ae0e3fcd374d','65e367a3fc13ae0dd8cd3a9e','Don''t Stop ''Til You Get Enough','0:03:58','1979-11-17',119),
+('65e3654dfc13ae0e3fcd374e','65e3654dfc13ae0e3fcd374f','65e367a3fc13ae0dd8cd3a9e','We Are Family','0:03:35','1979-11-17',114),
+('65e3654dfc13ae0e3fcd3750','65e3654dfc13ae0e3fcd3751','65e367a3fc13ae0dd8cd3aa2','Heart of Glass','0:04:32','1979-04-12',126),
+('65e3654dfc13ae0e3fcd3752','65e3654dfc13ae0e3fcd3753','65e367a3fc13ae0dd8cd3aa3','Le Freak','0:04:17','1978-12-01',120),
+('65e3654dfc13ae0e3fcd3754','65e3654dfc13ae0e3fcd3755','65e367a3fc13ae0dd8cd3aa4','I Will Survive','0:03:16','1977-12-13',118),
+('65e3654dfc13ae0e3fcd3756','65e3654dfc13ae0e3fcd3757','65e367a3fc13ae0dd8cd3aa4','Stayin'' Alive','0:04:45','1977-12-13',103),
+('65e3654dfc13ae0e3fcd3758','65e3654dfc13ae0e3fcd3759','65e367a3fc13ae0dd8cd3aa4','Hotel California','0:06:30','1977-12-13',147),
+('65e3654dfc13ae0e3fcd375a','65e3654dfc13ae0e3fcd375b','65e367a3fc13ae0dd8cd3aa4','Bohemian Rhapsody','0:05:55','1977-12-13',143),
+('65e3654dfc13ae0e3fcd375c','65e3654dfc13ae0e3fcd375d','65e367a3fc13ae0dd8cd3aa4','You''re So Vain','0:04:17','1977-12-13',108),
+('65e3654dfc13ae0e3fcd375e','65e3654dfc13ae0e3fcd375f','65e367a3fc13ae0dd8cd3aa4','Shape of You','0:03:54','1977-12-13',96),
+('65e3654dfc13ae0e3fcd3760','65e3654dfc13ae0e3fcd3761','65e367a3fc13ae0dd8cd3aaa','Blinding Lights','0:03:20','2020-11-29',171),
+('65e3654dfc13ae0e3fcd3762','65e3654dfc13ae0e3fcd3763','65e367a3fc13ae0dd8cd3aab','Dance Monkey','0:03:29','2019-05-10',98),
+('65e3654dfc13ae0e3fcd3764','65e3654dfc13ae0e3fcd3765','65e367a3fc13ae0dd8cd3aac','Señorita','0:03:11','2019-06-21',117),
+('65e3654dfc13ae0e3fcd3766','65e3654dfc13ae0e3fcd3767','65e36722fc13ae0f07cd3a6b','Don''t Start Now','0:03:03','1980-11-18',123),
+('65e3654dfc13ae0e3fcd3768','65e3654dfc13ae0e3fcd3769','65e367a3fc13ae0dd8cd3aae','bad guy','0:03:14','2020-05-29',135),
+('65e3654dfc13ae0e3fcd376a','65e3654dfc13ae0e3fcd376b','65e367a3fc13ae0dd8cd3aae','Savage Love (Laxed - Siren Beat)','0:02:51','2020-05-29',150),
+('65e3654dfc13ae0e3fcd376c','65e3654dfc13ae0e3fcd376d','65e367a3fc13ae0dd8cd3aae','Watermelon Sugar','0:02:54','2020-05-29',95),
+('65e3654dfc13ae0e3fcd376e','65e3654dfc13ae0e3fcd376f','65e367a3fc13ae0dd8cd3aae','SICKO MODE','0:05:12','2020-05-29',155),
+('65e3654dfc13ae0e3fcd3770','65e3654dfc13ae0e3fcd3771','65e367a3fc13ae0dd8cd3aae','Old Town Road','0:01:53','2020-05-29',136);
+
+--track genre
+INSERT INTO TrackGenre (genre_id, track_id) VALUES
+('GEN007','65e3654dfc13ae0e3fcd370e'),
+('GEN006','65e3654dfc13ae0e3fcd3710'),
+('GEN008','65e3654dfc13ae0e3fcd3712'),
+('GEN003','65e3654dfc13ae0e3fcd3714'),
+('GEN012','65e3654dfc13ae0e3fcd3716'),
+('GEN017','65e3654dfc13ae0e3fcd3718'),
+('GEN007','65e3654dfc13ae0e3fcd371a'),
+('GEN019','65e3654dfc13ae0e3fcd371c'),
+('GEN010','65e3654dfc13ae0e3fcd371e'),
+('GEN010','65e3654dfc13ae0e3fcd3746'),
+('GEN015','65e3654dfc13ae0e3fcd3748'),
+('GEN009','65e3654dfc13ae0e3fcd374a'),
+('GEN005','65e3654dfc13ae0e3fcd374c'),
+('GEN004','65e3654dfc13ae0e3fcd374e'),
+('GEN014','65e3654dfc13ae0e3fcd3750'),
+('GEN013','65e3654dfc13ae0e3fcd3752'),
+('GEN016','65e3654dfc13ae0e3fcd3754'),
+('GEN018','65e3654dfc13ae0e3fcd3756'),
+('GEN011','65e3654dfc13ae0e3fcd3758'),
+('GEN006','65e3654dfc13ae0e3fcd375a'),
+('GEN001','65e3654dfc13ae0e3fcd375c'),
+('GEN001','65e3654dfc13ae0e3fcd375e'),
+('GEN006','65e3654dfc13ae0e3fcd3760'),
+('GEN004','65e3654dfc13ae0e3fcd3762'),
+('GEN008','65e3654dfc13ae0e3fcd3764'),
+('GEN018','65e3654dfc13ae0e3fcd3766'),
+('GEN006','65e3654dfc13ae0e3fcd3768'),
+('GEN005','65e3654dfc13ae0e3fcd376a'),
+('GEN020','65e3654dfc13ae0e3fcd376c'),
+('GEN014','65e3654dfc13ae0e3fcd376e'),
+('GEN010','65e3654dfc13ae0e3fcd3770');
+
+
+--user data 
+-- choosing user_ID 1a9288dd-e1b8-48fc-9d38-241d0738098f to highlight, so that we can make a full user profile
+INSERT INTO ListenHistory (user_ID, track_ID, listen_time_stamp) VALUES
+('1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3654dfc13ae0e3fcd3710','2023-07-15 14:22:36'),
+('1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3654dfc13ae0e3fcd375a','2023-08-29 09:45:18'),
+('1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3654dfc13ae0e3fcd3760','2023-06-23 18:30:50'),
+('1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3654dfc13ae0e3fcd3768','2023-07-01 11:55:27'),
+('1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3654dfc13ae0e3fcd371e','2023-10-02 08:10:15'),
+('1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3654dfc13ae0e3fcd3746','2023-08-17 20:05:42'),
+('1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3654dfc13ae0e3fcd3770','2023-09-25 16:40:33'),
+('1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3654dfc13ae0e3fcd3758','2023-06-11 07:20:10'),
+('1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3654dfc13ae0e3fcd3716','2023-08-05 13:15:28'),
+('1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3654dfc13ae0e3fcd370b','2023-06-27 19:50:55'),
+('1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3654dfc13ae0e3fcd3716','2023-10-17 10:33:47'),
+('1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3654dfc13ae0e3fcd3752','2023-09-03 12:48:21'),
+('1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3654dfc13ae0e3fcd3750','2023-07-07 15:55:37'),
+('1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3654dfc13ae0e3fcd376e','2023-06-15 08:42:59'),
+('1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3654dfc13ae0e3fcd3748','2023-10-11 11:28:14'),
+('1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3654dfc13ae0e3fcd370b','2023-08-13 21:20:05'),
+('1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3654dfc13ae0e3fcd36d3','2023-07-27 17:36:24'),
+('1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3654dfc13ae0e3fcd36d3','2023-06-18 10:05:11'),
+('1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3654dfc13ae0e3fcd370b','2023-09-10 14:03:40'),
+('1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3654dfc13ae0e3fcd36f1','2023-08-01 22:10:08'),
+('1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3654dfc13ae0e3fcd370b','2023-06-30 06:25:49'),
+('1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3654dfc13ae0e3fcd36fb','2023-10-07 09:15:30'),
+('1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3654dfc13ae0e3fcd36d3','2023-09-14 18:50:19'),
+('1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3654dfc13ae0e3fcd36c1','2023-06-09 13:58:37'),
+('1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3654dfc13ae0e3fcd3710','2023-07-11 08:37:20'),
+('1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3654dfc13ae0e3fcd375a','2023-06-20 16:45:12'),
+('1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3654dfc13ae0e3fcd3760','2023-09-29 07:30:55'),
+('1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3654dfc13ae0e3fcd3768','2023-07-18 19:10:33'),
+('1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3654dfc13ae0e3fcd371e','2023-08-21 10:22:44'),
+('1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3654dfc13ae0e3fcd3746','2023-06-14 12:15:27'),
+('1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3654dfc13ae0e3fcd3770','2023-07-23 11:05:38'),
+('1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3654dfc13ae0e3fcd36d1','2023-10-15 14:18:50'),
+('1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3654dfc13ae0e3fcd3701','2023-09-07 23:40:09'),
+('1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3654dfc13ae0e3fcd36f5','2023-06-05 07:28:16'),
+('1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3654dfc13ae0e3fcd36c5','2023-07-03 10:33:22'),
+('1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3654dfc13ae0e3fcd36d1','2023-10-18 16:20:11'),
+('1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3654dfc13ae0e3fcd3705','2023-08-09 08:45:37'),
+('1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3654dfc13ae0e3fcd36d3','2023-06-26 14:50:59'),
+('1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3654dfc13ae0e3fcd36cf','2023-09-20 18:55:45'),
+('1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3654dfc13ae0e3fcd36d9','2023-10-19 18:47:45');
+
+-- they need more followers (:
+insert into FollowingRelationship (follow_ID, user_ID_follower, user_ID_followed, follow_time_stamp) values
+('65e3ba95fc13ae6456cd366e','122d6c4c-7de8-47b1-a314-69ad99c161fe','1a9288dd-e1b8-48fc-9d38-241d0738098f','2023-07-29 09:15:30'),
+('65e3ba95fc13ae6456cd366f','1a9288dd-e1b8-48fc-9d38-241d0738098f','122d6c4c-7de8-47b1-a314-69ad99c161fe','2023-08-23 14:40:22'),
+('65e3ba95fc13ae6456cd3688','cf7ab4b4-6779-4463-b518-2f1a104816ef','1a9288dd-e1b8-48fc-9d38-241d0738098f','2023-09-12 11:55:18'),
+('65e3ba95fc13ae6456cd3689','6cbadc1f-1932-404f-b498-2f60b46424b5','1a9288dd-e1b8-48fc-9d38-241d0738098f','2023-08-06 17:20:45'),
+('65e3ba95fc13ae6456cd3690','0e4e1497-ffb2-491b-97fe-8301154532a1','1a9288dd-e1b8-48fc-9d38-241d0738098f','2023-07-15 08:30:10'),
+('65e3ba95fc13ae6456cd3691','9c5ee840-c8b2-4d58-86c7-d87c5aac04f1','1a9288dd-e1b8-48fc-9d38-241d0738098f','2023-09-28 19:45:27'),
+('65e3ba95fc13ae6456cd3692','bf8a4973-2408-4c40-8483-39c225743570','1a9288dd-e1b8-48fc-9d38-241d0738098f','2023-07-21 22:10:35'),
+('65e3ba95fc13ae6456cd3693','fdb29741-d9ba-4019-af9f-5d869290af2e','1a9288dd-e1b8-48fc-9d38-241d0738098f','2023-08-14 06:05:55'),
+('65e3ba95fc13ae6456cd3694','a4385066-147b-4560-9dc9-afd258c89791','1a9288dd-e1b8-48fc-9d38-241d0738098f','2023-09-22 13:25:40'),
+('65e3ba95fc13ae6456cd3695','9c5ee840-c8b2-4d58-86c7-d87c5aac04f1','cf7ab4b4-6779-4463-b518-2f1a104816ef','2023-08-10 16:50:48'),
+('65e3ba95fc13ae6456cd3696','1a9288dd-e1b8-48fc-9d38-241d0738098f','c81d3a27-6e3e-4ebf-89fb-f3fc9c3ab63d','2023-07-11 07:35:20'),
+('65e3ba95fc13ae6456cd3697','1a9288dd-e1b8-48fc-9d38-241d0738098f','e72c0006-50a6-4717-8993-128613423d55','2023-09-05 10:28:37'),
+('65e3ba95fc13ae6456cd3698','1a9288dd-e1b8-48fc-9d38-241d0738098f','6f5b5567-cf20-433d-8287-5e32a86246b3','2023-10-02 15:55:12'),
+('65e3ba95fc13ae6456cd3699','1a9288dd-e1b8-48fc-9d38-241d0738098f','0e4e1497-ffb2-491b-97fe-8301154532a1','2023-08-17 12:20:33'),
+('65e3ba95fc13ae6456cd3700','e72c0006-50a6-4717-8993-128613423d55','1a9288dd-e1b8-48fc-9d38-241d0738098f','2023-09-15 08:42:59'),
+('65e3ba95fc13ae6456cd3701','00a05fed-3b54-41a1-8dad-0322727a78da','1a9288dd-e1b8-48fc-9d38-241d0738098f','2024-01-31 18:05:07'),
+('65e3ba95fc13ae6456cd3702','cee7e196-937b-4985-8016-07cf77c8f35b','1a9288dd-e1b8-48fc-9d38-241d0738098f','2023-08-26 09:33:21'),
+('65e3ba95fc13ae6456cd3703','4ed2412d-6084-4c35-9077-f0eb8d9dc374','1a9288dd-e1b8-48fc-9d38-241d0738098f','2023-09-18 11:10:44');
+
+insert into PurchaseHistory (invoice_ID, user_ID, product_ID, quantity, purchase_time_stamp) values
+('65e3c00ffc13ae6456cd3697','1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3686cfc13ae0f5ecd4351',1,'2023-07-24 14:30:45'),
+('65e3c00ffc13ae6456cd3698','1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3654dfc13ae0e3fcd3747',1,'2023-08-15 09:20:10'),
+('65e3c00ffc13ae6456cd3699','1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3654dfc13ae0e3fcd36f2',5,'2023-06-30 17:45:22'),
+('65e3c00ffc13ae6456cd3700','1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3654dfc13ae0e3fcd371f',1,'2023-09-05 11:55:30'),
+('65e3c00ffc13ae6456cd3701','1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3686cfc13ae0f5ecd4349',2,'2023-10-10 08:40:18'),
+('65e3c00ffc13ae6456cd3702','1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3654dfc13ae0e3fcd3771',7,'2023-07-12 19:25:05'),
+('65e3c00ffc13ae6456cd3703','1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3686cfc13ae0f5ecd4252',10,'2023-09-18 16:15:55');
+
+--testing new values with existing views. 
+SELECT * FROM Purchase_Made_with_Each_Labels;
+SELECT * FROM Num_of_Track_in_Each_Genre;
+SELECT * FROM Top_10_Liked_Tracks;
+SELECT * FROM Top_10_Listened_Tracks;
+
+-- Creating Genre of Track view to compliment the num of tracks view
+CREATE VIEW Genre_of_Track AS
+SELECT t.track_name AS [Track_Title], g.genre_desc AS [Genre]
+FROM Track t RIGHT JOIN TrackGenre tg ON t.track_ID = tg.track_ID 
+	RIGHT JOIN Genre g ON tg.genre_ID = g.genre_ID 
+	GROUP BY t.track_name, g.genre_desc;
+
+SELECT * FROM Genre_of_Track 
+-- we now have a view that lists genre description of each track for users.
+
+-- top listens for our user
+SELECT TOP 10 COUNT(lh.listen_time_stamp) AS [Listens], t.track_name
+FROM ListenHistory lh JOIN Track t ON lh.track_ID = t.track_ID 
+WHERE lh.user_ID = '1a9288dd-e1b8-48fc-9d38-241d0738098f'
+GROUP BY t.track_name
+ORDER BY listens DESC;
+
+-- able to get top tracks. will try to join album and create view
+
+SELECT TOP 10
+t.track_name, 
+a.album_name,
+COUNT(lh.listen_time_stamp) AS Listens
+FROM ListenHistory lh JOIN Track t ON lh.track_ID = t.track_ID 
+	LEFT JOIN Album a ON t.album_ID = a.album_ID 
+WHERE lh.user_ID = '1a9288dd-e1b8-48fc-9d38-241d0738098f'
+GROUP BY t.track_name, a.album_name 
+ORDER BY listens DESC;
+
+-- amazing! got top 10 tracks and corresponding album. ( Syd is the name we've given to user_id '1a9288dd-e1b8-48fc-9d38-241d0738098f')
+CREATE VIEW Syds_Favorite_Tracks AS
+SELECT TOP 10
+t.track_name AS [Track], 
+a.album_name AS [Album],
+COUNT(lh.listen_time_stamp) AS Listens
+FROM ListenHistory lh JOIN Track t ON lh.track_ID = t.track_ID 
+	LEFT JOIN Album a ON t.album_ID = a.album_ID 
+WHERE lh.user_ID = '1a9288dd-e1b8-48fc-9d38-241d0738098f'
+GROUP BY t.track_name, a.album_name 
+ORDER BY listens DESC;
+
+SELECT * FROM Syds_Favorite_Tracks 
+
+--- creating view of top genres purchased. can be applied for all users, but focusing on user of interest
+
+CREATE VIEW Genre_of_Tracks_Purchased AS
+SELECT TOP 5
+g.genre_desc AS Genre,
+ph.invoice_price AS Purchase_Total,
+DATENAME(MONTH, ph.purchase_time_stamp) AS [Month]
+FROM PurchaseHistory ph LEFT JOIN Track t ON ph.product_ID = t.product_ID 
+	RIGHT JOIN TrackGenre tg ON t.track_ID = tg.track_ID 
+	RIGHT JOIN Genre g ON tg.genre_ID = g.genre_ID 
+WHERE ph.user_ID = '1a9288dd-e1b8-48fc-9d38-241d0738098f'
+GROUP BY g.genre_desc, ph.purchase_time_stamp, ph.invoice_price
+ORDER BY ph.purchase_time_stamp ASC, ph.invoice_price DESC;
+
+--follower relationships
+---tried to use circular joins that were unnecessary and I could have simply used sub queries instead
+CREATE VIEW Syd_FollowingRelationships AS
+SELECT 
+    u.user_name AS UserName,
+    (SELECT COUNT(*) FROM FollowingRelationship WHERE user_ID_followed = '1a9288dd-e1b8-48fc-9d38-241d0738098f') AS Total_Followers,
+    (SELECT COUNT(*) FROM FollowingRelationship WHERE user_ID_follower = '1a9288dd-e1b8-48fc-9d38-241d0738098f') AS Total_Following
+FROM 
+    [User] u
+WHERE 
+    u.user_ID = '1a9288dd-e1b8-48fc-9d38-241d0738098f';
+
+CREATE VIEW Syds_Followers AS
+   SELECT 
+	u.user_name AS Follower,
+	 CONCAT(
+        DATENAME(MONTH, fr.follow_time_stamp), 
+        ' ', 
+        DATENAME(YEAR, fr.follow_time_stamp)
+    ) AS Following_You_Since
+	FROM [User] u LEFT JOIN FollowingRelationship fr ON u.user_ID = fr.user_ID_follower 
+	WHERE fr.user_ID_followed = '1a9288dd-e1b8-48fc-9d38-241d0738098f'
+	GROUP BY u.user_name, fr.follow_time_stamp ;
+SELECT * FROM Syds_Followers;
+	
+--showing the playlists created by users that our user on interest follows
+CREATE VIEW Following_Playlist AS	
+SELECT fr.user_ID_follower AS Playlist_Creator,
+	p.playlist_name AS Playlist,
+	p.playlist_desc AS Description
+	FROM FollowingRelationship fr RIGHT JOIN Playlist p ON fr.user_ID_follower = p.user_ID 
+	WHERE fr.user_ID_followed = '1a9288dd-e1b8-48fc-9d38-241d0738098f'
+	GROUP BY user_ID_follower, p.playlist_name, p.playlist_desc;
+
+--creating an in depth playlist data so users can see the amount of tracks, total run time, and playlist descriptions
+-- easy to connect to playlist inclusiveness, which makes all typical viewing of playlists accessible
+SELECT 
+	p.playlist_name AS [Playlist],
+	p.playlist_desc AS Description,
+	COUNT(pi2.track_ID) AS Num_of_Tracks,
+	SUM(CONVERT(INT, DATEDIFF(MINUTE, '00:00:00',t.track_time))) AS Playlist_Run_Time
+	FROM Playlist p JOIN PlaylistInclusiveness pi2 ON p.playlist_ID = pi2.playlist_ID 
+		JOIN Track t ON pi2.track_ID = t.track_ID 
+	GROUP BY p.playlist_name, p.playlist_desc
+	ORDER BY Num_of_Tracks;
+SELECT * FROM Playlist_Info;
+---it worked! creating a view
+CREATE VIEW Playlist_Info AS
+SELECT 
+	p.playlist_name AS [Playlist],
+	p.playlist_desc AS Description,
+	COUNT(pi2.track_ID) AS Num_of_Tracks,
+	SUM(CONVERT(INT, DATEDIFF(MINUTE, '00:00:00',t.track_time))) AS Playlist_Run_Time
+	FROM Playlist p JOIN PlaylistInclusiveness pi2 ON p.playlist_ID = pi2.playlist_ID 
+		JOIN Track t ON pi2.track_ID = t.track_ID 
+	GROUP BY p.playlist_name, p.playlist_desc;
+
+	
+--Syd's purchase history
+-- want to show date in a more accessible format, but timestamp view is still available
+
+CREATE VIEW Syds_Purchases AS
+SELECT a.album_name AS [Product],
+ph.invoice_price,
+ CONCAT(
+        DATENAME(DAY, ph.purchase_time_stamp), 
+        ' ', 
+        DATENAME(MONTH, ph.purchase_time_stamp),
+        ' ',
+        DATENAME(YEAR, ph.purchase_time_stamp)
+        ) AS Purchase_Date
+FROM PurchaseHistory ph 
+JOIN Album a  ON ph.product_ID  = a.product_ID 
+WHERE ph.user_ID = '1a9288dd-e1b8-48fc-9d38-241d0738098f'
+
+
+UNION
+
+SELECT t.track_name AS [Product],
+ph.invoice_price,
+ CONCAT(
+        DATENAME(DAY, ph.purchase_time_stamp), 
+        ' ', 
+        DATENAME(MONTH, ph.purchase_time_stamp),
+        ' ',
+        DATENAME(YEAR, ph.purchase_time_stamp)
+        ) AS Purchase_Date
+FROM PurchaseHistory ph 
+JOIN Track t ON ph.product_ID  = t.product_ID
+WHERE ph.user_ID = '1a9288dd-e1b8-48fc-9d38-241d0738098f'
+;
+-- used a union in order to show the name of products bc there is no distinction between track and album in datatype
+---product names of all purchases regardless of it's an album or track
+-- cannot order by date, but that is something to improve on in the future. expanding with an invoicing or 
+-- transaction entity to create a system that allows for a range of pricing 
+
+
+SELECT SUM(ph.invoice_price) AS [Total_Purchases] FROM PurchaseHistory ph 
+WHERE user_ID = '1a9288dd-e1b8-48fc-9d38-241d0738098f';
+
+-- double checked the view 
+
+--adding more values to create views for the following relationships through user like history
+INSERT INTO LikeHistory (user_ID, track_ID, like_time_stamp) VALUES
+('1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3654dfc13ae0e3fcd3770','2023-12-27 09:53:47'),
+('1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3654dfc13ae0e3fcd376e','2023-12-27 08:53:47'),
+('1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3654dfc13ae0e3fcd3712','2023-12-27 07:53:47'),
+('6cbadc1f-1932-404f-b498-2f60b46424b5','65e3654dfc13ae0e3fcd3716','2023-10-21 18:05:12'),
+('796017c2-66ed-4865-8aef-9ef915a14307','65e3654dfc13ae0e3fcd3768','2023-10-21 09:10:12'),
+('6f5b5567-cf20-433d-8287-5e32a86246b3','65e3654dfc13ae0e3fcd371a','2023-10-21 08:10:12'),
+('6efa23ec-3bd0-4b82-b631-962f416384a8','65e3654dfc13ae0e3fcd3718','2023-10-21 07:10:12'),
+('9c5ee840-c8b2-4d58-86c7-d87c5aac04f1','65e3654dfc13ae0e3fcd3712','2023-10-01 05:14:39'),
+('6f5b5567-cf20-433d-8287-5e32a86246b3','65e3654dfc13ae0e3fcd36f9','2023-10-01 04:14:39'),
+('a4385066-147b-4560-9dc9-afd258c89791','65e3654dfc13ae0e3fcd3770','2023-09-20 17:34:55'),
+('a4385066-147b-4560-9dc9-afd258c89791','65e3654dfc13ae0e3fcd376e','2023-09-19 17:34:55'),
+('a4385066-147b-4560-9dc9-afd258c89791','65e3654dfc13ae0e3fcd376c','2023-09-09 13:03:17'),
+('9c5ee840-c8b2-4d58-86c7-d87c5aac04f1','65e3654dfc13ae0e3fcd376a','2023-07-30 15:12:46'),
+('00a05fed-3b54-41a1-8dad-0322727a78da','65e3654dfc13ae0e3fcd3760','2023-07-25 12:14:30'),
+('00a05fed-3b54-41a1-8dad-0322727a78da','65e3654dfc13ae0e3fcd3762','2023-07-09 03:45:22'),
+('00a05fed-3b54-41a1-8dad-0322727a78da','65e3654dfc13ae0e3fcd3764','2023-08-05 08:36:15'),
+('0461fbf9-ce83-43d6-ab81-1ed014b16c3a','65e3654dfc13ae0e3fcd3760','2023-06-27 19:20:57'),
+('0e4e1497-ffb2-491b-97fe-8301154532a1','65e3654dfc13ae0e3fcd376e','2023-09-14 10:28:41'),
+('122d6c4c-7de8-47b1-a314-69ad99c161fe','65e3654dfc13ae0e3fcd370e','2023-07-18 14:50:09'),
+('15c36c9a-6d34-4cb8-8799-a7089b36fa09','65e3654dfc13ae0e3fcd3710','2023-08-17 21:07:33'),
+('1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3654dfc13ae0e3fcd370e','2023-09-27 06:11:25'),
+('1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3654dfc13ae0e3fcd36f1','2023-09-03 09:53:18'),
+('1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3654dfc13ae0e3fcd36f3','2023-07-15 17:40:05'),
+('1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3654dfc13ae0e3fcd36f5','2023-08-22 22:39:48'),
+('1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3654dfc13ae0e3fcd36f7','2023-06-30 04:22:11'),
+('1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3654dfc13ae0e3fcd3760','2023-08-11 12:05:36'),
+('1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3654dfc13ae0e3fcd3710','2023-09-19 23:08:42'),
+('4ed2412d-6084-4c35-9077-f0eb8d9dc374','65e3654dfc13ae0e3fcd3714','2023-09-08 07:29:19'),
+('4ed2412d-6084-4c35-9077-f0eb8d9dc374','65e3654dfc13ae0e3fcd3746','2023-08-29 13:17:50'),
+('6cbadc1f-1932-404f-b498-2f60b46424b5','65e3654dfc13ae0e3fcd3746','2023-09-24 16:33:02'),
+('6efa23ec-3bd0-4b82-b631-962f416384a8','65e3654dfc13ae0e3fcd3746','2023-07-29 18:48:27'),
+('6f5b5567-cf20-433d-8287-5e32a86246b3','65e3654dfc13ae0e3fcd3746','2023-08-02 01:55:03'),
+('796017c2-66ed-4865-8aef-9ef915a14307','65e3654dfc13ae0e3fcd376e','2023-10-05 09:02:14'),
+('9c5ee840-c8b2-4d58-86c7-d87c5aac04f1','65e3654dfc13ae0e3fcd376e','2023-08-09 11:20:37'),
+('a4385066-147b-4560-9dc9-afd258c89791','65e3654dfc13ae0e3fcd370e','2023-09-10 14:44:59'),
+('b025f973-1eb4-446d-b4c1-7ce9c3fced9d','65e3654dfc13ae0e3fcd3710','2023-07-02 16:25:12'),
+('bf8a4973-2408-4c40-8483-39c225743570','65e3654dfc13ae0e3fcd36f5','2023-09-30 18:38:21'),
+('c81d3a27-6e3e-4ebf-89fb-f3fc9c3ab63d','65e3654dfc13ae0e3fcd36f7','2023-08-25 20:49:43'),
+('cee7e196-937b-4985-8016-07cf77c8f35b','65e3654dfc13ae0e3fcd3710','2023-09-21 22:03:05'),
+('cf7ab4b4-6779-4463-b518-2f1a104816ef','65e3654dfc13ae0e3fcd3760','2023-06-13 01:15:28'),
+('e72c0006-50a6-4717-8993-128613423d55','65e3654dfc13ae0e3fcd3760','2023-07-22 02:29:47'),
+('fdb29741-d9ba-4019-af9f-5d869290af2e','65e3654dfc13ae0e3fcd3760','2023-09-05 04:53:09'),
+('1a9288dd-e1b8-48fc-9d38-241d0738098f','65e3654dfc13ae0e3fcd3707','2023-10-12 07:07:32');
+
+
+--- creating two views to show liked tracks that users share
+CREATE VIEW Songs_Liked_By_Followers AS
+SELECT t.track_name AS Liked_Track,
+u.user_name AS UserName_Follower,
+CONVERT(varchar, lh.like_time_stamp, 1) AS Date_User_Liked_Track
+FROM Track t JOIN LikeHistory lh ON t.track_ID = lh.track_ID 
+JOIN FollowingRelationship fr ON lh.user_ID = fr.user_ID_follower 
+JOIN [User] u ON fr.user_ID_follower = u.user_ID 
+WHERE fr.user_ID_followed = '1a9288dd-e1b8-48fc-9d38-241d0738098f';
+--shows tracks liked by your followers 
+
+CREATE VIEW Songs_Liked_By_Users_Followed AS
+SELECT DISTINCT t.track_name AS Liked_Track,
+u.user_name AS UserName_Following,
+CONVERT(varchar, lh.like_time_stamp, 1) AS Date_User_Liked_Track
+FROM Track t JOIN LikeHistory lh ON t.track_ID = lh.track_ID 
+JOIN FollowingRelationship fr ON lh.user_ID = fr.user_ID_followed 
+JOIN [User] u ON fr.user_ID_followed = u.user_ID 
+WHERE fr.user_ID_follower = '1a9288dd-e1b8-48fc-9d38-241d0738098f';
+--shows tracks that people you follow like
+
+SELECT * FROM Songs_Liked_By_Followers;
+SELECT * FROM Songs_Liked_By_Users_Followed;
